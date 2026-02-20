@@ -1,0 +1,55 @@
+projects:
+  - name: 'Cloud Deploy Toolkit'
+    description: |
+      A CLI and library for zero-downtime deployments to Kubernetes clusters.
+      Supports blue-green and canary strategies with automatic rollback on
+      health-check failures.
+    url: 'https://cloud-deploy-toolkit.example.com'
+    repo: 'https://github.com/another/cloud-deploy-toolkit'
+    start: '2023-06'
+    end: ''
+    image: ''
+    skills: ['Go', 'Kubernetes', 'Docker', 'Terraform']
+    tags: ['devops', 'cli', 'open-source']
+    featured: true
+
+  - name: 'Real-Time Analytics Dashboard'
+    description: |
+      A full-stack dashboard for visualising streaming event data. Ingests
+      millions of events per day and renders live charts with sub-second
+      latency.
+    url: ''
+    repo: 'https://github.com/another/rt-analytics'
+    start: '2022-01'
+    end: '2023-05'
+    image: ''
+    skills: ['TypeScript', 'React', 'Node.js', 'Kafka', 'Redis']
+    tags: ['data', 'real-time', 'dashboard']
+    featured: true
+
+  - name: 'OSS Form Toolkit'
+    description: |
+      A lightweight, accessible form library for React with built-in
+      validation, schema support, and zero dependencies. Used by 500+
+      projects on npm.
+    url: 'https://oss-form-toolkit.example.com'
+    repo: 'https://github.com/oss-form-toolkit/core'
+    start: '2020-09'
+    end: ''
+    image: ''
+    skills: ['TypeScript', 'React', 'CSS']
+    tags: ['open-source', 'forms', 'react']
+    featured: true
+
+  - name: 'API Gateway Benchmark'
+    description: |
+      Comparative performance benchmarks for popular API gateway solutions.
+      Automated test harness with reproducible results published monthly.
+    url: ''
+    repo: 'https://github.com/another/api-gateway-bench'
+    start: '2024-03'
+    end: '2024-11'
+    image: ''
+    skills: ['Go', 'Python', 'Docker']
+    tags: ['benchmarking', 'api', 'performance']
+    featured: false
