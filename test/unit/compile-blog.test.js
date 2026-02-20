@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { compileBlog } from '../../src/lib/compile-blog.js';
+import { compileBlog } from '../../src/lib/compile/blog.js';
 import { fixturePath } from '../helpers/test-utils.js';
 import { join } from 'node:path';
 import { mkdtemp, writeFile } from 'node:fs/promises';

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { stripVisibility } from '../../src/lib/strip-visibility.js';
+import { stripVisibility } from '../../src/lib/utils/strip-visibility.js';
 
 const DEFAULTS = {
   education: true,

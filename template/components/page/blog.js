@@ -1,7 +1,7 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import { iconDocument } from './icons.js';
-import './blog-card.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconDocument } from '../ui/icons.js';
+import '../blog/card.js';
 
 class PageBlog extends I18nMixin(LitElement) {
   createRenderRoot() {

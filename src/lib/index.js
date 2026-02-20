@@ -1,12 +1,12 @@
 import { join } from 'node:path';
 import { mkdir, writeFile, cp, readdir, stat } from 'node:fs/promises';
-import { compileYaml } from './compile-yaml.js';
-import { validate } from './validate.js';
-import { stripVisibility } from './strip-visibility.js';
-import { compileMarkdown, renderMarkdown } from './compile-markdown.js';
-import { compileBlog } from './compile-blog.js';
-import { compileCrossref } from './compile-crossref.js';
-import { compileI18n } from './compile-i18n.js';
+import { compileYaml } from './compile/yaml.js';
+import { validate } from './utils/validate.js';
+import { stripVisibility } from './utils/strip-visibility.js';
+import { compileMarkdown, renderMarkdown } from './compile/markdown.js';
+import { compileBlog } from './compile/blog.js';
+import { compileCrossref } from './compile/crossref.js';
+import { compileI18n } from './compile/i18n.js';
 import {
   generateRobotsTxt,
   generateMetaRobots,
@@ -14,9 +14,9 @@ import {
   generateLlmsTxt,
   generateFeedXml,
   resolveSiteUrl,
-} from './compile-seo.js';
-import { generateManifest } from './generate-manifest.js';
-import { generateIndex } from './generate-index.js';
+} from './compile/seo.js';
+import { generateManifest } from './generate/manifest.js';
+import { generateIndex } from './generate/index.js';
 
 const isActions = !!process.env.GITHUB_ACTIONS;
 

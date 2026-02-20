@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { compileI18n } from '../../src/lib/compile-i18n.js';
+import { compileI18n } from '../../src/lib/compile/i18n.js';
 import { join } from 'node:path';
 import { mkdtemp, writeFile } from 'node:fs/promises';
 import { tmpdir } from 'node:os';

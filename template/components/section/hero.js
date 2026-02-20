@@ -1,5 +1,5 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
 import {
   iconLocation,
   iconEmail,
@@ -7,7 +7,7 @@ import {
   iconGlobe,
   iconLink,
   brandIcon,
-} from './icons.js';
+} from '../ui/icons.js';
 
 class HeroSection extends I18nMixin(LitElement) {
   createRenderRoot() {

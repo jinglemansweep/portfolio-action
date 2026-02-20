@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest';
 import { join } from 'node:path';
-import { compileYaml } from '../../src/lib/compile-yaml.js';
+import { compileYaml } from '../../src/lib/compile/yaml.js';
 import { fixturePath } from '../helpers/test-utils.js';
 
 describe('compileYaml', () => {

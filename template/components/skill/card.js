@@ -1,6 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import { iconExternalLink, iconBriefcase, iconFolder } from './icons.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconExternalLink, iconBriefcase, iconFolder } from '../ui/icons.js';
 
 class SkillCard extends I18nMixin(LitElement) {
   createRenderRoot() {

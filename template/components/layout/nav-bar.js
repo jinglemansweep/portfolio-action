@@ -1,8 +1,8 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import { iconMenuOpen, iconMenuClosed } from './icons.js';
-import './theme-toggle.js';
-import './pdf-export.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconMenuOpen, iconMenuClosed } from '../ui/icons.js';
+import '../ui/theme-toggle.js';
+import '../ui/pdf-export.js';
 
 class NavBar extends I18nMixin(LitElement) {
   createRenderRoot() {

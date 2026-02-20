@@ -1,6 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import { iconArrowRight } from './icons.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconArrowRight } from '../ui/icons.js';
 
 class ProjectCardCompact extends I18nMixin(LitElement) {
   createRenderRoot() {

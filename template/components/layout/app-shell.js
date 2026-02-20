@@ -1,16 +1,16 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
 
 // Import all page and section components
 import './nav-bar.js';
 import './site-footer.js';
-import './page-home.js';
-import './page-projects.js';
-import './page-skills.js';
-import './page-blog.js';
-import './page-blog-post.js';
-import './page-custom.js';
-import './page-not-found.js';
+import '../page/home.js';
+import '../page/projects.js';
+import '../page/skills.js';
+import '../page/blog.js';
+import '../page/blog-post.js';
+import '../page/custom.js';
+import '../page/not-found.js';
 
 class AppShell extends I18nMixin(LitElement) {
   createRenderRoot() {

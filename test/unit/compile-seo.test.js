@@ -5,7 +5,7 @@ import {
   generateSitemapXml,
   generateLlmsTxt,
   generateFeedXml,
-} from '../../src/lib/compile-seo.js';
+} from '../../src/lib/compile/seo.js';
 
 describe('generateRobotsTxt', () => {
   it('allows all when indexing: true', () => {

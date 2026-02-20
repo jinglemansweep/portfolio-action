@@ -2,7 +2,7 @@ import { describe, it, expect } from 'vitest';
 import {
   compileMarkdown,
   renderMarkdown,
-} from '../../src/lib/compile-markdown.js';
+} from '../../src/lib/compile/markdown.js';
 import { fixturePath } from '../helpers/test-utils.js';
 import { join } from 'node:path';
 import { mkdtemp, writeFile } from 'node:fs/promises';
