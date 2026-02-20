@@ -1,4 +1,4 @@
-name: 'Instant Portfolio'
+name: 'Portfolio Action'
 description: 'Builds a personal portfolio/resume static site from YAML and Markdown'
 branding:
   icon: 'globe'

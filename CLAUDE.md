@@ -1,4 +1,4 @@
-# Instant Portfolio — Agent Coding Guidelines
+# Portfolio Action — Agent Coding Guidelines
 
 > **MANDATORY: Pre-commit hooks (Husky + lint-staged) MUST be installed and enabled at all times. Run `npm install` to set them up. NEVER skip or disable hooks (e.g. `--no-verify`). If hooks are missing, reinstall them before proceeding.**
 
@@ -8,11 +8,11 @@
 
 ## Project Overview
 
-**Instant Portfolio** is a reusable GitHub Action that builds a modern SPA-like personal portfolio/resume site from YAML data and Markdown pages. The action compiles user content into a static site deployable to any hosting platform.
+**Portfolio Action** is a reusable GitHub Action that builds a modern SPA-like personal portfolio/resume site from YAML data and Markdown pages. The action compiles user content into a static site deployable to any hosting platform.
 
 | Context          | Name                                 |
 | ---------------- | ------------------------------------ |
-| Brand name       | **Instant Portfolio**                |
+| Brand name       | **Portfolio Action**                 |
 | npm package      | `portfolio`                          |
 | GitHub repo      | `jinglemansweep/portfolio-action`    |
 | Action reference | `jinglemansweep/portfolio-action@v1` |

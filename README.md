@@ -1,4 +1,4 @@
-# Instant Portfolio
+# Portfolio Action
 
 [![CI](https://github.com/jinglemansweep/portfolio-action/actions/workflows/ci.yml/badge.svg)](https://github.com/jinglemansweep/portfolio-action/actions/workflows/ci.yml)
 [![Demo](https://github.com/jinglemansweep/portfolio-action/actions/workflows/demo.yml/badge.svg)](https://github.com/jinglemansweep/portfolio-action/actions/workflows/demo.yml)
@@ -442,4 +442,4 @@ npm run format        # Prettier fix
 
 ## License
 
-MIT
+GPL-3.0 — see [LICENSE](LICENSE) for details.
