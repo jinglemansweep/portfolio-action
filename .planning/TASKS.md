@@ -435,12 +435,12 @@
 
 ### Task 31: Performance Optimisation
 
-- [ ] Add `preconnect` hints in index.html for CDN domains (jsdelivr, simpleicons)
-- [ ] Verify page data is lazy-loaded (skills, projects, blog post JSON fetched only when route is navigated to)
-- [ ] Verify html2pdf.js is only loaded on PDF button click (not on page load)
-- [ ] Verify images use `loading="lazy"` attribute
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Add `preconnect` hints in index.html for CDN domains (jsdelivr, simpleicons)
+- [x] Verify page data is lazy-loaded (skills, projects, blog post JSON fetched only when route is navigated to)
+- [x] Verify html2pdf.js is only loaded on PDF button click (not on page load)
+- [x] Verify images use `loading="lazy"` attribute
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 32: Documentation & README
 
