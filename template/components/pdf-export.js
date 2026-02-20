@@ -15,18 +15,26 @@ class PdfExport extends I18nMixin(LitElement) {
     this._generating = false;
   }
 
+  _loadScript(src) {
+    return new Promise((resolve, reject) => {
+      const script = document.createElement('script');
+      script.src = src;
+      script.onload = resolve;
+      script.onerror = () => reject(new Error(`Failed to load ${src}`));
+      document.head.appendChild(script);
+    });
+  }
+
   async exportPdf() {
     if (this._generating) return;
     this._generating = true;
 
     try {
-      // Lazy-load html2pdf.js from CDN on first use
+      // Lazy-load html2pdf.js UMD bundle from CDN on first use
       if (!window.html2pdf) {
-        const mod =
-          await import('https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/+esm');
-        if (!window.html2pdf && mod.default) {
-          window.html2pdf = mod.default;
-        }
+        await this._loadScript(
+          'https://cdn.jsdelivr.net/npm/html2pdf.js@0.10.2/dist/html2pdf.bundle.min.js',
+        );
       }
 
       const element = document.querySelector('#printable-content');
