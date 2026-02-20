@@ -1,0 +1,4 @@
+projects:
+  - name: "i18n Test Project"
+    description: "Placeholder project for i18n override testing."
+    start: "2025-06"

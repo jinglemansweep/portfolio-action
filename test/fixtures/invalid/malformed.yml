@@ -1,0 +1,5 @@
+title: "This YAML is broken"
+description: [unclosed
+nested:
+  key: "value
+  another: [also, unclosed

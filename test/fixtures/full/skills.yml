@@ -1,0 +1,71 @@
+categories:
+  - name: "Frontend"
+    skills:
+      - name: React
+        level: expert
+        years: 7
+        icon: react
+        tags: ["frontend", "ui", "spa"]
+        links:
+          - label: "React Docs"
+            url: "https://react.dev"
+          - label: "My React Guide"
+            url: "https://janesmith.dev/react-guide"
+      - name: TypeScript
+        level: advanced
+        years: 5
+        icon: typescript
+        tags: ["frontend", "backend", "typed"]
+        links:
+          - label: "TypeScript Handbook"
+            url: "https://www.typescriptlang.org/docs/"
+      - name: CSS
+        level: advanced
+        years: 8
+        tags: ["frontend", "styling"]
+        links:
+          - url: "https://developer.mozilla.org/en-US/docs/Web/CSS"
+
+  - name: "Backend"
+    skills:
+      - name: Node.js
+        level: expert
+        years: 8
+        icon: nodedotjs
+        tags: ["backend", "runtime"]
+        links:
+          - label: "Node.js"
+            url: "https://nodejs.org"
+      - name: Python
+        level: advanced
+        years: 6
+        icon: python
+        tags: ["backend", "scripting"]
+        links:
+          - label: "Python Docs"
+            url: "https://docs.python.org"
+      - name: PostgreSQL
+        level: intermediate
+        years: 4
+        icon: postgresql
+        tags: ["database", "sql"]
+        links:
+          - url: "https://www.postgresql.org"
+
+  - name: "DevOps & Infrastructure"
+    skills:
+      - name: Docker
+        level: advanced
+        years: 5
+        icon: docker
+        tags: ["containers", "devops"]
+        links:
+          - label: "Docker Docs"
+            url: "https://docs.docker.com"
+      - name: JavaScript
+        level: expert
+        years: 10
+        icon: javascript
+        tags: ["frontend", "backend"]
+        links:
+          - url: "https://developer.mozilla.org/en-US/docs/Web/JavaScript"

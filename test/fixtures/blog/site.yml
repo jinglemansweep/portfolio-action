@@ -1,0 +1,6 @@
+title: "Blog Test Site"
+description: "A test site for blog scheduling fixtures"
+lang: en
+
+visibility:
+  blog: true

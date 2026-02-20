@@ -1,0 +1,24 @@
+categories:
+  - name: "Covert Operations"
+    skills:
+      - name: Stealth
+        level: expert
+        years: 10
+        tags: ["covert", "ops"]
+        links:
+          - label: "Stealth Manual"
+            url: "https://stealth.example.com"
+      - name: Encryption
+        level: advanced
+        years: 8
+        icon: lock
+        tags: ["security", "crypto"]
+        links:
+          - url: "https://encryption.example.com"
+
+  - name: "Intelligence"
+    skills:
+      - name: Surveillance
+        level: advanced
+        years: 5
+        tags: ["intel", "monitoring"]

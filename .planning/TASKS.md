@@ -38,37 +38,14 @@
 
 ### Task 4: Test Fixtures
 
-- [ ] Create `test/fixtures/minimal/` — bare minimum valid site:
-  - `site.yml` (minimal required fields: title, description, lang)
-  - `resume.yml` (name, tagline, contact with at least location)
-  - `skills.yml` (one category with one skill)
-  - `projects.yml` (one project with required fields)
-- [ ] Create `test/fixtures/full/` — all features exercised:
-  - `site.yml` (all fields populated including hero, visibility, seo, i18n_overrides)
-  - `resume.yml` (full contact, education, experience with skills, community, accreditations)
-  - `skills.yml` (multiple categories, skills with levels/tags/links/icons)
-  - `projects.yml` (multiple projects, featured flags, skills, tags)
-  - `media/test-image.png` (small test image)
-  - `pages/about.md` (markdown page with frontmatter: title, slug, nav_order, show_in_nav)
-  - `blog/2026-01-15-test-post.md` (published post with all frontmatter fields)
-  - `blog/2026-12-31-future-post.md` (future-dated post — should be excluded)
-- [ ] Create `test/fixtures/blog/` — blog scheduling fixtures:
-  - Published post (past publish_on, no expire_on)
-  - Draft post (draft: true)
-  - Future post (publish_on in future)
-  - Expired post (expire_on in past)
-- [ ] Create `test/fixtures/i18n-override/` — custom i18n overrides:
-  - `site.yml` with `i18n_overrides.labels` overriding several keys
-  - Minimal resume.yml, skills.yml, projects.yml
-- [ ] Create `test/fixtures/visibility-hidden/` — all visibility flags false:
-  - `site.yml` with all visibility flags set to `false`
-  - Full resume.yml, skills.yml, projects.yml (data present but should be stripped)
-- [ ] Create `test/fixtures/invalid/` — error testing:
-  - `malformed.yml` (invalid YAML syntax)
-  - `missing-fields.yml` (valid YAML, missing required fields)
-  - Directory with missing required files
-- [ ] Verify: fixture files are valid YAML/Markdown where expected
-- [ ] Commit
+- [x] Create `test/fixtures/minimal/` — bare minimum valid site
+- [x] Create `test/fixtures/full/` — all features exercised
+- [x] Create `test/fixtures/blog/` — blog scheduling fixtures
+- [x] Create `test/fixtures/i18n-override/` — custom i18n overrides
+- [x] Create `test/fixtures/visibility-hidden/` — all visibility flags false
+- [x] Create `test/fixtures/invalid/` — error testing
+- [x] Verify: fixture files are valid YAML/Markdown where expected
+- [x] Commit
 
 ### Task 5: YAML Compilation & Validation (`compile-yaml.js`, `validate.js`)
 

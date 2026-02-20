@@ -1,0 +1,52 @@
+name: "Hidden User"
+tagline: "All sections should be stripped from output"
+photo: "media/headshot.jpg"
+
+contact:
+  email: "hidden@example.com"
+  phone: "+44 7700 000000"
+  location: "Secret Location"
+  website: "https://hidden.example.com"
+  links:
+    - platform: github
+      url: "https://github.com/hiddenuser"
+    - platform: linkedin
+      url: "https://linkedin.com/in/hiddenuser"
+
+summary: |
+  This summary should still appear since name, tagline, and summary
+  are always visible. But contact fields and sections below should be
+  stripped from the build output.
+
+education:
+  - institution: "Hidden University"
+    qualification: "BSc Secret Science"
+    start: "2010"
+    end: "2013"
+    description: "This education entry should be stripped."
+
+experience:
+  - title: "Secret Agent Developer"
+    company: "Classified Corp"
+    start: "2020-01"
+    end: "present"
+    description: "This experience entry should be stripped."
+    skills: ["Stealth", "Encryption"]
+  - title: "Junior Spy"
+    company: "Covert Ops Inc"
+    start: "2015-01"
+    end: "2019-12"
+    description: "This experience entry should also be stripped."
+    skills: ["Surveillance"]
+
+community:
+  - name: "Secret Society of Developers"
+    role: "Anonymous Member"
+    url: "https://secret-devs.example.com"
+    description: "This community entry should be stripped."
+
+accreditations:
+  - title: "Certified Hidden Professional"
+    issuer: "Secret Institute"
+    date: "2023"
+    url: "https://secret-cert.example.com"

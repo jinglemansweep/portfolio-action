@@ -1,0 +1,79 @@
+name: "Jane Smith"
+tagline: "Full-Stack Developer & Open-Source Enthusiast"
+photo: "media/test-image.png"
+
+contact:
+  email: "jane@example.com"
+  phone: "+44 7700 900000"
+  location: "Bristol, UK"
+  website: "https://janesmith.dev"
+  links:
+    - platform: github
+      url: "https://github.com/janesmith"
+    - platform: linkedin
+      url: "https://linkedin.com/in/janesmith"
+    - platform: mastodon
+      url: "https://mastodon.social/@janesmith"
+
+summary: |
+  Experienced full-stack developer with a passion for **open-source** software
+  and building scalable web applications. Specialising in modern JavaScript
+  frameworks, cloud infrastructure, and developer tooling.
+
+education:
+  - institution: "University of Bristol"
+    qualification: "BSc Computer Science"
+    start: "2012"
+    end: "2015"
+    description: "First-class honours. Dissertation on real-time collaborative editing algorithms."
+  - institution: "Bristol College"
+    qualification: "A-Levels: Maths, Physics, Computing"
+    start: "2010"
+    end: "2012"
+    description: ""
+
+experience:
+  - title: "Senior Full-Stack Developer"
+    company: "TechCorp Ltd"
+    start: "2021-03"
+    end: "present"
+    description: |
+      Leading a team of 5 developers building a SaaS platform for project management.
+      Architected the migration from monolith to microservices.
+    skills: ["TypeScript", "React", "Node.js", "Docker", "PostgreSQL"]
+
+  - title: "Full-Stack Developer"
+    company: "WebAgency Co"
+    start: "2017-06"
+    end: "2021-02"
+    description: |
+      Built and maintained client-facing web applications using React and Node.js.
+      Introduced CI/CD pipelines and automated testing practices.
+    skills: ["JavaScript", "React", "Node.js", "Python"]
+
+  - title: "Junior Developer"
+    company: "StartupXYZ"
+    start: "2015-09"
+    end: "2017-05"
+    description: "Full-stack development on an e-commerce platform."
+    skills: ["JavaScript", "Python", "PostgreSQL"]
+
+community:
+  - name: "Bristol JS Meetup"
+    role: "Co-organiser"
+    url: "https://bristoljs.example.com"
+    description: "Monthly JavaScript meetup with 100+ regular attendees."
+  - name: "Open Widget Library"
+    role: "Maintainer"
+    url: "https://github.com/open-widgets"
+    description: "Open-source UI component library with 2k+ GitHub stars."
+
+accreditations:
+  - title: "AWS Solutions Architect Associate"
+    issuer: "Amazon Web Services"
+    date: "2023"
+    url: "https://aws.amazon.com/certification/"
+  - title: "Google Cloud Professional Developer"
+    issuer: "Google Cloud"
+    date: "2022"
+    url: ""
