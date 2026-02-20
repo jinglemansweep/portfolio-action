@@ -1,0 +1,116 @@
+categories:
+  - name: 'Languages'
+    skills:
+      - name: TypeScript
+        level: expert
+        years: 8
+        icon: typescript
+        tags: ['language', 'typed']
+        links:
+          - label: 'TypeScript Docs'
+            url: 'https://www.typescriptlang.org/docs/'
+      - name: JavaScript
+        level: expert
+        years: 12
+        icon: javascript
+        tags: ['language', 'web']
+        links:
+          - label: 'MDN'
+            url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
+      - name: Python
+        level: advanced
+        years: 8
+        icon: python
+        tags: ['language', 'scripting']
+        links:
+          - label: 'Python Docs'
+            url: 'https://docs.python.org'
+      - name: Go
+        level: intermediate
+        years: 3
+        icon: go
+        tags: ['language', 'systems']
+        links:
+          - label: 'Go Docs'
+            url: 'https://go.dev/doc/'
+
+  - name: 'Frontend'
+    skills:
+      - name: React
+        level: expert
+        years: 7
+        icon: react
+        tags: ['frontend', 'ui']
+        links:
+          - label: 'React Docs'
+            url: 'https://react.dev'
+      - name: CSS
+        level: advanced
+        years: 10
+        icon: css3
+        tags: ['frontend', 'styling']
+        links:
+          - label: 'MDN CSS'
+            url: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
+
+  - name: 'Backend & Data'
+    skills:
+      - name: Node.js
+        level: expert
+        years: 9
+        icon: nodedotjs
+        tags: ['backend', 'runtime']
+        links:
+          - label: 'Node.js'
+            url: 'https://nodejs.org'
+      - name: PostgreSQL
+        level: advanced
+        years: 7
+        icon: postgresql
+        tags: ['database', 'sql']
+        links:
+          - label: 'PostgreSQL'
+            url: 'https://www.postgresql.org'
+      - name: Redis
+        level: intermediate
+        years: 4
+        icon: redis
+        tags: ['database', 'cache']
+        links:
+          - label: 'Redis Docs'
+            url: 'https://redis.io/docs/'
+      - name: Kafka
+        level: intermediate
+        years: 3
+        icon: apachekafka
+        tags: ['messaging', 'streaming']
+        links:
+          - label: 'Kafka Docs'
+            url: 'https://kafka.apache.org/documentation/'
+
+  - name: 'DevOps & Cloud'
+    skills:
+      - name: Docker
+        level: advanced
+        years: 6
+        icon: docker
+        tags: ['containers', 'devops']
+        links:
+          - label: 'Docker Docs'
+            url: 'https://docs.docker.com'
+      - name: Kubernetes
+        level: advanced
+        years: 4
+        icon: kubernetes
+        tags: ['orchestration', 'cloud']
+        links:
+          - label: 'K8s Docs'
+            url: 'https://kubernetes.io/docs/'
+      - name: Terraform
+        level: intermediate
+        years: 3
+        icon: terraform
+        tags: ['iac', 'cloud']
+        links:
+          - label: 'Terraform Docs'
+            url: 'https://developer.hashicorp.com/terraform/docs'

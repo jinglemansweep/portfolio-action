@@ -1,0 +1,90 @@
+name: 'A. N. Other'
+tagline: 'Senior Software Engineer & Cloud Architect'
+photo: ''
+
+contact:
+  email: 'hello@another.dev'
+  phone: '+44 7700 900000'
+  location: 'London, UK'
+  website: 'https://another.dev'
+  links:
+    - platform: github
+      url: 'https://github.com/another'
+    - platform: linkedin
+      url: 'https://linkedin.com/in/another'
+    - platform: mastodon
+      url: 'https://mastodon.social/@another'
+
+summary: |
+  Versatile software engineer with 12+ years of experience across the full stack.
+  Passionate about **clean architecture**, **cloud-native systems**, and mentoring
+  the next generation of developers. Active open-source contributor and conference
+  speaker.
+
+education:
+  - institution: 'Imperial College London'
+    qualification: 'MEng Computing'
+    start: '2009'
+    end: '2013'
+    description: 'First-class honours. Thesis on distributed consensus algorithms.'
+  - institution: 'Greenfield Sixth Form'
+    qualification: 'A-Levels: Mathematics, Further Mathematics, Physics'
+    start: '2007'
+    end: '2009'
+    description: ''
+
+experience:
+  - title: 'Principal Engineer'
+    company: 'CloudScale Inc.'
+    start: '2022-01'
+    end: 'present'
+    description: |
+      Leading platform architecture for a multi-tenant SaaS product serving 10k+
+      organisations. Drove migration from monolith to event-driven microservices,
+      reducing deployment times by 70%.
+    skills: ['TypeScript', 'Go', 'Kubernetes', 'PostgreSQL', 'Terraform']
+
+  - title: 'Senior Software Engineer'
+    company: 'DataStream Ltd'
+    start: '2018-04'
+    end: '2021-12'
+    description: |
+      Built real-time data pipelines processing 2M+ events per second. Designed
+      and maintained public-facing REST and GraphQL APIs.
+    skills: ['Python', 'Node.js', 'Kafka', 'Redis', 'Docker']
+
+  - title: 'Software Engineer'
+    company: 'WebWorks Agency'
+    start: '2015-06'
+    end: '2018-03'
+    description: |
+      Delivered full-stack web applications for clients across fintech and
+      e-commerce. Introduced automated testing and CI/CD best practices.
+    skills: ['JavaScript', 'React', 'Node.js', 'PostgreSQL']
+
+  - title: 'Junior Developer'
+    company: 'StartBright Technologies'
+    start: '2013-09'
+    end: '2015-05'
+    description: 'Built internal tooling and customer-facing dashboards.'
+    skills: ['JavaScript', 'Python', 'CSS']
+
+community:
+  - name: 'London Cloud Meetup'
+    role: 'Organiser'
+    url: 'https://londoncloud.example.com'
+    description: 'Monthly meetup with 200+ attendees covering cloud-native topics.'
+  - name: 'OSS Form Toolkit'
+    role: 'Core Maintainer'
+    url: 'https://github.com/oss-form-toolkit'
+    description: 'Open-source form library with 3k+ GitHub stars and 50+ contributors.'
+
+accreditations:
+  - title: 'AWS Solutions Architect Professional'
+    issuer: 'Amazon Web Services'
+    date: '2024'
+    url: 'https://aws.amazon.com/certification/'
+  - title: 'Certified Kubernetes Administrator'
+    issuer: 'Cloud Native Computing Foundation'
+    date: '2023'
+    url: 'https://www.cncf.io/training/certification/cka/'

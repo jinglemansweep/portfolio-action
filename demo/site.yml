@@ -1,0 +1,40 @@
+title: 'A. N. Other — Senior Software Engineer'
+description: 'Personal portfolio showcasing software engineering, cloud architecture, and open-source contributions'
+lang: en
+theme:
+  primary: '#6366f1'
+  accent: '#f97316'
+  mode: system
+favicon: ''
+og_image: ''
+analytics_id: ''
+custom_domain: ''
+site_url: 'https://jinglemansweep.github.io/portfolio-action'
+i18n_file: ''
+
+hero:
+  background: ''
+  overlay_opacity: 0.6
+  style: gradient
+
+visibility:
+  education: true
+  experience: true
+  projects: true
+  community: true
+  accreditations: true
+  skills: true
+  blog: true
+  email: true
+  phone: false
+  location: true
+  website: true
+  links: true
+
+seo:
+  robots:
+    indexing: true
+    follow_links: true
+  sitemap: true
+  llms_txt: true
+  rss: true
