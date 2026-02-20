@@ -29,16 +29,27 @@ Data flow: YAML/Markdown input → build pipeline → JSON + HTML output → bro
 ## Directory Structure
 
 ```
-src/lib/           # Core build library (pure functions, Node.js)
-src/cli.js         # CLI entry point (parseArgs → build())
-template/          # SPA shell (index.html, 404.html, prose.css)
-template/components/  # Lit 3 web components (browser, CDN imports)
-i18n/              # Built-in language packs (10 languages)
-test/unit/         # Unit tests (1:1 mapping to src/lib/)
-test/integration/  # Full build integration tests
-test/fixtures/     # Test data (minimal, full, blog, i18n-override, visibility-hidden, invalid)
-test/helpers/      # Shared test utilities
-.planning/         # Project plan and task list
+src/cli.js              # CLI entry point (parseArgs → build())
+src/lib/                # Core build library (pure functions, Node.js)
+  index.js              # Build orchestrator
+  compile/              # YAML, Markdown, blog, i18n, SEO, crossref compilers
+  generate/             # HTML index and manifest generators
+  utils/                # Validation and visibility stripping
+template/               # SPA shell (index.html, 404.html, prose.css)
+  components/           # Lit 3 web components (browser, CDN imports)
+    layout/             # App shell, nav bar, site footer
+    page/               # Page-level components (home, skills, projects, blog, etc.)
+    section/            # Section components (hero, experience, education, etc.)
+    project/            # Project card components
+    blog/               # Blog card component
+    skill/              # Skill card and explorer components
+    ui/                 # Shared utilities (i18n mixin, icons, theme toggle, etc.)
+i18n/                   # Built-in language packs (10 languages)
+test/unit/              # Unit tests (1:1 mapping to src/lib/)
+test/integration/       # Full build integration tests
+test/fixtures/          # Test data (minimal, full, blog, i18n-override, visibility-hidden, invalid)
+test/helpers/           # Shared test utilities
+demo/                   # Demo site data (YAML, pages, blog, media)
 ```
 
 ## Code Style & Conventions
@@ -53,7 +64,7 @@ test/helpers/      # Shared test utilities
 
 | Context            | Convention            | Example                                        |
 | ------------------ | --------------------- | ---------------------------------------------- |
-| Files              | kebab-case            | `compile-yaml.js`, `page-home.js`              |
+| Files              | kebab-case            | `compile/yaml.js`, `page/home.js`              |
 | Functions          | camelCase             | `compileYaml()`, `stripVisibility()`           |
 | Classes            | PascalCase            | `HeroSection`, `SkillCard`                     |
 | Constants          | SCREAMING_SNAKE       | `VISIBILITY_DEFAULTS`, `SEO_DEFAULTS`          |
@@ -74,7 +85,7 @@ import yaml from 'js-yaml';
 import matter from 'gray-matter';
 
 // Local modules — always include .js extension
-import { compileYaml } from './compile-yaml.js';
+import { compileYaml } from './compile/yaml.js';
 
 // Browser components — CDN URL imports
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
@@ -243,21 +254,21 @@ import {
 
 The build orchestrator (`src/lib/index.js`) runs these steps in order:
 
-1. Load & validate YAML (`compile-yaml.js`, `validate.js`)
-2. Compile markdown pages (`compile-markdown.js`)
-3. Compile blog posts (`compile-blog.js`)
-4. Resolve i18n (`compile-i18n.js`)
-5. Strip visibility (`strip-visibility.js`)
-6. Generate crossref index (`compile-crossref.js`)
-7. Generate manifest (`generate-manifest.js`)
+1. Load & validate YAML (`compile/yaml.js`, `utils/validate.js`)
+2. Compile markdown pages (`compile/markdown.js`)
+3. Compile blog posts (`compile/blog.js`)
+4. Resolve i18n (`compile/i18n.js`)
+5. Strip visibility (`utils/strip-visibility.js`)
+6. Generate crossref index (`compile/crossref.js`)
+7. Generate manifest (`generate/manifest.js`)
 8. Write JSON data files
-9. Generate index.html (`generate-index.js`)
+9. Generate index.html (`generate/index.js`)
 10. Copy template components
 11. Copy 404.html and prose.css
 12. Copy media (with warnings for files >1 MB)
 13. Write CNAME (if `custom_domain` set in site.yml)
 14. Write `.nojekyll`
-15. Generate SEO files (`compile-seo.js`)
+15. Generate SEO files (`compile/seo.js`)
 
 ### CLI Usage
 
@@ -288,9 +299,9 @@ Pre-commit hooks (Husky + lint-staged) automatically run ESLint --fix and Pretti
 
 ## Git Conventions
 
-- Branch: `feat/implementation`
-- Commit format: `Task N: Short description` followed by a body paragraph
-- One commit per task/logical unit
+- Branch: `feat/short-description` or `chore/short-description`
+- Commit: concise imperative subject line, optional body paragraph
+- One commit per logical unit of change
 - Never commit `.env`, credentials, or `coverage/`
 
 ## Key Design Decisions

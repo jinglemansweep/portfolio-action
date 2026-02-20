@@ -1,5 +1,9 @@
 # Instant Portfolio
 
+[![CI](https://github.com/jinglemansweep/portfolio-action/actions/workflows/ci.yml/badge.svg)](https://github.com/jinglemansweep/portfolio-action/actions/workflows/ci.yml)
+[![Demo](https://github.com/jinglemansweep/portfolio-action/actions/workflows/demo.yml/badge.svg)](https://github.com/jinglemansweep/portfolio-action/actions/workflows/demo.yml)
+[![BuyMeACoffee](https://raw.githubusercontent.com/pachadotdev/buymeacoffee-badges/main/bmc-donate-yellow.svg)](https://www.buymeacoffee.com/jinglemansweep)
+
 A reusable **GitHub Action** that builds a modern, SPA-like personal portfolio/resume site from YAML data and Markdown pages. Create a repo with your content, add the action to a workflow, and deploy to any static host.
 
 **[Live Demo](https://jinglemansweep.github.io/portfolio-action/)**
@@ -304,7 +308,7 @@ Override any label:
 i18n_overrides:
   labels:
     nav_home: 'Accueil'
-    hero_view_skills: 'Voir les compétences'
+    skills: 'Compétences'
 ```
 
 For a fully custom locale, create a YAML file and reference it:

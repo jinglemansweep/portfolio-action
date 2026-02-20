@@ -8,7 +8,15 @@ class PdfExport extends I18nMixin(LitElement) {
   }
 
   exportPdf() {
-    window.print();
+    const basePath =
+      document.querySelector('base')?.getAttribute('href') || '/';
+    if (window.location.pathname !== basePath) {
+      window.history.pushState({}, '', basePath);
+      window.dispatchEvent(new PopStateEvent('popstate'));
+      requestAnimationFrame(() => window.print());
+    } else {
+      window.print();
+    }
   }
 
   render() {
