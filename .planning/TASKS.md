@@ -17,14 +17,14 @@
 
 ### Task 2: Dev Tooling — ESLint, Prettier, Husky, lint-staged
 
-- [ ] Create `eslint.config.js` (flat config, ESM, Node 22 globals)
-- [ ] Create `.prettierrc` (consistent formatting rules)
-- [ ] Create `.lintstagedrc.json` (src, test, template JS → eslint + prettier; i18n YAML → prettier)
-- [ ] Initialise Husky: `npx husky init`
-- [ ] Configure `.husky/pre-commit` to run `npx lint-staged`
-- [ ] Verify: `npm run lint` runs (exits clean on empty dirs)
-- [ ] Verify: `npm run format:check` runs
-- [ ] Commit
+- [x] Create `eslint.config.js` (flat config, ESM, Node 22 globals)
+- [x] Create `.prettierrc` (consistent formatting rules)
+- [x] Create `.lintstagedrc.json` (src, test, template JS → eslint + prettier; i18n YAML → prettier)
+- [x] Initialise Husky: `npx husky init`
+- [x] Configure `.husky/pre-commit` to run `npx lint-staged`
+- [x] Verify: `npm run lint` runs (exits clean on empty dirs)
+- [x] Verify: `npm run format:check` runs
+- [x] Commit
 
 ### Task 3: Test Framework — Vitest with Coverage
 
