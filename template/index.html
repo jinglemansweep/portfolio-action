@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="${lang}" dir="${dir}">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <base href="${base_path}" />
+    <title>${title}</title>
+    <meta name="description" content="${description}" />
+    <meta name="robots" content="${robots_meta}" />
+    ${rss_link}
+
+    <!-- Tailwind via CDN -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"
+      rel="stylesheet"
+    />
+
+    <!-- Lit via CDN -->
+    <script type="module">
+      import 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
+    </script>
+
+    <!-- App components -->
+    <script type="module" src="./components/app-shell.js"></script>
+
+    <!-- Theme custom properties -->
+    <style>
+      @custom-variant dark (&:where(.dark, .dark *));
+      :root {
+        --color-primary: ${primary};
+        --color-accent: ${accent};
+      }
+    </style>
+
+    <!-- Preconnect hints -->
+    <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
+    <link rel="preconnect" href="https://cdn.simpleicons.org" crossorigin />
+
+    <!-- Theme init — prevent FOUC -->
+    <script>
+      (function () {
+        const stored = localStorage.getItem('theme');
+        const prefersDark = matchMedia(
+          '(prefers-color-scheme: dark)',
+        ).matches;
+        const mode = '${theme_mode}';
+        const dark =
+          stored === 'dark' ||
+          (stored !== 'light' &&
+            (mode === 'dark' || (mode === 'system' && prefersDark)));
+        if (dark) document.documentElement.classList.add('dark');
+      })();
+    </script>
+  </head>
+  <body>
+    <a href="#main-content" class="sr-only focus:not-sr-only"
+      >${a11y_skip_to_content}</a
+    >
+    <app-shell></app-shell>
+  </body>
+</html>

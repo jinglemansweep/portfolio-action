@@ -108,41 +108,15 @@
 
 ### Task 12: Manifest & Index Generation (`generate-manifest.js`, `generate-index.js`)
 
-- [ ] Create `src/lib/generate-manifest.js`:
-  - Generate routes array (/, i18n-resolved skills/projects/blog paths, custom page slugs)
-  - Exclude routes where visibility is false or data is absent
-  - Generate nav array from routes (Home always present; Skills, Projects, Blog conditional; custom pages sorted by nav_order)
-  - Return `{ routes, nav }` object
-- [ ] Create `src/lib/generate-index.js`:
-  - Read `template/index.html` template file
-  - Interpolate variables: lang, dir, title, description, base_path, primary, accent, theme_mode, robots_meta, rss_link, a11y_skip_to_content
-  - Return compiled HTML string
-- [ ] Create `template/index.html` — SPA shell template (as per PLAN.md: Tailwind CDN, Lit CDN, theme init script, component script import, CSS custom properties, base href, meta tags)
-- [ ] Create `template/404.html` — SPA fallback redirect page (encodes path as query param, redirects to index.html)
-- [ ] Create `test/unit/generate-manifest.test.js`:
-  - Test: includes / route always
-  - Test: includes skills route when visibility.skills true
-  - Test: excludes skills route when visibility.skills false
-  - Test: includes projects route when visible and data present
-  - Test: excludes projects route when hidden or data absent
-  - Test: includes blog route when enabled with posts
-  - Test: excludes blog route when disabled
-  - Test: includes custom page routes
-  - Test: nav items match routes; hidden routes omitted from nav
-  - Test: custom pages sorted by nav_order
-- [ ] Create `test/unit/generate-index.test.js`:
-  - Test: interpolates lang attribute
-  - Test: interpolates dir attribute (ltr/rtl)
-  - Test: interpolates title and description meta
-  - Test: interpolates base_path in base href
-  - Test: interpolates theme custom properties
-  - Test: interpolates theme_mode in FOUC-prevention script
-  - Test: interpolates robots meta tag
-  - Test: includes RSS link when blog enabled
-  - Test: omits RSS link when blog disabled
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/generate-manifest.js`
+- [x] Create `src/lib/generate-index.js`
+- [x] Create `template/index.html` — SPA shell template
+- [x] Create `template/404.html` — SPA fallback redirect
+- [x] Create `test/unit/generate-manifest.test.js` (10 tests)
+- [x] Create `test/unit/generate-index.test.js` (9 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 13: Build Orchestrator (`src/lib/index.js`) & CLI (`src/cli.js`)
 
