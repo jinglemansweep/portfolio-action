@@ -28,13 +28,13 @@
 
 ### Task 3: Test Framework — Vitest with Coverage
 
-- [ ] Create `vitest.config.js` (ESM, coverage with v8 provider, include `src/lib/**`, coverage thresholds lines/branches 80%)
-- [ ] Create `test/helpers/test-utils.js` with shared utilities (temp dir creation, fixture path resolver, output reader)
-- [ ] Create a placeholder unit test (`test/unit/placeholder.test.js`) to verify Vitest runs
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run test:coverage` produces a coverage report
-- [ ] Remove placeholder test
-- [ ] Commit
+- [x] Create `vitest.config.js` (ESM, coverage with v8 provider, include `src/lib/**`, coverage thresholds lines/branches 80%)
+- [x] Create `test/helpers/test-utils.js` with shared utilities (temp dir creation, fixture path resolver, output reader)
+- [x] Create a placeholder unit test (`test/unit/placeholder.test.js`) to verify Vitest runs
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run test:coverage` produces a coverage report
+- [x] Remove placeholder test
+- [x] Commit
 
 ### Task 4: Test Fixtures
 
