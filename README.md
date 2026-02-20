@@ -158,6 +158,7 @@ experience:
     company: 'Example Corp'
     start: '2020-01'
     end: 'present'
+    comment: 'Promoted from mid-level' # Optional note
     description: |
       Role description with **markdown** support.
     skills: ['TypeScript', 'Docker', 'Kubernetes']
