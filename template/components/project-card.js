@@ -115,6 +115,15 @@ class ProjectCard extends I18nMixin(LitElement) {
             ${p.start} &mdash; ${p.end || this.t('experience_present')}
           </p>
 
+          <!-- Comment -->
+          ${p.comment
+            ? html`<p
+                class="mb-3 text-sm text-gray-500 italic dark:text-gray-400"
+              >
+                ${p.comment}
+              </p>`
+            : ''}
+
           <!-- Description -->
           ${p.description_html
             ? html`

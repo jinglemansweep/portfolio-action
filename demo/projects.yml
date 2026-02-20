@@ -1,5 +1,6 @@
 projects:
   - name: 'Cloud Deploy Toolkit'
+    comment: 'Most popular open-source project'
     description: |
       A CLI and library for zero-downtime deployments to Kubernetes clusters.
       Supports blue-green and canary strategies with automatic rollback on

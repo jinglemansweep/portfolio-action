@@ -4,6 +4,7 @@ categories:
       - name: React
         level: expert
         start_year: 2019
+        comment: 'Primary UI framework'
         icon: react
         tags: ['frontend', 'ui', 'spa']
         links:
@@ -31,6 +32,7 @@ categories:
       - name: Node.js
         level: expert
         start_year: 2018
+        comment: 'Core backend runtime'
         icon: nodedotjs
         tags: ['backend', 'runtime']
         links:

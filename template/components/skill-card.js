@@ -111,6 +111,15 @@ class SkillCard extends I18nMixin(LitElement) {
           </div>
         </div>
 
+        <!-- Comment -->
+        ${s.comment
+          ? html`<p
+              class="mb-3 text-sm text-gray-500 italic dark:text-gray-400"
+            >
+              ${s.comment}
+            </p>`
+          : ''}
+
         <!-- Level bar -->
         ${s.level
           ? html`

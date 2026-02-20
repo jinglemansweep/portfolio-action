@@ -4,6 +4,7 @@ categories:
       - name: TypeScript
         level: expert
         start_year: 2018
+        comment: 'Go-to language for all new projects'
         icon: typescript
         tags: ['language', 'typed']
         links:
