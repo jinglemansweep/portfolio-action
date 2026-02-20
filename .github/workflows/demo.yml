@@ -20,7 +20,7 @@ jobs:
       - uses: actions/checkout@v4
 
       - name: Build demo site
-        uses: jinglemansweep/portfolio-action@main
+        uses: ./
         with:
           data_dir: demo
           pages_dir: demo/pages
