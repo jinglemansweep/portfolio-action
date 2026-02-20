@@ -444,7 +444,7 @@
 
 ### Task 32: Documentation & README
 
-- [ ] Create `README.md`:
+- [x] Create `README.md`:
   - Project title and description ("Instant Portfolio" branding)
   - Quick start guide (create repo, add YAML files, add workflow, deploy)
   - Data schema reference (site.yml, resume.yml, skills.yml, projects.yml)
@@ -457,9 +457,9 @@
   - SEO features (robots.txt, sitemap, llms.txt, RSS)
   - Reference deployment workflows: GitHub Pages, Cloudflare Pages, Netlify, S3 (incl. cron schedule example)
   - Development guide (local build, testing, contributing)
-- [ ] Verify: `npm run lint` passes
-- [ ] Verify: `npm run format:check` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Verify: `npm run format:check` passes
+- [x] Commit
 
 ### Task 33: Final Quality Checks & Release
 
