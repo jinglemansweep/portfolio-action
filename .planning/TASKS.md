@@ -83,27 +83,11 @@
 
 ### Task 9: Cross-Reference Index (`compile-crossref.js`)
 
-- [ ] Create `src/lib/compile-crossref.js`:
-  - Build normalised skill name index (lowercase) from skills data
-  - Match experience skills[] against index (case-insensitive)
-  - Match project skills[] against index (case-insensitive)
-  - Build bidirectional maps: skillToExperience, skillToProject, experienceToSkills, projectToSkills
-  - Handle null/missing skills, experience, or projects data gracefully
-  - Collect warnings for unmatched skill names
-  - Return `{ crossref, warnings }` object
-- [ ] Create `test/unit/compile-crossref.test.js`:
-  - Test: matches skills case-insensitively (Docker === docker)
-  - Test: builds correct skillToExperience map
-  - Test: builds correct skillToProject map
-  - Test: builds correct experienceToSkills map
-  - Test: builds correct projectToSkills map
-  - Test: produces warnings for unmatched skill names
-  - Test: handles null skills data (returns empty crossref)
-  - Test: handles null projects data (omits project mappings)
-  - Test: handles null experience data (omits experience mappings)
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-crossref.js`
+- [x] Create `test/unit/compile-crossref.test.js` (9 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 10: i18n Resolution (`compile-i18n.js`)
 
