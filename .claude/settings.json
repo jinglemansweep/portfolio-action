@@ -1,0 +1,19 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(ls:*)",
+      "Bash(git ls-tree:*)",
+      "Bash(npm install:*)",
+      "Bash(npx husky init:*)",
+      "Bash(npm run lint:*)",
+      "Bash(npm run format:check:*)",
+      "Bash(npx prettier:*)",
+      "Bash(npm test:*)",
+      "Bash(npm run demo:*)",
+      "Bash(npm run test:*)",
+      "Bash(npm run format:*)",
+      "Bash(node src/cli.js:*)",
+      "WebSearch"
+    ]
+  }
+}

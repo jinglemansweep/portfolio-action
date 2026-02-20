@@ -397,6 +397,15 @@ npm install
 node src/cli.js --data-dir path/to/data --output-dir _site
 ```
 
+### Demo Site
+
+Build and serve the included demo site locally:
+
+```bash
+npm run demo        # Build demo site to _site/
+npm run demo:serve  # Serve at http://localhost:3000
+```
+
 ### Testing
 
 ```bash
