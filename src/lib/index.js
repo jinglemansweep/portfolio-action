@@ -216,8 +216,9 @@ export async function build(options) {
     // Components directory may not exist yet during early development
   }
 
-  // Step 11: Copy 404.html
+  // Step 11: Copy 404.html and prose.css
   await cp(join(templateDir, '404.html'), join(outputDir, '404.html'));
+  await cp(join(templateDir, 'prose.css'), join(outputDir, 'prose.css'));
 
   // Step 12: Copy media
   if (mediaDir) {
