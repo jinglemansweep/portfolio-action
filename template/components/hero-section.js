@@ -221,7 +221,7 @@ class HeroSection extends I18nMixin(LitElement) {
             : ''} mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 print:px-0 print:py-4"
         >
           <div
-            class="flex flex-col items-center gap-8 text-center md:flex-row md:text-left print:gap-2 print:text-left"
+            class="flex flex-col items-center gap-8 text-center print:gap-2 print:text-left"
           >
             <!-- Photo -->
             ${photo
@@ -254,15 +254,13 @@ class HeroSection extends I18nMixin(LitElement) {
 
               <!-- Contact pills -->
               <div
-                class="mb-6 flex flex-wrap justify-center gap-2 md:justify-start print:mb-0 print:gap-x-3 print:gap-y-0.5"
+                class="mb-6 flex flex-wrap justify-center gap-2 print:mb-0 print:justify-start print:gap-x-3 print:gap-y-0.5"
               >
                 ${this._renderContactPills()}
               </div>
 
               <!-- Quick actions -->
-              <div
-                class="flex flex-wrap justify-center gap-3 md:justify-start print:hidden"
-              >
+              <div class="flex flex-wrap justify-center gap-3 print:hidden">
                 ${this._renderQuickActions()}
               </div>
             </div>
