@@ -8,12 +8,12 @@
 
 ### Task 1: Project Scaffolding
 
-- [ ] Create `package.json` with name `portfolio`, type `module`, Node 22 engine, scripts (`lint`, `format`, `format:check`, `test`, `test:watch`, `test:coverage`, `build`), dependencies (`js-yaml`, `markdown-it`, `gray-matter`), devDependencies (`vitest`, `@vitest/coverage-v8`, `eslint`, `prettier`, `husky`, `lint-staged`)
-- [ ] Run `npm install` to generate `package-lock.json`
-- [ ] Create `.gitignore` (node_modules/, _site/, coverage/, *.tgz)
-- [ ] Create directory structure: `src/lib/`, `test/unit/`, `test/integration/`, `test/fixtures/`, `test/helpers/`, `i18n/`, `template/components/`
-- [ ] Verify: `npm install` succeeds cleanly
-- [ ] Commit
+- [x] Create `package.json` with name `portfolio`, type `module`, Node 22 engine, scripts (`lint`, `format`, `format:check`, `test`, `test:watch`, `test:coverage`, `build`), dependencies (`js-yaml`, `markdown-it`, `gray-matter`), devDependencies (`vitest`, `@vitest/coverage-v8`, `eslint`, `prettier`, `husky`, `lint-staged`)
+- [x] Run `npm install` to generate `package-lock.json`
+- [x] Create `.gitignore` (node_modules/, _site/, coverage/, *.tgz)
+- [x] Create directory structure: `src/lib/`, `test/unit/`, `test/integration/`, `test/fixtures/`, `test/helpers/`, `i18n/`, `template/components/`
+- [x] Verify: `npm install` succeeds cleanly
+- [x] Commit
 
 ### Task 2: Dev Tooling — ESLint, Prettier, Husky, lint-staged
 
