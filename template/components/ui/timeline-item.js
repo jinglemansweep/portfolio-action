@@ -11,6 +11,7 @@ class TimelineItem extends I18nMixin(LitElement) {
     subtitle: { type: String },
     start: { type: String },
     end: { type: String },
+    comment: { type: String },
     descriptionHtml: { type: String, attribute: 'description-html' },
     skills: { type: Array },
     itemId: { type: String, attribute: 'item-id' },
@@ -23,6 +24,7 @@ class TimelineItem extends I18nMixin(LitElement) {
     this.subtitle = '';
     this.start = '';
     this.end = '';
+    this.comment = '';
     this.descriptionHtml = '';
     this.skills = [];
     this.itemId = '';
@@ -78,6 +80,15 @@ class TimelineItem extends I18nMixin(LitElement) {
         ${this.subtitle
           ? html`<p class="text-base text-gray-600 dark:text-gray-300">
               ${this.subtitle}
+            </p>`
+          : ''}
+
+        <!-- Comment -->
+        ${this.comment
+          ? html`<p
+              class="mt-1 text-sm italic text-gray-500 dark:text-gray-400"
+            >
+              ${this.comment}
             </p>`
           : ''}
 

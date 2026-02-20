@@ -20,7 +20,7 @@ class SectionProjects extends I18nMixin(LitElement) {
     if (!this.projects?.length) return '';
 
     return html`
-      <section class="py-8">
+      <section class="py-6">
         <h2
           class="mb-6 text-2xl font-bold text-gray-900 dark:text-white print:text-xl"
         >

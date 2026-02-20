@@ -43,6 +43,7 @@ experience:
     company: 'CloudScale Inc.'
     start: '2022-01'
     end: 'present'
+    comment: 'Promoted from Senior Engineer after leading platform rebuild'
     description: |
       Leading platform architecture for a multi-tenant SaaS product serving 10k+
       organisations. Drove migration from monolith to event-driven microservices,

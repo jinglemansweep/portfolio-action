@@ -218,7 +218,7 @@ class HeroSection extends I18nMixin(LitElement) {
         <div
           class="${isImage
             ? 'relative'
-            : ''} mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 print:px-0 print:py-4"
+            : ''} mx-auto max-w-6xl px-4 py-8 sm:px-6 sm:py-12 lg:px-8 lg:py-16 print:px-0 print:py-4"
         >
           <div
             class="flex flex-col items-center gap-8 text-center print:gap-2 print:text-left"

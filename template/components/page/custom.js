@@ -20,7 +20,7 @@ class PageCustom extends I18nMixin(LitElement) {
     this.slug = '';
     this.site = {};
     this._pageData = null;
-    this._loading = false;
+    this._loading = true;
   }
 
   updated(changed) {
@@ -57,14 +57,7 @@ class PageCustom extends I18nMixin(LitElement) {
     const data = this._pageData || this.page;
 
     if (this._loading) {
-      return html`
-        <div class="mx-auto max-w-3xl px-4 py-12 sm:px-6 lg:px-8">
-          <div class="animate-pulse space-y-4">
-            <div class="h-8 w-1/2 rounded bg-gray-200 dark:bg-gray-700"></div>
-            <div class="h-64 rounded bg-gray-200 dark:bg-gray-700"></div>
-          </div>
-        </div>
-      `;
+      return '';
     }
 
     if (!data) {
