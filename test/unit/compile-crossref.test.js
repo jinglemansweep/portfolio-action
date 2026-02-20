@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { compileCrossref } from '../../src/lib/compile-crossref.js';
+import { compileCrossref } from '../../src/lib/compile/crossref.js';
 
 const skills = {
   categories: [

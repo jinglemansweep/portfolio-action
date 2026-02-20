@@ -111,6 +111,11 @@ export function generateLlmsTxt(data) {
       contactFields.push(`- Website: ${resume.contact.website}`);
     if (resume.contact.email)
       contactFields.push(`- Email: ${resume.contact.email}`);
+    if (resume.contact.socials) {
+      for (const social of resume.contact.socials) {
+        contactFields.push(`- ${social.type}: ${social.username}`);
+      }
+    }
     if (resume.contact.links) {
       for (const link of resume.contact.links) {
         contactFields.push(`- ${link.platform}: ${link.url}`);
@@ -172,7 +177,10 @@ export function generateLlmsTxt(data) {
       for (const skill of cat.skills || []) {
         const parts = [skill.name];
         if (skill.level) parts.push(`Level: ${skill.level}`);
-        if (skill.years) parts.push(`${skill.years} years`);
+        if (skill.start_year) {
+          const years = new Date().getFullYear() - skill.start_year;
+          parts.push(`${years} years`);
+        }
         lines.push(`- ${parts.join(', ')}`);
       }
       lines.push('');

@@ -7,11 +7,14 @@ contact:
   phone: '+44 7700 000000'
   location: 'Secret Location'
   website: 'https://hidden.example.com'
+  socials:
+    - type: github
+      username: hiddenuser
+    - type: linkedin
+      username: hiddenuser
   links:
-    - platform: github
-      url: 'https://github.com/hiddenuser'
-    - platform: linkedin
-      url: 'https://linkedin.com/in/hiddenuser'
+    - platform: blog
+      url: 'https://hiddenuser.example.com/blog'
 
 summary: |
   This summary should still appear since name, tagline, and summary

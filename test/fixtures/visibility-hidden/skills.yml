@@ -3,14 +3,14 @@ categories:
     skills:
       - name: Stealth
         level: expert
-        years: 10
+        start_year: 2016
         tags: ['covert', 'ops']
         links:
           - label: 'Stealth Manual'
             url: 'https://stealth.example.com'
       - name: Encryption
         level: advanced
-        years: 8
+        start_year: 2018
         icon: lock
         tags: ['security', 'crypto']
         links:
@@ -20,5 +20,5 @@ categories:
     skills:
       - name: Surveillance
         level: advanced
-        years: 5
+        start_year: 2021
         tags: ['intel', 'monitoring']

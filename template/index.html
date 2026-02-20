@@ -7,6 +7,7 @@
     <title>${title}</title>
     <meta name="description" content="${description}" />
     <meta name="robots" content="${robots_meta}" />
+    <link rel="icon" href="data:," />
     ${rss_link}
 
     <!-- Tailwind via CDN -->
@@ -18,16 +19,23 @@
     </script>
 
     <!-- App components -->
-    <script type="module" src="./components/app-shell.js"></script>
+    <script type="module" src="./components/layout/app-shell.js"></script>
+
+    <!-- Dark mode: class-based strategy for Tailwind v4 browser build -->
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
 
     <!-- Theme custom properties -->
     <style>
-      @custom-variant dark (&:where(.dark, .dark *));
       :root {
         --color-primary: ${primary};
         --color-accent: ${accent};
       }
     </style>
+
+    <!-- Prose typography (browser build has no @plugin support) -->
+    <link rel="stylesheet" href="./prose.css" />
 
     <!-- Preconnect hints -->
     <link rel="preconnect" href="https://cdn.jsdelivr.net" crossorigin />
@@ -47,7 +55,7 @@
       })();
     </script>
   </head>
-  <body>
+  <body class="bg-white dark:bg-gray-900">
     <a href="#main-content" class="sr-only focus:not-sr-only"
       >${a11y_skip_to_content}</a
     >

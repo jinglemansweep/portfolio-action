@@ -33,6 +33,7 @@ function stripResume(visibility, resume) {
     if (!visibility.phone) delete result.contact.phone;
     if (!visibility.location) delete result.contact.location;
     if (!visibility.website) delete result.contact.website;
+    if (!visibility.socials) delete result.contact.socials;
     if (!visibility.links) delete result.contact.links;
   }
 

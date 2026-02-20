@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest';
 import { join } from 'node:path';
-import { validate } from '../../src/lib/validate.js';
-import { compileYaml } from '../../src/lib/compile-yaml.js';
+import { validate } from '../../src/lib/utils/validate.js';
+import { compileYaml } from '../../src/lib/compile/yaml.js';
 import { fixturePath } from '../helpers/test-utils.js';
 
 async function loadFixture(name) {

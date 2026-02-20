@@ -1,5 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconExternalLink, iconBriefcase, iconFolder } from '../ui/icons.js';
 
 class SkillCard extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -87,8 +88,19 @@ class SkillCard extends I18nMixin(LitElement) {
                   src="https://cdn.simpleicons.org/${s.icon}"
                   alt="${s.name}"
                   class="h-8 w-8 dark:invert"
+                  crossorigin="anonymous"
                   loading="lazy"
+                  @error=${(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
                 />
+                <div
+                  style="display: none"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-sm font-bold text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+                >
+                  ${s.name.charAt(0).toUpperCase()}
+                </div>
               `
             : html`
                 <div
@@ -101,9 +113,11 @@ class SkillCard extends I18nMixin(LitElement) {
             <h3 class="font-semibold text-gray-900 dark:text-white">
               ${s.name}
             </h3>
-            ${s.years
+            ${s.start_year
               ? html`<p class="text-xs text-gray-500 dark:text-gray-400">
-                  ${this.t('skill_years', { n: s.years })}
+                  ${this.t('skill_years', {
+                    n: new Date().getFullYear() - s.start_year,
+                  })}
                 </p>`
               : ''}
           </div>
@@ -169,27 +183,22 @@ class SkillCard extends I18nMixin(LitElement) {
                         rel="noopener noreferrer"
                         class="inline-flex items-center gap-1 text-xs text-blue-600 no-underline hover:underline dark:text-blue-400"
                       >
-                        <svg
-                          class="h-3 w-3"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                          />
-                        </svg>
-                        ${label}
+                        ${iconExternalLink('h-3 w-3')} ${label}
                       </a>
                     `;
                   })}
                 </div>
               </div>
             `
+          : ''}
+
+        <!-- Comment -->
+        ${s.comment
+          ? html`<p
+              class="mb-3 text-sm text-gray-500 italic dark:text-gray-400"
+            >
+              ${s.comment}
+            </p>`
           : ''}
 
         <!-- Used in (cross-references) -->
@@ -209,20 +218,7 @@ class SkillCard extends I18nMixin(LitElement) {
                         href="/#experience-${slug}"
                         class="inline-flex items-center gap-1.5 text-xs text-gray-600 no-underline hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
                       >
-                        <svg
-                          class="h-3.5 w-3.5 flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M21 13.255A23.931 23.931 0 0112 15c-3.183 0-6.22-.62-9-1.745M16 6V4a2 2 0 00-2-2h-4a2 2 0 00-2 2v2m4 6h.01M5 20h14a2 2 0 002-2V8a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"
-                          />
-                        </svg>
+                        ${iconBriefcase('h-3.5 w-3.5 flex-shrink-0')}
                         <span class="truncate"
                           >${exp.title} @ ${exp.company}</span
                         >
@@ -236,20 +232,7 @@ class SkillCard extends I18nMixin(LitElement) {
                         href="${projectsRoute}#project-${slug}"
                         class="inline-flex items-center gap-1.5 text-xs text-gray-600 no-underline hover:text-blue-600 dark:text-gray-300 dark:hover:text-blue-400"
                       >
-                        <svg
-                          class="h-3.5 w-3.5 flex-shrink-0"
-                          fill="none"
-                          viewBox="0 0 24 24"
-                          stroke="currentColor"
-                          aria-hidden="true"
-                        >
-                          <path
-                            stroke-linecap="round"
-                            stroke-linejoin="round"
-                            stroke-width="2"
-                            d="M3 7v10a2 2 0 002 2h14a2 2 0 002-2V9a2 2 0 00-2-2h-6l-2-2H5a2 2 0 00-2 2z"
-                          />
-                        </svg>
+                        ${iconFolder('h-3.5 w-3.5 flex-shrink-0')}
                         <span class="truncate">${proj.name}</span>
                       </a>
                     `;

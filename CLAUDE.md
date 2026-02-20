@@ -31,7 +31,7 @@ Data flow: YAML/Markdown input → build pipeline → JSON + HTML output → bro
 ```
 src/lib/           # Core build library (pure functions, Node.js)
 src/cli.js         # CLI entry point (parseArgs → build())
-template/          # SPA shell (index.html, 404.html)
+template/          # SPA shell (index.html, 404.html, prose.css)
 template/components/  # Lit 3 web components (browser, CDN imports)
 i18n/              # Built-in language packs (10 languages)
 test/unit/         # Unit tests (1:1 mapping to src/lib/)
@@ -253,7 +253,7 @@ The build orchestrator (`src/lib/index.js`) runs these steps in order:
 8. Write JSON data files
 9. Generate index.html (`generate-index.js`)
 10. Copy template components
-11. Copy 404.html
+11. Copy 404.html and prose.css
 12. Copy media (with warnings for files >1 MB)
 13. Write CNAME (if `custom_domain` set in site.yml)
 14. Write `.nojekyll`
@@ -280,7 +280,7 @@ All checks must pass before committing:
 ```bash
 npm run lint          # ESLint (flat config v9)
 npm run format:check  # Prettier
-npm test              # Vitest (116 tests)
+npm test              # Vitest (117 tests)
 npm run test:coverage # Must meet 80% threshold
 ```
 

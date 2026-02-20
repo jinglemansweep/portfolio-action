@@ -14,4 +14,5 @@ visibility:
   phone: false
   location: false
   website: false
+  socials: false
   links: false

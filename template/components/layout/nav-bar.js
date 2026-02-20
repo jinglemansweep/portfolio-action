@@ -1,7 +1,8 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import './theme-toggle.js';
-import './pdf-export.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconMenuOpen, iconMenuClosed } from '../ui/icons.js';
+import '../ui/theme-toggle.js';
+import '../ui/pdf-export.js';
 
 class NavBar extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -44,7 +45,7 @@ class NavBar extends I18nMixin(LitElement) {
     return html`
       <nav
         aria-label=${this.t('a11y_navigation')}
-        class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm dark:border-gray-700 dark:bg-gray-900/95"
+        class="sticky top-0 z-50 border-b border-gray-200 bg-white/95 backdrop-blur-sm print:hidden dark:border-gray-700 dark:bg-gray-900/95"
       >
         <div class="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8">
           <div class="flex h-16 items-center justify-between">
@@ -95,35 +96,7 @@ class NavBar extends I18nMixin(LitElement) {
                   : this.t('a11y_open_menu')}
                 aria-expanded=${this._menuOpen}
               >
-                ${this._menuOpen
-                  ? html`<svg
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M6 18L18 6M6 6l12 12"
-                      />
-                    </svg>`
-                  : html`<svg
-                      class="h-6 w-6"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                      aria-hidden="true"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M4 6h16M4 12h16M4 18h16"
-                      />
-                    </svg>`}
+                ${this._menuOpen ? iconMenuOpen() : iconMenuClosed()}
               </button>
             </div>
           </div>

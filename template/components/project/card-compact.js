@@ -1,5 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import { iconArrowRight } from '../ui/icons.js';
 
 class ProjectCardCompact extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -53,19 +54,9 @@ class ProjectCardCompact extends I18nMixin(LitElement) {
           </div>
 
           <!-- Arrow icon -->
-          <svg
-            class="h-4 w-4 flex-shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-500 dark:text-gray-500"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M9 5l7 7-7 7"
-            />
-          </svg>
+          ${iconArrowRight(
+            'h-4 w-4 flex-shrink-0 text-gray-400 transition-transform group-hover:translate-x-0.5 group-hover:text-blue-500 dark:text-gray-500',
+          )}
         </div>
 
         ${p.skills?.length

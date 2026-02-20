@@ -1,6 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import './timeline-item.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import '../ui/timeline-item.js';
 
 class SectionEducation extends I18nMixin(LitElement) {
   createRenderRoot() {

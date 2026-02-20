@@ -1,11 +1,11 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
-import './hero-section.js';
-import './section-experience.js';
-import './section-education.js';
-import './section-accreditations.js';
-import './section-community.js';
-import './section-projects.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
+import '../section/hero.js';
+import '../section/experience.js';
+import '../section/education.js';
+import '../section/accreditations.js';
+import '../section/community.js';
+import '../section/projects.js';
 
 class PageHome extends I18nMixin(LitElement) {
   createRenderRoot() {

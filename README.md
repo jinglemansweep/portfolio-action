@@ -98,7 +98,10 @@ visibility:
   phone: false # Hidden by default (privacy)
   location: true
   website: true
-  links: true # Social/professional links
+  socials: true # Social media profiles
+  links: true # Custom profile links
+
+custom_domain: '' # Write CNAME file for custom domain hosting
 
 seo:
   robots:
@@ -124,11 +127,16 @@ contact:
   phone: ''
   location: 'London, UK'
   website: 'https://example.com'
+  socials:
+    - type: github
+      username: username
+    - type: linkedin
+      username: username
+    - type: x
+      username: username
   links:
-    - platform: github
-      url: 'https://github.com/username'
-    - platform: linkedin
-      url: 'https://linkedin.com/in/username'
+    - platform: blog
+      url: 'https://blog.example.com'
 
 summary: |
   Multi-paragraph summary with **markdown** support.
@@ -169,8 +177,9 @@ categories:
     skills:
       - name: Docker
         level: expert # beginner | intermediate | advanced | expert
-        years: 8
+        start_year: 2017 # Calculates years dynamically
         icon: docker # Simple Icons slug (optional)
+        comment: 'Primary container platform' # Optional note
         tags: ['containers']
         links:
           - label: 'Official Site'
@@ -191,6 +200,7 @@ projects:
     image: 'media/project.png'
     skills: ['Docker', 'Python']
     tags: ['open-source']
+    comment: 'Key infrastructure project' # Optional note
     featured: true
 ```
 
@@ -237,17 +247,19 @@ image: 'media/post-hero.jpg'
 Your blog post content here.
 ```
 
-| Field        | Required | Default       | Description                                           |
-| ------------ | -------- | ------------- | ----------------------------------------------------- |
-| `title`      | Yes      | —             | Post title                                            |
-| `publish_on` | Yes      | —             | Publish date (YYYY-MM-DD). Future dates are excluded. |
-| `expire_on`  | No       | `""`          | Expiry date. Posts past this date are excluded.       |
-| `updated_on` | No       | `""`          | Last updated date                                     |
-| `author`     | No       | `resume.name` | Author name                                           |
-| `draft`      | No       | `false`       | Drafts are excluded from build                        |
-| `featured`   | No       | `false`       | Shown prominently on blog index                       |
-| `tags`       | No       | `[]`          | Post tags for filtering                               |
-| `image`      | No       | `""`          | Hero/card image                                       |
+| Field         | Required | Default       | Description                                           |
+| ------------- | -------- | ------------- | ----------------------------------------------------- |
+| `title`       | Yes      | —             | Post title                                            |
+| `publish_on`  | Yes      | —             | Publish date (YYYY-MM-DD). Future dates are excluded. |
+| `slug`        | No       | From filename | URL path (derived from filename if omitted)           |
+| `description` | No       | `""`          | Short description for cards and RSS feed              |
+| `expire_on`   | No       | `""`          | Expiry date. Posts past this date are excluded.       |
+| `updated_on`  | No       | `""`          | Last updated date                                     |
+| `author`      | No       | `resume.name` | Author name                                           |
+| `draft`       | No       | `false`       | Drafts are excluded from build                        |
+| `featured`    | No       | `false`       | Shown prominently on blog index                       |
+| `tags`        | No       | `[]`          | Post tags for filtering                               |
+| `image`       | No       | `""`          | Hero/card image                                       |
 
 Blog posts include automatic reading time calculation and RSS feed generation (`feed.xml`).
 
@@ -268,7 +280,7 @@ Blog posts include automatic reading time calculation and RSS feed generation (`
 
 The visibility system in `site.yml` controls what data appears in the built site. Hidden data is **stripped at build time** and never reaches the browser.
 
-- **Contact fields** (`email`, `phone`, `location`, `website`, `links`): Control individual field visibility
+- **Contact fields** (`email`, `phone`, `location`, `website`, `socials`, `links`): Control individual field visibility
 - **Sections** (`education`, `experience`, `community`, `accreditations`): Hide entire resume sections
 - **Pages** (`skills`, `projects`, `blog`): Disable dedicated pages and navigation entries
 

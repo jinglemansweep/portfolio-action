@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateIndex } from '../../src/lib/generate-index.js';
+import { generateIndex } from '../../src/lib/generate/index.js';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 

@@ -1,5 +1,5 @@
 import { describe, it, expect } from 'vitest';
-import { generateManifest } from '../../src/lib/generate-manifest.js';
+import { generateManifest } from '../../src/lib/generate/manifest.js';
 
 const baseI18n = {
   labels: {

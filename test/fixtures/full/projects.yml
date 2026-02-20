@@ -1,5 +1,6 @@
 projects:
   - name: 'Open Widget Library'
+    comment: 'Flagship open-source project'
     description: |
       A comprehensive, accessible UI component library built with
       React and TypeScript. Published on npm with 50+ components

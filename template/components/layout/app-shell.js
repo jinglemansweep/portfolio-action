@@ -1,16 +1,16 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
-import { I18nMixin } from './i18n-mixin.js';
+import { I18nMixin } from '../ui/i18n-mixin.js';
 
 // Import all page and section components
 import './nav-bar.js';
 import './site-footer.js';
-import './page-home.js';
-import './page-projects.js';
-import './page-skills.js';
-import './page-blog.js';
-import './page-blog-post.js';
-import './page-custom.js';
-import './page-not-found.js';
+import '../page/home.js';
+import '../page/projects.js';
+import '../page/skills.js';
+import '../page/blog.js';
+import '../page/blog-post.js';
+import '../page/custom.js';
+import '../page/not-found.js';
 
 class AppShell extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -70,12 +70,12 @@ class AppShell extends I18nMixin(LitElement) {
   }
 
   /**
-   * Normalize a path by stripping the base path prefix and ensuring
-   * it starts with / and has no trailing slash (except for root).
+   * Normalize a path by stripping the base path prefix, hash fragment,
+   * and ensuring it starts with / and has no trailing slash (except root).
    */
   _normalizePath(path) {
     const base = document.querySelector('base')?.getAttribute('href') || '/';
-    let normalized = path;
+    let normalized = path.split('#')[0];
     if (base !== '/' && normalized.startsWith(base)) {
       normalized = normalized.slice(base.length);
     }
@@ -165,10 +165,26 @@ class AppShell extends I18nMixin(LitElement) {
    */
   navigate(path) {
     const base = document.querySelector('base')?.getAttribute('href') || '/';
-    const fullPath = base === '/' ? path : base + path.replace(/^\//, '');
-    window.history.pushState(null, '', fullPath);
+    const [pathname, hash] = path.split('#');
+    const fullPath =
+      base === '/' ? pathname : base + pathname.replace(/^\//, '');
+    const fullPathWithHash = hash ? `${fullPath}#${hash}` : fullPath;
+    window.history.pushState(null, '', fullPathWithHash);
     this._currentPath = this._normalizePath(fullPath);
-    window.scrollTo(0, 0);
+
+    if (hash) {
+      // Defer scroll so the page component renders first
+      requestAnimationFrame(() => {
+        const el = document.getElementById(hash);
+        if (el) {
+          el.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+        window.scrollTo(0, 0);
+      });
+    } else {
+      window.scrollTo(0, 0);
+    }
   }
 
   /**
