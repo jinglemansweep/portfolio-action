@@ -75,34 +75,11 @@
 
 ### Task 8: Blog Compilation (`compile-blog.js`)
 
-- [ ] Create `src/lib/compile-blog.js`:
-  - Read blog markdown files from directory
-  - Parse frontmatter (title, slug, publish_on, expire_on, draft, tags, image, featured, reading_time, author, updated_on, description)
-  - Filter: exclude drafts (draft: true)
-  - Filter: exclude future posts (publish_on > buildDate)
-  - Filter: exclude expired posts (expire_on <= buildDate)
-  - Sort by publish_on descending (newest first)
-  - Calculate reading time (word count / 200 wpm, rounded up)
-  - Build tag index (tag → [slugs])
-  - Derive slug from filename if not in frontmatter
-  - Default author to resume.name if omitted
-  - Return `{ posts: [...], tags: {...} }` or null if no publishable posts
-- [ ] Create `test/unit/compile-blog.test.js`:
-  - Test: parses blog post frontmatter correctly
-  - Test: excludes draft posts
-  - Test: excludes future-dated posts (publish_on > buildDate)
-  - Test: excludes expired posts (expire_on <= buildDate)
-  - Test: includes post when publish_on <= buildDate and no expiry
-  - Test: sorts posts by publish_on descending
-  - Test: calculates reading time (e.g. 400 words → 2 min)
-  - Test: builds tag index correctly
-  - Test: returns null when no publishable posts
-  - Test: returns null when blog directory missing/empty
-  - Test: derives slug from filename
-  - Test: defaults author to provided resume name
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-blog.js`
+- [x] Create `test/unit/compile-blog.test.js` (12 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 9: Cross-Reference Index (`compile-crossref.js`)
 
