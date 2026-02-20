@@ -13,6 +13,7 @@ const DEFAULTS = {
   phone: false,
   location: true,
   website: true,
+  socials: true,
   links: true,
 };
 
@@ -25,6 +26,7 @@ function makeResume() {
       phone: '+1234567890',
       location: 'London, UK',
       website: 'https://example.com',
+      socials: [{ type: 'github', username: 'test' }],
       links: [{ platform: 'github', url: 'https://github.com/test' }],
     },
     education: [
@@ -116,6 +118,18 @@ describe('stripVisibility', () => {
       makeBlog(),
     );
     expect(resume.contact.website).toBeUndefined();
+  });
+
+  it('socials=false strips contact.socials array', () => {
+    const vis = { ...DEFAULTS, socials: false };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.contact.socials).toBeUndefined();
   });
 
   it('links=false strips contact.links array', () => {
@@ -215,6 +229,7 @@ describe('stripVisibility', () => {
       phone: false,
       location: false,
       website: false,
+      socials: false,
       links: false,
     };
     const result = stripVisibility(
@@ -235,6 +250,7 @@ describe('stripVisibility', () => {
     expect(result.resume.contact.phone).toBeUndefined();
     expect(result.resume.contact.location).toBeUndefined();
     expect(result.resume.contact.website).toBeUndefined();
+    expect(result.resume.contact.socials).toBeUndefined();
     expect(result.resume.contact.links).toBeUndefined();
   });
 

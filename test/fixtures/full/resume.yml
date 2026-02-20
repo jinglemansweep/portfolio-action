@@ -7,6 +7,13 @@ contact:
   phone: '+44 7700 900000'
   location: 'Bristol, UK'
   website: 'https://janesmith.dev'
+  socials:
+    - type: github
+      username: janesmith
+    - type: linkedin
+      username: janesmith
+    - type: mastodon
+      username: '@janesmith@mastodon.social'
   links:
     - platform: github
       url: 'https://github.com/janesmith'

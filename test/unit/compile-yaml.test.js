@@ -19,6 +19,7 @@ describe('compileYaml', () => {
     expect(data.visibility.education).toBe(true);
     expect(data.visibility.experience).toBe(true);
     expect(data.visibility.location).toBe(true);
+    expect(data.visibility.socials).toBe(true);
     expect(data.visibility.skills).toBe(true);
     expect(data.visibility.blog).toBe(true);
   });

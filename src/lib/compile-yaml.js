@@ -13,6 +13,7 @@ const VISIBILITY_DEFAULTS = {
   phone: false,
   location: true,
   website: true,
+  socials: true,
   links: true,
 };
 

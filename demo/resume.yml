@@ -7,6 +7,13 @@ contact:
   phone: '+44 7700 900000'
   location: 'London, UK'
   website: 'https://another.dev'
+  socials:
+    - type: github
+      username: another
+    - type: linkedin
+      username: another
+    - type: x
+      username: another_dev
   links:
     - platform: github
       url: 'https://github.com/another'

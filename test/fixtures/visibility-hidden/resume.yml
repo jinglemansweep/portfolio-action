@@ -7,6 +7,11 @@ contact:
   phone: '+44 7700 000000'
   location: 'Secret Location'
   website: 'https://hidden.example.com'
+  socials:
+    - type: github
+      username: hiddenuser
+    - type: linkedin
+      username: hiddenuser
   links:
     - platform: github
       url: 'https://github.com/hiddenuser'

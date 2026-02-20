@@ -111,6 +111,11 @@ export function generateLlmsTxt(data) {
       contactFields.push(`- Website: ${resume.contact.website}`);
     if (resume.contact.email)
       contactFields.push(`- Email: ${resume.contact.email}`);
+    if (resume.contact.socials) {
+      for (const social of resume.contact.socials) {
+        contactFields.push(`- ${social.type}: ${social.username}`);
+      }
+    }
     if (resume.contact.links) {
       for (const link of resume.contact.links) {
         contactFields.push(`- ${link.platform}: ${link.url}`);

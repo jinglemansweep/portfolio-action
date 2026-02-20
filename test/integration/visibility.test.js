@@ -51,6 +51,7 @@ describe('visibility-hidden build', () => {
     expect(resume.contact?.phone).toBeUndefined();
     expect(resume.contact?.location).toBeUndefined();
     expect(resume.contact?.website).toBeUndefined();
+    expect(resume.contact?.socials).toBeUndefined();
     expect(resume.contact?.links).toBeUndefined();
   });
 
