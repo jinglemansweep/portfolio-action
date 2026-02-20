@@ -1,5 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
 import { I18nMixin } from './i18n-mixin.js';
+import { iconExternalLink } from './icons.js';
 
 class SectionCommunity extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -63,19 +64,7 @@ class SectionCommunity extends I18nMixin(LitElement) {
                           class="flex-shrink-0 text-gray-400 transition-colors hover:text-blue-500 dark:text-gray-500 dark:hover:text-blue-400"
                           aria-label="Visit ${item.name}"
                         >
-                          <svg
-                            class="h-5 w-5"
-                            fill="none"
-                            viewBox="0 0 24 24"
-                            stroke="currentColor"
-                          >
-                            <path
-                              stroke-linecap="round"
-                              stroke-linejoin="round"
-                              stroke-width="2"
-                              d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14"
-                            />
-                          </svg>
+                          ${iconExternalLink('h-5 w-5')}
                         </a>
                       `
                     : ''}

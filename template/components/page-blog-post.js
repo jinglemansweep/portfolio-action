@@ -1,5 +1,6 @@
 import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
 import { I18nMixin } from './i18n-mixin.js';
+import { iconArrowLeft, iconCalendar, iconClock } from './icons.js';
 
 class PageBlogPost extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -97,21 +98,7 @@ class PageBlogPost extends I18nMixin(LitElement) {
           href=${this.blogRoute}
           class="mb-6 inline-flex items-center gap-1 text-sm text-blue-600 no-underline hover:underline dark:text-blue-400"
         >
-          <svg
-            class="h-4 w-4"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 19l-7-7 7-7"
-            />
-          </svg>
-          ${this.t('blog_all_posts')}
+          ${iconArrowLeft()} ${this.t('blog_all_posts')}
         </a>
 
         <!-- Post header -->
@@ -143,20 +130,7 @@ class PageBlogPost extends I18nMixin(LitElement) {
             ${post.publish_on
               ? html`
                   <span class="flex items-center gap-1">
-                    <svg
-                      class="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-                      />
-                    </svg>
-                    ${post.publish_on}
+                    ${iconCalendar()} ${post.publish_on}
                   </span>
                 `
               : ''}
@@ -170,19 +144,7 @@ class PageBlogPost extends I18nMixin(LitElement) {
             ${post.reading_time
               ? html`
                   <span class="flex items-center gap-1">
-                    <svg
-                      class="h-4 w-4"
-                      fill="none"
-                      viewBox="0 0 24 24"
-                      stroke="currentColor"
-                    >
-                      <path
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                        stroke-width="2"
-                        d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"
-                      />
-                    </svg>
+                    ${iconClock()}
                     ${this.t('blog_reading_time', { n: post.reading_time })}
                   </span>
                 `
