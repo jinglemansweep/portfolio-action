@@ -79,4 +79,16 @@ describe('generateIndex', () => {
     const html = await generateIndex({ ...baseOptions, rssLink: '' });
     expect(html).not.toContain('application/rss+xml');
   });
+
+  it('uses defaults for missing optional fields', async () => {
+    const html = await generateIndex({ templateDir });
+    expect(html).toContain('lang="en"');
+    expect(html).toContain('dir="ltr"');
+    expect(html).toContain('href="/"');
+    expect(html).toContain('--color-primary: #2563eb');
+    expect(html).toContain('--color-accent: #f59e0b');
+    expect(html).toContain("const mode = 'system'");
+    expect(html).toContain('content="index, follow"');
+    expect(html).toContain('Skip to content');
+  });
 });

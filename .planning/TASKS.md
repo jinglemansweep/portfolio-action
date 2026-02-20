@@ -128,36 +128,13 @@
 
 ### Task 14: Integration Tests
 
-- [ ] Create `test/integration/full-build.test.js`:
-  - Build `test/fixtures/full/` via `lib/index.js`
-  - Assert all expected files exist in output (_site/index.html, 404.html, .nojekyll, robots.txt, sitemap.xml, llms.txt, feed.xml)
-  - Assert all JSON data files exist (site.json, resume.json, skills.json, projects.json, crossref.json, i18n.json, manifest.json)
-  - Assert blog data files exist (blog/index.json, blog/tags.json, blog/<slug>.json)
-  - Assert page data files exist (pages/<slug>.json)
-  - Assert media files copied (media/test-image.png)
-  - Assert components directory copied
-  - Assert JSON content is valid and contains expected data
-  - Assert index.html contains interpolated values
-- [ ] Create `test/integration/visibility.test.js`:
-  - Build `test/fixtures/visibility-hidden/` via `lib/index.js`
-  - Assert resume.json has NO email, phone, location, website, links
-  - Assert resume.json has NO education, experience, community, accreditations arrays
-  - Assert skills.json does NOT exist
-  - Assert projects.json does NOT exist
-  - Assert sitemap.xml excludes hidden routes
-  - Assert llms.txt excludes hidden sections
-  - Assert manifest.json routes exclude hidden pages
-- [ ] Create `test/integration/blog-filtering.test.js`:
-  - Build `test/fixtures/blog/` with specific buildDate
-  - Assert published post IS in blog/index.json
-  - Assert draft post is NOT in blog/index.json
-  - Assert future post is NOT in blog/index.json
-  - Assert expired post is NOT in blog/index.json
-  - Assert feed.xml contains only published post
-- [ ] Verify: `npm test` passes (all unit + integration)
-- [ ] Verify: `npm run test:coverage` meets 80% threshold
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `test/integration/full-build.test.js` (7 tests)
+- [x] Create `test/integration/visibility.test.js` (7 tests)
+- [x] Create `test/integration/blog-filtering.test.js` (5 tests)
+- [x] Verify: `npm test` passes (116 tests)
+- [x] Verify: `npm run test:coverage` meets 80% threshold (83.47% branches)
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 15: CI Workflow & Action Definition
 

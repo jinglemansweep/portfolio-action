@@ -72,4 +72,49 @@ describe('validate', () => {
     expect(errors.length).toBeGreaterThanOrEqual(4);
     expect(errors.every((e) => e.field === '(root)')).toBe(true);
   });
+
+  it('validates project items with missing required fields', () => {
+    const errors = validate(
+      { title: 'T', description: 'D', lang: 'en' },
+      { name: 'N', tagline: 'T' },
+      { categories: [{ name: 'Cat', skills: [{ name: 'JS' }] }] },
+      { projects: [{ url: 'https://example.com' }] },
+    );
+    expect(
+      errors.some((e) => e.field === 'projects[0].name'),
+    ).toBe(true);
+    expect(
+      errors.some((e) => e.field === 'projects[0].description'),
+    ).toBe(true);
+    expect(
+      errors.some((e) => e.field === 'projects[0].start'),
+    ).toBe(true);
+  });
+
+  it('validates category objects with missing skills array', () => {
+    const errors = validate(
+      { title: 'T', description: 'D', lang: 'en' },
+      { name: 'N', tagline: 'T' },
+      { categories: [{ name: 'Cat' }] },
+      { projects: [] },
+    );
+    expect(
+      errors.some((e) => e.field === 'categories[0].skills'),
+    ).toBe(true);
+  });
+
+  it('validates non-object items in arrays', () => {
+    const errors = validate(
+      { title: 'T', description: 'D', lang: 'en' },
+      { name: 'N', tagline: 'T' },
+      { categories: [null] },
+      { projects: ['not-an-object'] },
+    );
+    expect(
+      errors.some((e) => e.field === 'categories[0]'),
+    ).toBe(true);
+    expect(
+      errors.some((e) => e.field === 'projects[0]'),
+    ).toBe(true);
+  });
 });
