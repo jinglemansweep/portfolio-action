@@ -1,5 +1,5 @@
-name: "Blog Tester"
-tagline: "Testing blog post scheduling"
+name: 'Blog Tester'
+tagline: 'Testing blog post scheduling'
 
 contact:
-  location: "Test City"
+  location: 'Test City'

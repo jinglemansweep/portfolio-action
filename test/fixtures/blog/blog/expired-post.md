@@ -1,7 +1,7 @@
 ---
-title: "Expired Post"
+title: 'Expired Post'
 slug: expired-post
-description: "This post has an expire_on date in the past and should be excluded"
+description: 'This post has an expire_on date in the past and should be excluded'
 publish_on: 2024-01-01
 expire_on: 2025-01-01
 draft: false

@@ -1,38 +1,38 @@
 projects:
-  - name: "Open Widget Library"
+  - name: 'Open Widget Library'
     description: |
       A comprehensive, accessible UI component library built with
       React and TypeScript. Published on npm with 50+ components
       and full Storybook documentation.
-    url: "https://open-widgets.example.com"
-    repo: "https://github.com/open-widgets/core"
-    start: "2022-03"
-    end: ""
-    image: "media/test-image.png"
-    skills: ["React", "TypeScript", "CSS"]
-    tags: ["open-source", "ui", "library"]
+    url: 'https://open-widgets.example.com'
+    repo: 'https://github.com/open-widgets/core'
+    start: '2022-03'
+    end: ''
+    image: 'media/test-image.png'
+    skills: ['React', 'TypeScript', 'CSS']
+    tags: ['open-source', 'ui', 'library']
     featured: true
 
-  - name: "DevOps Dashboard"
+  - name: 'DevOps Dashboard'
     description: |
       Internal monitoring dashboard for CI/CD pipelines and
       deployment health. Real-time metrics with WebSocket updates.
-    url: ""
-    repo: "https://github.com/janesmith/devops-dash"
-    start: "2023-06"
-    end: ""
-    image: ""
-    skills: ["Node.js", "Docker", "React"]
-    tags: ["devops", "monitoring", "internal"]
+    url: ''
+    repo: 'https://github.com/janesmith/devops-dash'
+    start: '2023-06'
+    end: ''
+    image: ''
+    skills: ['Node.js', 'Docker', 'React']
+    tags: ['devops', 'monitoring', 'internal']
     featured: false
 
-  - name: "Portfolio Site Generator"
-    description: "A static site generator for developer portfolios."
-    url: "https://portfolio-gen.example.com"
-    repo: ""
-    start: "2024-01"
-    end: "2024-09"
-    image: ""
-    skills: ["JavaScript", "Node.js"]
-    tags: ["tooling", "static-site"]
+  - name: 'Portfolio Site Generator'
+    description: 'A static site generator for developer portfolios.'
+    url: 'https://portfolio-gen.example.com'
+    repo: ''
+    start: '2024-01'
+    end: '2024-09'
+    image: ''
+    skills: ['JavaScript', 'Node.js']
+    tags: ['tooling', 'static-site']
     featured: true

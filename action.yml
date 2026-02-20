@@ -1,47 +1,47 @@
-name: "Instant Portfolio"
-description: "Builds a personal portfolio/resume static site from YAML and Markdown"
+name: 'Instant Portfolio'
+description: 'Builds a personal portfolio/resume static site from YAML and Markdown'
 branding:
-  icon: "globe"
-  color: "blue"
+  icon: 'globe'
+  color: 'blue'
 
 inputs:
   data_dir:
-    description: "Directory containing YAML data files"
-    default: "."
+    description: 'Directory containing YAML data files'
+    default: '.'
   pages_dir:
-    description: "Directory containing markdown pages"
-    default: "pages"
+    description: 'Directory containing markdown pages'
+    default: 'pages'
   blog_dir:
-    description: "Directory containing blog post markdown files"
-    default: "blog"
+    description: 'Directory containing blog post markdown files'
+    default: 'blog'
   media_dir:
-    description: "Directory containing static media assets"
-    default: "media"
+    description: 'Directory containing static media assets'
+    default: 'media'
   output_dir:
-    description: "Build output directory"
-    default: "_site"
+    description: 'Build output directory'
+    default: '_site'
   base_path:
-    description: "Base path for the site (e.g. /repo-name/ for GitHub Pages project sites)"
-    default: "/"
+    description: 'Base path for the site (e.g. /repo-name/ for GitHub Pages project sites)'
+    default: '/'
   site_url:
-    description: "Full site URL for SEO (sitemap, RSS). Auto-detected from GITHUB_REPOSITORY if not set."
-    default: ""
+    description: 'Full site URL for SEO (sitemap, RSS). Auto-detected from GITHUB_REPOSITORY if not set.'
+    default: ''
   build_date:
-    description: "Override build date (YYYY-MM-DD) for reproducible builds and blog scheduling"
-    default: ""
+    description: 'Override build date (YYYY-MM-DD) for reproducible builds and blog scheduling'
+    default: ''
 
 outputs:
   output_path:
-    description: "Path to the built site directory"
+    description: 'Path to the built site directory'
     value: ${{ inputs.output_dir }}
 
 runs:
-  using: "composite"
+  using: 'composite'
   steps:
     - name: Setup Node.js
       uses: actions/setup-node@v4
       with:
-        node-version: "22"
+        node-version: '22'
 
     - name: Install build dependencies
       shell: bash

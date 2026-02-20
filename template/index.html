@@ -40,9 +40,7 @@
     <script>
       (function () {
         const stored = localStorage.getItem('theme');
-        const prefersDark = matchMedia(
-          '(prefers-color-scheme: dark)',
-        ).matches;
+        const prefersDark = matchMedia('(prefers-color-scheme: dark)').matches;
         const mode = '${theme_mode}';
         const dark =
           stored === 'dark' ||

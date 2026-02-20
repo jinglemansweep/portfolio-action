@@ -152,10 +152,7 @@ export async function build(options) {
     await writeJson(join(dataOutputDir, 'skills.json'), stripped.skills);
   }
   if (stripped.projects) {
-    await writeJson(
-      join(dataOutputDir, 'projects.json'),
-      stripped.projects,
-    );
+    await writeJson(join(dataOutputDir, 'projects.json'), stripped.projects);
   }
 
   await writeJson(join(dataOutputDir, 'crossref.json'), crossref);

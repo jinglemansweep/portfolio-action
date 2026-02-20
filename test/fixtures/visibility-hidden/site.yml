@@ -1,5 +1,5 @@
-title: "Hidden Sections Test"
-description: "Testing that all visibility flags set to false strip data correctly"
+title: 'Hidden Sections Test'
+description: 'Testing that all visibility flags set to false strip data correctly'
 lang: en
 
 visibility:

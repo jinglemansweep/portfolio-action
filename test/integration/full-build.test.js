@@ -59,36 +59,28 @@ describe('full build integration', () => {
   });
 
   it('generates all JSON data files', async () => {
-    expect(
-      await fileExists(join(outputDir, 'data', 'site.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'resume.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'skills.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'projects.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'crossref.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'i18n.json')),
-    ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'manifest.json')),
-    ).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'site.json'))).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'resume.json'))).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'skills.json'))).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'projects.json'))).toBe(
+      true,
+    );
+    expect(await fileExists(join(outputDir, 'data', 'crossref.json'))).toBe(
+      true,
+    );
+    expect(await fileExists(join(outputDir, 'data', 'i18n.json'))).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'manifest.json'))).toBe(
+      true,
+    );
   });
 
   it('generates blog data files', async () => {
     expect(
       await fileExists(join(outputDir, 'data', 'blog', 'index.json')),
     ).toBe(true);
-    expect(
-      await fileExists(join(outputDir, 'data', 'blog', 'tags.json')),
-    ).toBe(true);
+    expect(await fileExists(join(outputDir, 'data', 'blog', 'tags.json'))).toBe(
+      true,
+    );
     // The test post with publish_on 2026-01-15 should exist
     expect(
       await fileExists(
@@ -104,9 +96,9 @@ describe('full build integration', () => {
   });
 
   it('copies media files', async () => {
-    expect(
-      await fileExists(join(outputDir, 'media', 'test-image.png')),
-    ).toBe(true);
+    expect(await fileExists(join(outputDir, 'media', 'test-image.png'))).toBe(
+      true,
+    );
   });
 
   it('JSON content is valid and contains expected data', async () => {
@@ -117,10 +109,7 @@ describe('full build integration', () => {
     const resume = await readOutputJson(outputDir, 'data/resume.json');
     expect(resume.name).toBeTruthy();
 
-    const manifest = await readOutputJson(
-      outputDir,
-      'data/manifest.json',
-    );
+    const manifest = await readOutputJson(outputDir, 'data/manifest.json');
     expect(manifest.routes).toContain('/');
     expect(manifest.nav.length).toBeGreaterThan(0);
   });

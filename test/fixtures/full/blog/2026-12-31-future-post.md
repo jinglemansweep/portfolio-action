@@ -1,17 +1,17 @@
 ---
-title: "Predictions for 2027"
+title: 'Predictions for 2027'
 slug: predictions-2027
-description: "My technology predictions for the coming year"
-author: "Jane Smith"
+description: 'My technology predictions for the coming year'
+author: 'Jane Smith'
 publish_on: 2026-12-31
-expire_on: ""
-updated_on: ""
+expire_on: ''
+updated_on: ''
 draft: false
 featured: false
 tags:
   - predictions
   - opinion
-image: ""
+image: ''
 reading_time: true
 ---
 

@@ -1,4 +1,4 @@
 categories:
-  - name: "Testing"
+  - name: 'Testing'
     skills:
       - name: Vitest

@@ -97,11 +97,7 @@ describe('compileCrossref', () => {
         },
       ],
     };
-    const { warnings } = compileCrossref(
-      skills,
-      resumeWithUnmatched,
-      null,
-    );
+    const { warnings } = compileCrossref(skills, resumeWithUnmatched, null);
     expect(warnings.length).toBeGreaterThan(0);
     expect(warnings[0]).toContain('NonExistent');
   });
@@ -117,9 +113,7 @@ describe('compileCrossref', () => {
     const { crossref } = compileCrossref(skills, resume, null);
     expect(crossref.skillToProject).toEqual({});
     expect(crossref.projectToSkills).toEqual({});
-    expect(Object.keys(crossref.skillToExperience).length).toBeGreaterThan(
-      0,
-    );
+    expect(Object.keys(crossref.skillToExperience).length).toBeGreaterThan(0);
   });
 
   it('handles null experience data (omits experience mappings)', () => {

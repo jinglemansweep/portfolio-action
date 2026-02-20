@@ -23,19 +23,24 @@ export async function compileI18n(options) {
       const content = await readFile(i18nFile, 'utf-8');
       basePack = yaml.load(content);
     } catch {
-      warnings.push(`Custom locale file "${i18nFile}" not found, falling back to English`);
+      warnings.push(
+        `Custom locale file "${i18nFile}" not found, falling back to English`,
+      );
       basePack = await loadBuiltinPack(i18nDir, 'en');
     }
   } else {
     basePack = await loadBuiltinPack(i18nDir, lang);
     if (!basePack) {
-      warnings.push(`Language pack for "${lang}" not found, falling back to English`);
+      warnings.push(
+        `Language pack for "${lang}" not found, falling back to English`,
+      );
       basePack = await loadBuiltinPack(i18nDir, 'en');
     }
   }
 
   // Load English as reference for key validation
-  const enPack = lang === 'en' ? basePack : await loadBuiltinPack(i18nDir, 'en');
+  const enPack =
+    lang === 'en' ? basePack : await loadBuiltinPack(i18nDir, 'en');
 
   // Deep-merge overrides
   if (overrides?.labels && basePack.labels) {
@@ -46,7 +51,9 @@ export async function compileI18n(options) {
   if (enPack?.labels && basePack?.labels) {
     for (const key of Object.keys(enPack.labels)) {
       if (!(key in basePack.labels)) {
-        warnings.push(`i18n key "${key}" missing from language pack — using key as fallback`);
+        warnings.push(
+          `i18n key "${key}" missing from language pack — using key as fallback`,
+        );
         basePack.labels[key] = key;
       }
     }

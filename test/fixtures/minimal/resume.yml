@@ -1,5 +1,5 @@
-name: "Test User"
-tagline: "Software Developer"
+name: 'Test User'
+tagline: 'Software Developer'
 
 contact:
-  location: "London, UK"
+  location: 'London, UK'

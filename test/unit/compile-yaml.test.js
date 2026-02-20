@@ -5,18 +5,15 @@ import { fixturePath } from '../helpers/test-utils.js';
 
 describe('compileYaml', () => {
   it('parses valid YAML files correctly', async () => {
-    const data = await compileYaml(
-      join(fixturePath('minimal'), 'resume.yml'),
-    );
+    const data = await compileYaml(join(fixturePath('minimal'), 'resume.yml'));
     expect(data.name).toBe('Test User');
     expect(data.tagline).toBe('Software Developer');
   });
 
   it('merges visibility defaults when isSiteConfig is true', async () => {
-    const data = await compileYaml(
-      join(fixturePath('minimal'), 'site.yml'),
-      { isSiteConfig: true },
-    );
+    const data = await compileYaml(join(fixturePath('minimal'), 'site.yml'), {
+      isSiteConfig: true,
+    });
     expect(data.visibility.email).toBe(false);
     expect(data.visibility.phone).toBe(false);
     expect(data.visibility.education).toBe(true);
@@ -27,10 +24,9 @@ describe('compileYaml', () => {
   });
 
   it('merges SEO defaults when isSiteConfig is true', async () => {
-    const data = await compileYaml(
-      join(fixturePath('minimal'), 'site.yml'),
-      { isSiteConfig: true },
-    );
+    const data = await compileYaml(join(fixturePath('minimal'), 'site.yml'), {
+      isSiteConfig: true,
+    });
     expect(data.seo.robots.indexing).toBe(true);
     expect(data.seo.robots.follow_links).toBe(true);
     expect(data.seo.sitemap).toBe(true);
@@ -39,9 +35,9 @@ describe('compileYaml', () => {
   });
 
   it('throws on missing file with descriptive message', async () => {
-    await expect(
-      compileYaml('/nonexistent/path/file.yml'),
-    ).rejects.toThrow('not found');
+    await expect(compileYaml('/nonexistent/path/file.yml')).rejects.toThrow(
+      'not found',
+    );
   });
 
   it('throws on malformed YAML with parse error details', async () => {

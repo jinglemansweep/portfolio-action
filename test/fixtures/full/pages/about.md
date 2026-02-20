@@ -1,7 +1,7 @@
 ---
-title: "About Me"
+title: 'About Me'
 slug: about
-description: "Learn more about Jane Smith and her journey in software development"
+description: 'Learn more about Jane Smith and her journey in software development'
 nav_order: 1
 show_in_nav: true
 ---

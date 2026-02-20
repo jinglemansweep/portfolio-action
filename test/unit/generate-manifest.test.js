@@ -120,7 +120,13 @@ describe('generateManifest', () => {
       skills: null,
       projects: null,
       blog: null,
-      pages: [{ slug: 'about', title: 'About', meta: { nav_order: 1, show_in_nav: true } }],
+      pages: [
+        {
+          slug: 'about',
+          title: 'About',
+          meta: { nav_order: 1, show_in_nav: true },
+        },
+      ],
       i18n: baseI18n,
     });
     expect(routes).toContain('/about');
@@ -147,8 +153,16 @@ describe('generateManifest', () => {
       projects: null,
       blog: null,
       pages: [
-        { slug: 'contact', title: 'Contact', meta: { nav_order: 5, show_in_nav: true } },
-        { slug: 'about', title: 'About', meta: { nav_order: 1, show_in_nav: true } },
+        {
+          slug: 'contact',
+          title: 'Contact',
+          meta: { nav_order: 5, show_in_nav: true },
+        },
+        {
+          slug: 'about',
+          title: 'About',
+          meta: { nav_order: 1, show_in_nav: true },
+        },
       ],
       i18n: baseI18n,
     });

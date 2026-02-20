@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: 中级
   skill_level_advanced: 高级
   skill_level_expert: 专家
-  skill_years: "{n}年"
+  skill_years: '{n}年'
   skill_used_in: 应用于
   skill_links: 链接
   skill_filter_placeholder: 筛选技能...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: 博客
   blog_read_more: 阅读更多
-  blog_reading_time: "{n}分钟阅读"
+  blog_reading_time: '{n}分钟阅读'
   blog_published: 发布于
   blog_updated: 更新于
   blog_tagged: 标签
@@ -67,7 +67,7 @@ labels:
   not_found_message: 您访问的页面不存在。
   not_found_home: 返回首页
 
-  date_format: "YYYY年M月D日"
+  date_format: 'YYYY年M月D日'
 
   a11y_skip_to_content: 跳至内容
   a11y_toggle_theme: 切换主题

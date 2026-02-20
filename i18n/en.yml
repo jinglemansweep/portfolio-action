@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: Intermediate
   skill_level_advanced: Advanced
   skill_level_expert: Expert
-  skill_years: "{n} years"
+  skill_years: '{n} years'
   skill_used_in: Used in
   skill_links: Links
   skill_filter_placeholder: Filter skills...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: Blog
   blog_read_more: Read more
-  blog_reading_time: "{n} min read"
+  blog_reading_time: '{n} min read'
   blog_published: Published
   blog_updated: Updated
   blog_tagged: Tagged
@@ -67,7 +67,7 @@ labels:
   not_found_message: The page you are looking for does not exist.
   not_found_home: Go Home
 
-  date_format: "MMM D, YYYY"
+  date_format: 'MMM D, YYYY'
 
   a11y_skip_to_content: Skip to content
   a11y_toggle_theme: Toggle theme

@@ -1,7 +1,7 @@
 ---
-title: "Draft Post"
+title: 'Draft Post'
 slug: draft-post
-description: "This post is a draft and should be excluded from the build"
+description: 'This post is a draft and should be excluded from the build'
 publish_on: 2026-01-01
 draft: true
 tags:

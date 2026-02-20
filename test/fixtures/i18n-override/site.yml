@@ -1,15 +1,15 @@
-title: "i18n Override Test"
-description: "Testing custom i18n label overrides"
+title: 'i18n Override Test'
+description: 'Testing custom i18n label overrides'
 lang: en
 
 i18n_overrides:
   labels:
-    experience: "Work History"
-    community: "Open Source"
-    education: "Academic Background"
-    skills: "Technical Skills"
-    projects: "My Projects"
-    accreditations: "Certifications"
-    footer_built_with: "Custom Footer Text"
-    nav_home: "Start"
-    nav_skills: "Expertise"
+    experience: 'Work History'
+    community: 'Open Source'
+    education: 'Academic Background'
+    skills: 'Technical Skills'
+    projects: 'My Projects'
+    accreditations: 'Certifications'
+    footer_built_with: 'Custom Footer Text'
+    nav_home: 'Start'
+    nav_skills: 'Expertise'

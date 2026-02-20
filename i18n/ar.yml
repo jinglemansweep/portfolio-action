@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: متوسط
   skill_level_advanced: متقدم
   skill_level_expert: خبير
-  skill_years: "{n} سنوات"
+  skill_years: '{n} سنوات'
   skill_used_in: مستخدم في
   skill_links: روابط
   skill_filter_placeholder: تصفية المهارات...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: المدونة
   blog_read_more: اقرأ المزيد
-  blog_reading_time: "{n} دقائق للقراءة"
+  blog_reading_time: '{n} دقائق للقراءة'
   blog_published: نُشر في
   blog_updated: تم التحديث
   blog_tagged: الوسوم
@@ -67,7 +67,7 @@ labels:
   not_found_message: الصفحة التي تبحث عنها غير موجودة.
   not_found_home: العودة للرئيسية
 
-  date_format: "D MMM YYYY"
+  date_format: 'D MMM YYYY'
 
   a11y_skip_to_content: انتقل إلى المحتوى
   a11y_toggle_theme: تبديل المظهر

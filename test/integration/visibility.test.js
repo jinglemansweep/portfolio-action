@@ -63,15 +63,15 @@ describe('visibility-hidden build', () => {
   });
 
   it('skills.json does NOT exist', async () => {
-    expect(
-      await fileExists(join(outputDir, 'data', 'skills.json')),
-    ).toBe(false);
+    expect(await fileExists(join(outputDir, 'data', 'skills.json'))).toBe(
+      false,
+    );
   });
 
   it('projects.json does NOT exist', async () => {
-    expect(
-      await fileExists(join(outputDir, 'data', 'projects.json')),
-    ).toBe(false);
+    expect(await fileExists(join(outputDir, 'data', 'projects.json'))).toBe(
+      false,
+    );
   });
 
   it('sitemap.xml excludes hidden routes', async () => {
@@ -90,10 +90,7 @@ describe('visibility-hidden build', () => {
   });
 
   it('manifest.json routes exclude hidden pages', async () => {
-    const manifest = await readOutputJson(
-      outputDir,
-      'data/manifest.json',
-    );
+    const manifest = await readOutputJson(outputDir, 'data/manifest.json');
     expect(manifest.routes).toContain('/');
     expect(manifest.routes).not.toContain('/skills');
     expect(manifest.routes).not.toContain('/projects');

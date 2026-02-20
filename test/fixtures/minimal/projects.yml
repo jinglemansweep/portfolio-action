@@ -1,4 +1,4 @@
 projects:
-  - name: "Test Project"
-    description: "A simple test project for validation."
-    start: "2025-01"
+  - name: 'Test Project'
+    description: 'A simple test project for validation.'
+    start: '2025-01'

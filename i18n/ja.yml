@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: 中級者
   skill_level_advanced: 上級者
   skill_level_expert: エキスパート
-  skill_years: "{n}年"
+  skill_years: '{n}年'
   skill_used_in: 使用先
   skill_links: リンク
   skill_filter_placeholder: スキルを検索...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: ブログ
   blog_read_more: 続きを読む
-  blog_reading_time: "{n}分で読めます"
+  blog_reading_time: '{n}分で読めます'
   blog_published: 公開日
   blog_updated: 更新日
   blog_tagged: タグ
@@ -67,7 +67,7 @@ labels:
   not_found_message: お探しのページは存在しません。
   not_found_home: ホームへ戻る
 
-  date_format: "YYYY年M月D日"
+  date_format: 'YYYY年M月D日'
 
   a11y_skip_to_content: コンテンツへスキップ
   a11y_toggle_theme: テーマ切替

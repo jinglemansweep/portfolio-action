@@ -37,34 +37,22 @@ afterAll(async () => {
 
 describe('blog filtering integration', () => {
   it('published post IS in blog/index.json', async () => {
-    const posts = await readOutputJson(
-      outputDir,
-      'data/blog/index.json',
-    );
+    const posts = await readOutputJson(outputDir, 'data/blog/index.json');
     expect(posts.some((p) => p.slug === 'published-post')).toBe(true);
   });
 
   it('draft post is NOT in blog/index.json', async () => {
-    const posts = await readOutputJson(
-      outputDir,
-      'data/blog/index.json',
-    );
+    const posts = await readOutputJson(outputDir, 'data/blog/index.json');
     expect(posts.some((p) => p.slug === 'draft-post')).toBe(false);
   });
 
   it('future post is NOT in blog/index.json', async () => {
-    const posts = await readOutputJson(
-      outputDir,
-      'data/blog/index.json',
-    );
+    const posts = await readOutputJson(outputDir, 'data/blog/index.json');
     expect(posts.some((p) => p.slug === 'future-post')).toBe(false);
   });
 
   it('expired post is NOT in blog/index.json', async () => {
-    const posts = await readOutputJson(
-      outputDir,
-      'data/blog/index.json',
-    );
+    const posts = await readOutputJson(outputDir, 'data/blog/index.json');
     expect(posts.some((p) => p.slug === 'expired-post')).toBe(false);
   });
 

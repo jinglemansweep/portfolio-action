@@ -1,19 +1,19 @@
-title: "Jane Smith — Full-Stack Developer"
-description: "Personal portfolio showcasing full-stack development and open-source work"
+title: 'Jane Smith — Full-Stack Developer'
+description: 'Personal portfolio showcasing full-stack development and open-source work'
 lang: en
 theme:
-  primary: "#2563eb"
-  accent: "#f59e0b"
+  primary: '#2563eb'
+  accent: '#f59e0b'
   mode: system
-favicon: ""
-og_image: "media/test-image.png"
-analytics_id: "G-TEST12345"
-custom_domain: ""
-site_url: "https://janesmith.dev"
-i18n_file: ""
+favicon: ''
+og_image: 'media/test-image.png'
+analytics_id: 'G-TEST12345'
+custom_domain: ''
+site_url: 'https://janesmith.dev'
+i18n_file: ''
 
 hero:
-  background: "media/test-image.png"
+  background: 'media/test-image.png'
   overlay_opacity: 0.6
   style: image
 
@@ -41,6 +41,6 @@ seo:
 
 i18n_overrides:
   labels:
-    experience: "Work History"
-    community: "Open Source Contributions"
-    footer_built_with: "Powered by Instant Portfolio"
+    experience: 'Work History'
+    community: 'Open Source Contributions'
+    footer_built_with: 'Powered by Instant Portfolio'

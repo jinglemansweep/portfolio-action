@@ -1,5 +1,8 @@
 import { describe, it, expect } from 'vitest';
-import { compileMarkdown, renderMarkdown } from '../../src/lib/compile-markdown.js';
+import {
+  compileMarkdown,
+  renderMarkdown,
+} from '../../src/lib/compile-markdown.js';
 import { fixturePath } from '../helpers/test-utils.js';
 import { join } from 'node:path';
 import { mkdtemp, writeFile } from 'node:fs/promises';
@@ -7,9 +10,7 @@ import { tmpdir } from 'node:os';
 
 describe('compileMarkdown', () => {
   it('parses frontmatter fields', async () => {
-    const pages = await compileMarkdown(
-      join(fixturePath('full'), 'pages'),
-    );
+    const pages = await compileMarkdown(join(fixturePath('full'), 'pages'));
     expect(pages.length).toBeGreaterThanOrEqual(1);
     const about = pages.find((p) => p.slug === 'about');
     expect(about).toBeDefined();
@@ -19,18 +20,14 @@ describe('compileMarkdown', () => {
   });
 
   it('renders markdown to HTML', async () => {
-    const pages = await compileMarkdown(
-      join(fixturePath('full'), 'pages'),
-    );
+    const pages = await compileMarkdown(join(fixturePath('full'), 'pages'));
     const about = pages.find((p) => p.slug === 'about');
     expect(about.content_html).toContain('<h2>');
     expect(about.content_html).toContain('<strong>');
   });
 
   it('rewrites media paths (media/image.png stays relative)', async () => {
-    const pages = await compileMarkdown(
-      join(fixturePath('full'), 'pages'),
-    );
+    const pages = await compileMarkdown(join(fixturePath('full'), 'pages'));
     const about = pages.find((p) => p.slug === 'about');
     expect(about.content_html).toContain('media/');
   });
@@ -53,7 +50,10 @@ describe('compileMarkdown', () => {
 
   it('handles file with no frontmatter', async () => {
     const dir = await mkdtemp(join(tmpdir(), 'nofm-'));
-    await writeFile(join(dir, 'bare.md'), '# Just Markdown\n\nNo frontmatter here.');
+    await writeFile(
+      join(dir, 'bare.md'),
+      '# Just Markdown\n\nNo frontmatter here.',
+    );
     const pages = await compileMarkdown(dir);
     expect(pages).toHaveLength(1);
     expect(pages[0].slug).toBe('bare');

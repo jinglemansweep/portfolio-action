@@ -1,7 +1,7 @@
 ---
-title: "Future Post"
+title: 'Future Post'
 slug: future-post
-description: "This post has a far-future publish date and should be excluded"
+description: 'This post has a far-future publish date and should be excluded'
 publish_on: 2099-01-01
 draft: false
 tags:

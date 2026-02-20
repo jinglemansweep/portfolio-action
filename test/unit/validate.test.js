@@ -35,8 +35,9 @@ describe('validate', () => {
       { categories: [] },
       { projects: [] },
     );
-    expect(errors.some((e) => e.file === 'site.yml' && e.field === 'title'))
-      .toBe(true);
+    expect(
+      errors.some((e) => e.file === 'site.yml' && e.field === 'title'),
+    ).toBe(true);
     expect(
       errors.some((e) => e.file === 'site.yml' && e.field === 'description'),
     ).toBe(true);
@@ -56,14 +57,10 @@ describe('validate', () => {
       errors.some((e) => e.file === 'site.yml' && e.field === 'title'),
     ).toBe(true);
     expect(
-      errors.some(
-        (e) => e.file === 'skills.yml' && e.field === 'categories',
-      ),
+      errors.some((e) => e.file === 'skills.yml' && e.field === 'categories'),
     ).toBe(true);
     expect(
-      errors.some(
-        (e) => e.file === 'projects.yml' && e.field === 'projects',
-      ),
+      errors.some((e) => e.file === 'projects.yml' && e.field === 'projects'),
     ).toBe(true);
   });
 
@@ -80,15 +77,11 @@ describe('validate', () => {
       { categories: [{ name: 'Cat', skills: [{ name: 'JS' }] }] },
       { projects: [{ url: 'https://example.com' }] },
     );
-    expect(
-      errors.some((e) => e.field === 'projects[0].name'),
-    ).toBe(true);
-    expect(
-      errors.some((e) => e.field === 'projects[0].description'),
-    ).toBe(true);
-    expect(
-      errors.some((e) => e.field === 'projects[0].start'),
-    ).toBe(true);
+    expect(errors.some((e) => e.field === 'projects[0].name')).toBe(true);
+    expect(errors.some((e) => e.field === 'projects[0].description')).toBe(
+      true,
+    );
+    expect(errors.some((e) => e.field === 'projects[0].start')).toBe(true);
   });
 
   it('validates category objects with missing skills array', () => {
@@ -98,9 +91,7 @@ describe('validate', () => {
       { categories: [{ name: 'Cat' }] },
       { projects: [] },
     );
-    expect(
-      errors.some((e) => e.field === 'categories[0].skills'),
-    ).toBe(true);
+    expect(errors.some((e) => e.field === 'categories[0].skills')).toBe(true);
   });
 
   it('validates non-object items in arrays', () => {
@@ -110,11 +101,7 @@ describe('validate', () => {
       { categories: [null] },
       { projects: ['not-an-object'] },
     );
-    expect(
-      errors.some((e) => e.field === 'categories[0]'),
-    ).toBe(true);
-    expect(
-      errors.some((e) => e.field === 'projects[0]'),
-    ).toBe(true);
+    expect(errors.some((e) => e.field === 'categories[0]')).toBe(true);
+    expect(errors.some((e) => e.field === 'projects[0]')).toBe(true);
   });
 });

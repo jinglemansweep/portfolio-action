@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: Gemiddeld
   skill_level_advanced: Gevorderd
   skill_level_expert: Expert
-  skill_years: "{n} jaar"
+  skill_years: '{n} jaar'
   skill_used_in: Gebruikt in
   skill_links: Links
   skill_filter_placeholder: Vaardigheden filteren...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: Blog
   blog_read_more: Lees meer
-  blog_reading_time: "{n} min leestijd"
+  blog_reading_time: '{n} min leestijd'
   blog_published: Gepubliceerd
   blog_updated: Bijgewerkt
   blog_tagged: Gelabeld
@@ -67,7 +67,7 @@ labels:
   not_found_message: De pagina die u zoekt bestaat niet.
   not_found_home: Naar home
 
-  date_format: "D MMM YYYY"
+  date_format: 'D MMM YYYY'
 
   a11y_skip_to_content: Ga naar inhoud
   a11y_toggle_theme: Thema wisselen

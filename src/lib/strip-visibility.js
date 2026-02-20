@@ -11,13 +11,7 @@
  * @param {object|null} blog - Parsed blog data
  * @returns {{ resume: object, skills: object|null, projects: object|null, blog: object|null }}
  */
-export function stripVisibility(
-  visibility,
-  resume,
-  skills,
-  projects,
-  blog,
-) {
+export function stripVisibility(visibility, resume, skills, projects, blog) {
   const strippedResume = stripResume(visibility, resume);
   const strippedSkills = visibility.skills ? skills : null;
   const strippedProjects = visibility.projects ? projects : null;

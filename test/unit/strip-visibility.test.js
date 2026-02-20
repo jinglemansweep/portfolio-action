@@ -46,9 +46,7 @@ function makeSkills() {
 
 function makeProjects() {
   return {
-    projects: [
-      { name: 'Project', description: 'Test', start: '2025-01' },
-    ],
+    projects: [{ name: 'Project', description: 'Test', start: '2025-01' }],
   };
 }
 

@@ -1,5 +1,5 @@
-name: "i18n Tester"
-tagline: "Verifying label overrides"
+name: 'i18n Tester'
+tagline: 'Verifying label overrides'
 
 contact:
-  location: "Berlin, Germany"
+  location: 'Berlin, Germany'

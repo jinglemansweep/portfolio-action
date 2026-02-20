@@ -1,5 +1,5 @@
 theme:
-  primary: "#ff0000"
+  primary: '#ff0000'
   mode: dark
 visibility:
   education: true

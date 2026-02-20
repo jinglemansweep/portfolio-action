@@ -15,7 +15,7 @@ labels:
   skill_level_intermediate: Intermedio
   skill_level_advanced: Avanzato
   skill_level_expert: Esperto
-  skill_years: "{n} anni"
+  skill_years: '{n} anni'
   skill_used_in: Usato in
   skill_links: Link
   skill_filter_placeholder: Filtra competenze...
@@ -47,7 +47,7 @@ labels:
 
   blog_title: Blog
   blog_read_more: Leggi di più
-  blog_reading_time: "{n} min di lettura"
+  blog_reading_time: '{n} min di lettura'
   blog_published: Pubblicato
   blog_updated: Aggiornato
   blog_tagged: Etichettato
@@ -67,7 +67,7 @@ labels:
   not_found_message: La pagina che stai cercando non esiste.
   not_found_home: Torna alla home
 
-  date_format: "D MMM YYYY"
+  date_format: 'D MMM YYYY'
 
   a11y_skip_to_content: Vai al contenuto
   a11y_toggle_theme: Cambia tema

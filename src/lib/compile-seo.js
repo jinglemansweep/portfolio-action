@@ -54,11 +54,11 @@ export function generateSitemapXml(routes, siteUrl, buildDate, i18n) {
       : buildDate || new Date().toISOString().split('T')[0];
 
   let xml = '<?xml version="1.0" encoding="UTF-8"?>\n';
-  xml +=
-    '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
+  xml += '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n';
 
   for (const route of routes) {
-    const priority = route === '/' ? '1.0' : isMainRoute(route, i18n) ? '0.8' : '0.6';
+    const priority =
+      route === '/' ? '1.0' : isMainRoute(route, i18n) ? '0.8' : '0.6';
     xml += '  <url>\n';
     xml += `    <loc>${siteUrl}${route}</loc>\n`;
     xml += `    <lastmod>${date}</lastmod>\n`;
@@ -207,8 +207,7 @@ export function generateLlmsTxt(data) {
       lines.push(`### ${post.title}`);
       if (post.publish_on) lines.push(`Published: ${post.publish_on}`);
       if (post.description) lines.push(post.description);
-      if (post.tags?.length > 0)
-        lines.push(`Tags: ${post.tags.join(', ')}`);
+      if (post.tags?.length > 0) lines.push(`Tags: ${post.tags.join(', ')}`);
       lines.push('');
     }
   }
