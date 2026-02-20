@@ -139,21 +139,32 @@ class HeroSection extends I18nMixin(LitElement) {
       'inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white backdrop-blur-sm print:gap-1 print:rounded-none print:bg-transparent print:px-0 print:py-0 print:text-xs print:text-gray-700 print:backdrop-blur-none';
     const iconClass = 'h-4 w-4 print:h-3 print:w-3';
 
-    if (contact.socials?.length) {
-      for (const social of contact.socials) {
-        const url = this._getSocialUrl(social.type, social.username);
-        if (!url) continue;
-        pills.push(html`
-          <a
-            href=${url}
-            target="_blank"
-            rel="noopener noreferrer"
-            class=${pillClass}
+    if (contact.location) {
+      pills.push(html`
+        <span class=${pillStaticClass}>
+          <svg
+            class=${iconClass}
+            fill="none"
+            viewBox="0 0 24 24"
+            stroke="currentColor"
+            aria-hidden="true"
           >
-            ${this._renderBrandIcon(social.type)} ${social.username}
-          </a>
-        `);
-      }
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
+            />
+            <path
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              stroke-width="2"
+              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
+            />
+          </svg>
+          ${contact.location}
+        </span>
+      `);
     }
 
     if (contact.email) {
@@ -200,41 +211,15 @@ class HeroSection extends I18nMixin(LitElement) {
       `);
     }
 
-    if (contact.location) {
-      pills.push(html`
-        <span class=${pillStaticClass}>
-          <svg
-            class=${iconClass}
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            aria-hidden="true"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"
-            />
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              stroke-width="2"
-              d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"
-            />
-          </svg>
-          ${contact.location}
-        </span>
-      `);
-    }
-
     if (contact.website) {
+      const printOnlyPillClass =
+        'hidden print:inline-flex items-center gap-1.5 print:gap-1 print:rounded-none print:bg-transparent print:px-0 print:py-0 print:text-xs print:text-gray-700';
       pills.push(html`
         <a
           href=${contact.website}
           target="_blank"
           rel="noopener noreferrer"
-          class=${pillClass}
+          class=${printOnlyPillClass}
         >
           <svg
             class=${iconClass}
@@ -253,6 +238,28 @@ class HeroSection extends I18nMixin(LitElement) {
           ${new URL(contact.website).hostname}
         </a>
       `);
+    }
+
+    if (contact.socials?.length) {
+      for (const social of contact.socials) {
+        const url = this._getSocialUrl(social.type, social.username);
+        if (!url) continue;
+        const parsedUrl = new URL(url);
+        const printLabel =
+          parsedUrl.hostname + parsedUrl.pathname.replace(/\/+$/, '');
+        pills.push(html`
+          <a
+            href=${url}
+            target="_blank"
+            rel="noopener noreferrer"
+            class=${pillClass}
+          >
+            ${this._renderBrandIcon(social.type)}
+            <span class="print:hidden">${social.username}</span>
+            <span class="hidden print:inline">${printLabel}</span>
+          </a>
+        `);
+      }
     }
 
     if (contact.links?.length) {

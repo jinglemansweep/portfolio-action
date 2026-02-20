@@ -280,7 +280,7 @@ All checks must pass before committing:
 ```bash
 npm run lint          # ESLint (flat config v9)
 npm run format:check  # Prettier
-npm test              # Vitest (116 tests)
+npm test              # Vitest (117 tests)
 npm run test:coverage # Must meet 80% threshold
 ```
 

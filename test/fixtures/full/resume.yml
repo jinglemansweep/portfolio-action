@@ -15,12 +15,10 @@ contact:
     - type: mastodon
       username: '@janesmith@mastodon.social'
   links:
-    - platform: github
-      url: 'https://github.com/janesmith'
-    - platform: linkedin
-      url: 'https://linkedin.com/in/janesmith'
-    - platform: mastodon
-      url: 'https://mastodon.social/@janesmith'
+    - platform: portfolio
+      url: 'https://janesmith.dev/projects'
+    - platform: community
+      url: 'https://bristoljs.example.com'
 
 summary: |
   Experienced full-stack developer with a passion for **open-source** software

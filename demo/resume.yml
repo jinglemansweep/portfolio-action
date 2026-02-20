@@ -15,12 +15,10 @@ contact:
     - type: x
       username: another_dev
   links:
-    - platform: github
-      url: 'https://github.com/another'
-    - platform: linkedin
-      url: 'https://linkedin.com/in/another'
-    - platform: mastodon
-      url: 'https://mastodon.social/@another'
+    - platform: blog
+      url: 'https://blog.another.dev'
+    - platform: community
+      url: 'https://londoncloud.example.com'
 
 summary: |
   Versatile software engineer with 12+ years of experience across the full stack.
