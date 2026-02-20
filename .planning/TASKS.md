@@ -150,11 +150,11 @@
 
 ### Task 16: i18n Mixin & App Shell
 
-- [ ] Create `template/components/i18n-mixin.js`:
+- [x] Create `template/components/i18n-mixin.js`:
   - Export `I18nMixin(superClass)` that adds `t(key, params?)` method
   - Read from `window.__i18n.labels[key]`, fallback to key itself
   - Interpolate `{n}` style placeholders from params
-- [ ] Create `template/components/app-shell.js`:
+- [x] Create `template/components/app-shell.js`:
   - Extend LitElement with I18nMixin, Light DOM (createRenderRoot returns this)
   - On connectedCallback: fetch i18n.json → set `window.__i18n`; fetch all data JSON files (site, resume, skills, projects, crossref, manifest, blog index)
   - Store fetched data in reactive properties; gate rendering until data loaded (show loading state)
@@ -162,13 +162,13 @@
   - Handle 404.html redirect query param (restore original path via History API)
   - Pass data down to child components via properties
   - Render: nav-bar, router outlet (main-content), site-footer
-- [ ] Verify: files are syntactically valid JS
-- [ ] Verify: `npm run lint` passes (template files included)
-- [ ] Commit
+- [x] Verify: files are syntactically valid JS
+- [x] Verify: `npm run lint` passes (template files included)
+- [x] Commit
 
 ### Task 17: Navigation & Footer
 
-- [ ] Create `template/components/nav-bar.js`:
+- [x] Create `template/components/nav-bar.js`:
   - Light DOM Lit component with I18nMixin
   - Accept nav items from app-shell (manifest.nav array)
   - Render responsive navigation: desktop horizontal, mobile hamburger menu
@@ -176,17 +176,17 @@
   - Include slots/areas for theme-toggle and pdf-export components
   - Sticky top positioning
   - Dark mode styles (dark: variants)
-- [ ] Create `template/components/site-footer.js`:
+- [x] Create `template/components/site-footer.js`:
   - Light DOM Lit component with I18nMixin
   - Copyright line with current year
   - "Built with Instant Portfolio" link
   - Dark mode styles
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 18: Hero Section
 
-- [ ] Create `template/components/hero-section.js`:
+- [x] Create `template/components/hero-section.js`:
   - Light DOM Lit component with I18nMixin
   - Accept resume data (name, tagline, photo, contact) and site data (hero config, theme)
   - Render name (large heading), tagline (subtitle)
@@ -197,12 +197,12 @@
   - Responsive: desktop horizontal layout, tablet/mobile stacked centered
   - Dark mode styles
   - Print: render as simple header block (no background/photo, name + contact only)
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 19: Home Page — Experience & Education Sections
 
-- [ ] Create `template/components/timeline-item.js`:
+- [x] Create `template/components/timeline-item.js`:
   - Light DOM Lit component with I18nMixin
   - Accept: title, subtitle (company/institution), start, end, description (HTML), skills array
   - Render timeline layout with date range, title, subtitle, description
@@ -211,49 +211,49 @@
   - Unmatched skills render as static muted pills
   - Add `id` attribute for deep-linking (e.g. `experience-<slug>`)
   - Dark mode styles
-- [ ] Create `template/components/section-experience.js`:
+- [x] Create `template/components/section-experience.js`:
   - Light DOM Lit component with I18nMixin
   - Accept experience array and crossref data
   - Render section heading with i18n label
   - Render timeline-item for each experience entry
   - Only renders if experience data is present (already stripped at build time)
-- [ ] Create `template/components/section-education.js`:
+- [x] Create `template/components/section-education.js`:
   - Light DOM Lit component with I18nMixin
   - Accept education array
   - Render section heading with i18n label
   - Render timeline-item for each education entry
   - Only renders if education data is present
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 20: Home Page — Community, Accreditations & Compact Projects
 
-- [ ] Create `template/components/section-community.js`:
+- [x] Create `template/components/section-community.js`:
   - Light DOM Lit component with I18nMixin
   - Accept community array
   - Render each entry: name, role, URL, description
   - Only renders if community data is present
-- [ ] Create `template/components/section-accreditations.js`:
+- [x] Create `template/components/section-accreditations.js`:
   - Light DOM Lit component with I18nMixin
   - Accept accreditations array
   - Render each entry: title, issuer, date, optional URL
   - Only renders if accreditations data is present
-- [ ] Create `template/components/project-card-compact.js`:
+- [x] Create `template/components/project-card-compact.js`:
   - Light DOM Lit component with I18nMixin
   - Accept project data (name, start, end, skills, slug)
   - Compact horizontal card with project name, date range, skill pills
   - Links to `/{projects_path}#project-<slug>`
-- [ ] Create `template/components/section-projects.js`:
+- [x] Create `template/components/section-projects.js`:
   - Light DOM Lit component with I18nMixin
   - Accept projects array
   - Render heading, then compact project cards in horizontal scroll/grid
   - Only renders if projects data is present
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 21: Home Page Assembly (`page-home.js`)
 
-- [ ] Create `template/components/page-home.js`:
+- [x] Create `template/components/page-home.js`:
   - Light DOM Lit component with I18nMixin
   - Accept all data from app-shell (resume, skills, projects, crossref, site, i18n, routes)
   - Render hero-section
@@ -265,30 +265,30 @@
     - section-community (if data present)
     - section-projects compact (if data present)
   - Sections only render when their data exists — no visibility checks needed in components (build already stripped)
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 22: Projects Page
 
-- [ ] Create `template/components/project-card.js`:
+- [x] Create `template/components/project-card.js`:
   - Light DOM Lit component with I18nMixin
   - Full detail project card: name, description (HTML), date range, image, skills pills, tags, URL link, repo link
   - `id="project-<slug>"` anchor for deep linking
   - Featured projects have prominent styling
   - Ongoing/completed derived from dates (no end → "Ongoing" label)
   - Dark mode styles
-- [ ] Create `template/components/page-projects.js`:
+- [x] Create `template/components/page-projects.js`:
   - Light DOM Lit component with I18nMixin
   - Accept projects data
   - Render featured projects prominently at top
   - Render all projects as full detail cards
   - Only route exists if projects visible + data present (enforced by manifest)
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 23: Theme Toggle & Dark Mode Setup
 
-- [ ] Create `template/components/theme-toggle.js`:
+- [x] Create `template/components/theme-toggle.js`:
   - Light DOM Lit component with I18nMixin
   - Cycle: light → dark → system
   - On light/dark: write to localStorage, apply `.dark` class to `<html>`
@@ -296,44 +296,44 @@
   - Listen to `matchMedia('(prefers-color-scheme: dark)')` change events for live system updates
   - Render button with icon/label indicating current mode
   - Accessible: aria-label from i18n
-- [ ] Verify Tailwind dark mode setup in `template/index.html`:
+- [x] Verify Tailwind dark mode setup in `template/index.html`:
   - `@custom-variant dark (&:where(.dark, .dark *));` declaration present
   - FOUC-prevention inline script reads localStorage + theme_mode before first paint
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 24: PDF Export & Print Styles
 
-- [ ] Create `template/components/pdf-export.js`:
+- [x] Create `template/components/pdf-export.js`:
   - Light DOM Lit component with I18nMixin
   - Button in nav bar
   - Lazy-load `html2pdf.js` from CDN on first click
   - Export `#printable-content` region to PDF (A4, portrait, margins, filename from site title)
   - Show generating state while processing
   - Accessible: aria-label from i18n
-- [ ] Add `@media print` styles (inline in index.html or separate print stylesheet):
+- [x] Add `@media print` styles (inline in index.html or separate print stylesheet):
   - Hero renders as simple header (no background/gradient/photo)
   - Hide nav, theme toggle, PDF button, filter UI
   - Single-column A4/Letter optimised layout
   - Page break rules (avoid breaking inside timeline entries, cards)
   - Force light theme
   - Show URLs after links
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 25: 404 Page & RTL Support
 
-- [ ] Create `template/components/page-not-found.js`:
+- [x] Create `template/components/page-not-found.js`:
   - Light DOM Lit component with I18nMixin
   - Render 404 title, message, and "Go Home" link (all from i18n)
   - Shown for unknown SPA routes
-- [ ] Verify RTL support:
+- [x] Verify RTL support:
   - `generate-index.js` sets `dir="${dir}"` from i18n pack on `<html>` element
   - Components use CSS logical properties (margin-inline-start, padding-inline-end, etc.)
   - `ar.yml` has `dir: rtl`
   - Tailwind `rtl:` variants available for components needing explicit RTL overrides
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ---
 
@@ -341,7 +341,7 @@
 
 ### Task 26: Skills Page — Explorer & Cards
 
-- [ ] Create `template/components/skill-card.js`:
+- [x] Create `template/components/skill-card.js`:
   - Light DOM Lit component with I18nMixin
   - Accept skill data (name, level, years, icon, tags, links) and crossref data
   - Render: skill name, level indicator (visual bar/badge), years, icon from Simple Icons CDN
@@ -349,7 +349,7 @@
   - Render links section (label or URL hostname, clickable)
   - Render "Used in" section: experience entries + project entries from crossref (visually distinguished with icons)
   - "Used in" links navigate to relevant home page sections
-- [ ] Create `template/components/skill-explorer.js`:
+- [x] Create `template/components/skill-explorer.js`:
   - Light DOM Lit component with I18nMixin
   - Accept full skills data (categories) and crossref
   - Text search input (filters by name or tag in real-time)
@@ -357,23 +357,23 @@
   - Tag cloud (clickable tags filter the grid)
   - Render skill cards in responsive grid within collapsible category sections
   - Support `?highlight=<skill>` query param: auto-scroll to and highlight the specified skill
-- [ ] Create `template/components/page-skills.js`:
+- [x] Create `template/components/page-skills.js`:
   - Light DOM Lit component with I18nMixin
   - Accept skills and crossref data from app-shell
   - Render skill-explorer
   - Route only exists if visibility.skills: true (enforced by manifest)
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 27: Blog — Index Page & Post Cards
 
-- [ ] Create `template/components/blog-card.js`:
+- [x] Create `template/components/blog-card.js`:
   - Light DOM Lit component with I18nMixin
   - Accept post metadata (title, slug, description, publish_on, tags, image, reading_time, featured)
   - Render card: title, date, description, tags, image (if present), reading time
   - Featured posts have distinct styling
   - Link to `/{blog_path}/<slug>`
-- [ ] Create `template/components/page-blog.js`:
+- [x] Create `template/components/page-blog.js`:
   - Light DOM Lit component with I18nMixin
   - Accept blog index data (posts array, tags) from app-shell
   - Featured posts shown prominently at top
@@ -383,12 +383,12 @@
   - Client-side pagination (10 posts per page)
   - Empty state message (blog_no_posts i18n label)
   - Route only exists if blog enabled (enforced by manifest)
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 28: Blog — Individual Post Page
 
-- [ ] Create `template/components/page-blog-post.js`:
+- [x] Create `template/components/page-blog-post.js`:
   - Light DOM Lit component with I18nMixin
   - Accept individual post data (fetched on route change from blog/<slug>.json)
   - Render post header: title, publish date, updated date (if set), author, reading time, tags
@@ -397,21 +397,21 @@
   - Previous/next post navigation links at bottom
   - "Back to blog" link
   - Lazy-load individual post JSON on route navigation
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 29: Custom Markdown Pages
 
-- [ ] Create `template/components/page-custom.js`:
+- [x] Create `template/components/page-custom.js`:
   - Light DOM Lit component with I18nMixin
   - Accept page data (title, content_html, meta) from app-shell
   - Render page title and HTML content
   - Lazy-load individual page JSON on route navigation
-- [ ] Ensure app-shell router handles dynamic page routes:
+- [x] Ensure app-shell router handles dynamic page routes:
   - Custom page slugs registered from manifest.routes
   - Page component loads `data/pages/<slug>.json` on navigation
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ---
 
@@ -419,7 +419,7 @@
 
 ### Task 30: Accessibility Audit
 
-- [ ] Review all components for ARIA attributes:
+- [x] Review all components for ARIA attributes:
   - Buttons have aria-label where icon-only
   - Nav uses semantic `<nav>` element with aria-label
   - Main content has `<main>` landmark with id for skip link
@@ -427,11 +427,11 @@
   - Images have alt text
   - Interactive elements are keyboard-focusable
   - Form inputs have labels
-- [ ] Verify skip-to-content link works (`<a href="#main-content">`)
-- [ ] Verify keyboard navigation through all interactive elements (tab order, enter/space activation)
-- [ ] Verify colour contrast meets WCAG AA for both light and dark themes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Verify skip-to-content link works (`<a href="#main-content">`)
+- [x] Verify keyboard navigation through all interactive elements (tab order, enter/space activation)
+- [x] Verify colour contrast meets WCAG AA for both light and dark themes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 31: Performance Optimisation
 

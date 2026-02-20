@@ -56,6 +56,7 @@ class HeroSection extends I18nMixin(LitElement) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -80,6 +81,7 @@ class HeroSection extends I18nMixin(LitElement) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -103,6 +105,7 @@ class HeroSection extends I18nMixin(LitElement) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -135,6 +138,7 @@ class HeroSection extends I18nMixin(LitElement) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"

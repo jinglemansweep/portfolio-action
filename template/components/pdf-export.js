@@ -74,6 +74,7 @@ class PdfExport extends I18nMixin(LitElement) {
               class="h-5 w-5 animate-spin"
               fill="none"
               viewBox="0 0 24 24"
+              aria-hidden="true"
             >
               <circle
                 class="opacity-25"
@@ -94,6 +95,7 @@ class PdfExport extends I18nMixin(LitElement) {
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
+              aria-hidden="true"
             >
               <path
                 stroke-linecap="round"

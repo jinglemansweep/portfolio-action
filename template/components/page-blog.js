@@ -104,7 +104,7 @@ class PageBlog extends I18nMixin(LitElement) {
               <div class="mb-8 flex flex-wrap gap-2">
                 <button
                   @click=${() => this._selectTag('')}
-                  class="rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${!this
+                  class="rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none ${!this
                     ._selectedTag
                     ? 'bg-blue-600 text-white dark:bg-blue-500'
                     : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'}"
@@ -115,7 +115,7 @@ class PageBlog extends I18nMixin(LitElement) {
                   (tag) => html`
                     <button
                       @click=${() => this._selectTag(tag)}
-                      class="rounded-full px-3 py-1.5 text-sm font-medium transition-colors ${this
+                      class="rounded-full px-3 py-1.5 text-sm font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none ${this
                         ._selectedTag === tag
                         ? 'bg-blue-600 text-white dark:bg-blue-500'
                         : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'}"
@@ -172,6 +172,7 @@ class PageBlog extends I18nMixin(LitElement) {
                   fill="none"
                   viewBox="0 0 24 24"
                   stroke="currentColor"
+                  aria-hidden="true"
                 >
                   <path
                     stroke-linecap="round"
@@ -194,7 +195,8 @@ class PageBlog extends I18nMixin(LitElement) {
                   ? html`
                       <button
                         @click=${() => this._goToPage(this._currentPage - 1)}
-                        class="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                        aria-label="Previous page"
+                        class="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
                       >
                         &larr;
                       </button>
@@ -204,7 +206,11 @@ class PageBlog extends I18nMixin(LitElement) {
                   (page) => html`
                     <button
                       @click=${() => this._goToPage(page)}
-                      class="rounded-lg px-3 py-2 text-sm font-medium transition-colors ${page ===
+                      aria-label="Page ${page}"
+                      aria-current=${page === this._currentPage
+                        ? 'page'
+                        : 'false'}
+                      class="rounded-lg px-3 py-2 text-sm font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none ${page ===
                       this._currentPage
                         ? 'bg-blue-600 text-white dark:bg-blue-500'
                         : 'text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-800'}"
@@ -217,7 +223,8 @@ class PageBlog extends I18nMixin(LitElement) {
                   ? html`
                       <button
                         @click=${() => this._goToPage(this._currentPage + 1)}
-                        class="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
+                        aria-label="Next page"
+                        class="rounded-lg border border-gray-300 px-3 py-2 text-sm text-gray-700 transition-colors hover:bg-gray-50 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:border-gray-600 dark:text-gray-300 dark:hover:bg-gray-800"
                       >
                         &rarr;
                       </button>

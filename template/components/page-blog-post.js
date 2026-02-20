@@ -102,6 +102,7 @@ class PageBlogPost extends I18nMixin(LitElement) {
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
+            aria-hidden="true"
           >
             <path
               stroke-linecap="round"
@@ -229,6 +230,7 @@ class PageBlogPost extends I18nMixin(LitElement) {
 
         <!-- Previous / Next navigation -->
         <nav
+          aria-label="Post navigation"
           class="mt-12 flex items-stretch gap-4 border-t border-gray-200 pt-8 dark:border-gray-700"
         >
           ${prev

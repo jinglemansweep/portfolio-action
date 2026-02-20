@@ -118,7 +118,11 @@ class SkillExplorer extends I18nMixin(LitElement) {
           <div class="flex flex-col gap-4 sm:flex-row">
             <!-- Search input -->
             <div class="flex-1">
+              <label for="skill-search" class="sr-only"
+                >${this.t('skill_filter_placeholder')}</label
+              >
               <input
+                id="skill-search"
                 type="text"
                 .value=${this._searchQuery}
                 @input=${this._onSearchInput}
@@ -129,7 +133,11 @@ class SkillExplorer extends I18nMixin(LitElement) {
 
             <!-- Category filter -->
             <div class="sm:w-56">
+              <label for="skill-category" class="sr-only"
+                >${this.t('skill_all_categories')}</label
+              >
               <select
+                id="skill-category"
                 .value=${this._selectedCategory}
                 @change=${this._onCategoryChange}
                 class="w-full rounded-lg border border-gray-300 bg-white px-4 py-2.5 text-sm text-gray-900 focus:border-blue-500 focus:ring-2 focus:ring-blue-200 focus:outline-none dark:border-gray-600 dark:bg-gray-800 dark:text-white dark:focus:border-blue-400 dark:focus:ring-blue-800"
@@ -152,7 +160,7 @@ class SkillExplorer extends I18nMixin(LitElement) {
                     (tag) => html`
                       <button
                         @click=${() => this._selectTag(tag)}
-                        class="rounded-full px-3 py-1 text-xs font-medium transition-colors ${this
+                        class="rounded-full px-3 py-1 text-xs font-medium transition-colors focus:ring-2 focus:ring-blue-500 focus:outline-none ${this
                           ._selectedTag === tag
                           ? 'bg-blue-600 text-white dark:bg-blue-500'
                           : 'bg-gray-100 text-gray-600 hover:bg-gray-200 dark:bg-gray-700 dark:text-gray-300 dark:hover:bg-gray-600'}"
@@ -165,7 +173,7 @@ class SkillExplorer extends I18nMixin(LitElement) {
                     ? html`
                         <button
                           @click=${() => this._selectTag('')}
-                          class="rounded-full px-3 py-1 text-xs font-medium text-gray-400 underline hover:text-gray-600 dark:text-gray-500 dark:hover:text-gray-300"
+                          class="rounded-full px-3 py-1 text-xs font-medium text-gray-400 underline hover:text-gray-600 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-500 dark:hover:text-gray-300"
                         >
                           Clear
                         </button>
