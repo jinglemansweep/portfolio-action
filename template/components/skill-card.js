@@ -88,6 +88,7 @@ class SkillCard extends I18nMixin(LitElement) {
                   src="https://cdn.simpleicons.org/${s.icon}"
                   alt="${s.name}"
                   class="h-8 w-8 dark:invert"
+                  crossorigin="anonymous"
                   loading="lazy"
                 />
               `

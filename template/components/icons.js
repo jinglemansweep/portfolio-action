@@ -476,6 +476,7 @@ export function brandIcon(type, cls = 'h-4 w-4') {
     src="https://cdn.simpleicons.org/${type}/white"
     alt="${type}"
     class=${cls}
+    crossorigin="anonymous"
     loading="lazy"
   />`;
 }
