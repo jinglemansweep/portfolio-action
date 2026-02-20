@@ -175,7 +175,7 @@ class HeroSection extends I18nMixin(LitElement) {
           href=${skillsRoute}
           class="inline-flex items-center gap-2 rounded-full border-2 border-white/50 bg-white/10 px-4 py-2 text-sm font-medium text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/20"
         >
-          ${this.t('hero_view_skills')}
+          ${this.t('skills')}
         </a>
       `);
     }

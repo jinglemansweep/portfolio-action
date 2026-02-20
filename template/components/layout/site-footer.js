@@ -34,7 +34,7 @@ class SiteFooter extends I18nMixin(LitElement) {
                   >`
                 : ''}
             </p>
-            <p class="text-sm text-gray-400 dark:text-gray-500">
+            <p class="text-sm text-gray-400 print:hidden dark:text-gray-500">
               ${this.t('footer_built_with')}
               <a
                 href="https://github.com/jinglemansweep/portfolio-action"
@@ -42,7 +42,7 @@ class SiteFooter extends I18nMixin(LitElement) {
                 rel="noopener noreferrer"
                 class="text-blue-500 no-underline hover:text-blue-600 hover:underline dark:text-blue-400 dark:hover:text-blue-300"
               >
-                Instant Portfolio
+                Portfolio Action
               </a>
             </p>
           </div>
