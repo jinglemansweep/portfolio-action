@@ -120,35 +120,11 @@
 
 ### Task 13: Build Orchestrator (`src/lib/index.js`) & CLI (`src/cli.js`)
 
-- [ ] Create `src/lib/index.js` — main `build(options)` function:
-  - Accept options: `{ dataDir, pagesDir, blogDir, mediaDir, outputDir, actionPath, basePath, siteUrl, buildDate }`
-  - Orchestrate full build pipeline (steps 2–17 from PLAN.md):
-    1. Read & validate YAML (compile-yaml + validate)
-    2. Read & parse pages (compile-markdown)
-    3. Read & parse blog posts (compile-blog with filtering)
-    4. Resolve i18n bundle (compile-i18n)
-    5. Apply visibility stripping (strip-visibility)
-    6. Generate cross-reference index (compile-crossref)
-    7. Generate manifest (generate-manifest)
-    8. Write JSON data files to outputDir/data/
-    9. Generate index.html (generate-index)
-    10. Copy template components to outputDir/components/
-    11. Copy 404.html to outputDir/
-    12. Copy media/ to outputDir/media/ (with size warnings)
-    13. Generate CNAME if custom_domain set
-    14. Generate .nojekyll
-    15. Generate SEO files (compile-seo → robots.txt, sitemap.xml, llms.txt, feed.xml)
-  - Emit warnings to stderr (or via callback)
-  - Exit with code 1 on errors with descriptive messages
-  - Use GitHub Actions `::error::` / `::warning::` annotations when in Actions environment
-- [ ] Create `src/cli.js` — CLI wrapper:
-  - Parse args with `node:util parseArgs` (--data-dir, --pages-dir, --blog-dir, --media-dir, --output-dir, --base-path, --site-url, --build-date)
-  - Resolve actionPath from `import.meta.url`
-  - Call `build()` with parsed options
-  - Handle errors with process.exit(1) and stderr messages
-- [ ] Verify: `node src/cli.js --data-dir test/fixtures/minimal --output-dir /tmp/test-build` produces output
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/index.js` — main `build(options)` function
+- [x] Create `src/cli.js` — CLI wrapper
+- [x] Verify: CLI produces output from minimal fixture
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 14: Integration Tests
 
