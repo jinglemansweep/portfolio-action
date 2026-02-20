@@ -2,6 +2,8 @@
 
 A reusable **GitHub Action** that builds a modern, SPA-like personal portfolio/resume site from YAML data and Markdown pages. Create a repo with your content, add the action to a workflow, and deploy to any static host.
 
+**[Live Demo](https://jinglemansweep.github.io/portfolio-action/)**
+
 ## Quick Start
 
 1. Create a new repository with your data files:
