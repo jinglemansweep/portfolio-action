@@ -138,18 +138,11 @@
 
 ### Task 15: CI Workflow & Action Definition
 
-- [ ] Create `.github/workflows/ci.yml`:
-  - Trigger on push to main and pull requests to main
-  - Job `lint`: checkout, setup Node 22 with npm cache, npm ci, npm run lint, npm run format:check
-  - Job `test` (needs lint): checkout, setup Node 22 with npm cache, npm ci, npm run test:coverage, upload coverage artifact
-  - Job `smoke` (needs test): checkout, setup Node 22 with npm cache, npm ci, run CLI against full fixture, verify output file structure
-- [ ] Create `action.yml` — composite action definition:
-  - Inputs: data_dir, pages_dir, blog_dir, media_dir, output_dir, base_path, site_url, build_date (all with defaults per PLAN.md)
-  - Steps: setup Node 22, npm ci (in action_path), run cli.js with all inputs
-  - Output: output_path
-- [ ] Verify: CI workflow YAML is valid
-- [ ] Verify: action.yml is valid
-- [ ] Commit
+- [x] Create `.github/workflows/ci.yml`
+- [x] Create `action.yml` — composite action definition
+- [x] Verify: CI workflow YAML is valid
+- [x] Verify: action.yml is valid
+- [x] Commit
 
 ---
 
