@@ -100,30 +100,11 @@
 
 ### Task 11: SEO File Generation (`compile-seo.js`)
 
-- [ ] Create `src/lib/compile-seo.js`:
-  - Generate `robots.txt` content (respects seo.robots.indexing flag)
-  - Generate `sitemap.xml` content (only visible routes, i18n paths, build date as lastmod, priority per route type)
-  - Generate `llms.txt` content (structured plain-text from stripped data — contact, experience, projects, education, skills, community, accreditations, blog)
-  - Generate `feed.xml` content (RSS 2.0, blog posts ordered by publish_on desc, max 20 items)
-  - Resolve site URL from: site_url → GITHUB_REPOSITORY env → omit absolute URLs
-  - Generate meta robots content string (index/noindex, follow/nofollow)
-  - All generators accept stripped data only (privacy guaranteed by caller)
-- [ ] Create `test/unit/compile-seo.test.js`:
-  - Test: robots.txt allows all when indexing: true
-  - Test: robots.txt disallows all when indexing: false
-  - Test: robots.txt includes sitemap URL when site_url available
-  - Test: sitemap includes only visible routes
-  - Test: sitemap excludes routes where visibility is false
-  - Test: sitemap uses i18n route paths
-  - Test: llms.txt includes visible sections only
-  - Test: llms.txt excludes stripped contact fields
-  - Test: llms.txt includes blog posts when blog enabled
-  - Test: feed.xml contains published posts in correct order
-  - Test: feed.xml omits when blog disabled
-  - Test: meta robots string correct for all flag combinations
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-seo.js`
+- [x] Create `test/unit/compile-seo.test.js` (12 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 12: Manifest & Index Generation (`generate-manifest.js`, `generate-index.js`)
 
