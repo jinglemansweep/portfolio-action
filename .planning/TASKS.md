@@ -471,3 +471,22 @@
 - [x] Review all files for accidental secret exposure, hardcoded paths, or debug code
 - [x] Tag `v1` release
 - [x] Commit
+
+### Task 34: Agent Coding Guidelines (CLAUDE.md)
+
+- [x] Scan and analyse the entire codebase: directory structure, module patterns, naming conventions, import styles, test patterns
+- [x] Review `.planning/PLAN.md` and `.planning/TASKS.md` for project context, naming conventions, and architectural decisions
+- [x] Review all config files (eslint, prettier, vitest, lint-staged, husky) for enforced standards
+- [x] Create `CLAUDE.md` at the project root with comprehensive agent coding guidelines covering:
+  - Project overview and architecture summary
+  - Directory structure and file organisation
+  - Code style and conventions (ESM, Node 22, naming, imports)
+  - Component patterns (Lit 3, Light DOM, I18nMixin, Tailwind)
+  - Testing conventions (Vitest, fixture structure, coverage thresholds)
+  - Build pipeline and CLI usage
+  - Git workflow and commit conventions
+  - Quality gates (lint, format, test) that must pass before commits
+  - Common pitfalls and gotchas discovered during development
+- [x] Verify: `npm run lint` passes
+- [x] Verify: `npm run format:check` passes
+- [x] Commit
