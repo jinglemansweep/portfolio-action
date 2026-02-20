@@ -42,6 +42,7 @@ experience:
     company: 'TechCorp Ltd'
     start: '2021-03'
     end: 'present'
+    comment: 'Promoted from mid-level within 18 months'
     description: |
       Leading a team of 5 developers building a SaaS platform for project management.
       Architected the migration from monolith to microservices.

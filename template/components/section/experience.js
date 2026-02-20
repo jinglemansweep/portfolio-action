@@ -46,7 +46,7 @@ class SectionExperience extends I18nMixin(LitElement) {
     const matchedSkills = this._getMatchedSkillNames();
 
     return html`
-      <section class="py-8">
+      <section class="py-6">
         <h2
           class="mb-6 text-2xl font-bold text-gray-900 dark:text-white print:text-xl"
         >
@@ -59,6 +59,7 @@ class SectionExperience extends I18nMixin(LitElement) {
                 item-id="experience-${this._slugify(exp.title, exp.company)}"
                 .title=${exp.title}
                 .subtitle=${exp.company}
+                .comment=${exp.comment || ''}
                 .start=${exp.start}
                 .end=${exp.end}
                 .descriptionHtml=${exp.description_html || ''}

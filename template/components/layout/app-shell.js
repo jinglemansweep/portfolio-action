@@ -75,7 +75,7 @@ class AppShell extends I18nMixin(LitElement) {
    */
   _normalizePath(path) {
     const base = document.querySelector('base')?.getAttribute('href') || '/';
-    let normalized = path.split('#')[0];
+    let normalized = path.split('#')[0].split('?')[0];
     if (base !== '/' && normalized.startsWith(base)) {
       normalized = normalized.slice(base.length);
     }
@@ -326,7 +326,9 @@ class AppShell extends I18nMixin(LitElement) {
           .currentPath=${this._currentPath}
         ></nav-bar>
 
-        <main id="main-content" class="flex-1">${this._renderPage()}</main>
+        <main id="main-content" class="min-h-[80vh] flex-1">
+          ${this._renderPage()}
+        </main>
 
         <site-footer .site=${this._site}></site-footer>
       </div>
