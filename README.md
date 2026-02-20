@@ -101,6 +101,8 @@ visibility:
   socials: true # Social media profiles
   links: true # Custom profile links
 
+custom_domain: '' # Write CNAME file for custom domain hosting
+
 seo:
   robots:
     indexing: true
@@ -245,17 +247,19 @@ image: 'media/post-hero.jpg'
 Your blog post content here.
 ```
 
-| Field        | Required | Default       | Description                                           |
-| ------------ | -------- | ------------- | ----------------------------------------------------- |
-| `title`      | Yes      | —             | Post title                                            |
-| `publish_on` | Yes      | —             | Publish date (YYYY-MM-DD). Future dates are excluded. |
-| `expire_on`  | No       | `""`          | Expiry date. Posts past this date are excluded.       |
-| `updated_on` | No       | `""`          | Last updated date                                     |
-| `author`     | No       | `resume.name` | Author name                                           |
-| `draft`      | No       | `false`       | Drafts are excluded from build                        |
-| `featured`   | No       | `false`       | Shown prominently on blog index                       |
-| `tags`       | No       | `[]`          | Post tags for filtering                               |
-| `image`      | No       | `""`          | Hero/card image                                       |
+| Field         | Required | Default       | Description                                           |
+| ------------- | -------- | ------------- | ----------------------------------------------------- |
+| `title`       | Yes      | —             | Post title                                            |
+| `publish_on`  | Yes      | —             | Publish date (YYYY-MM-DD). Future dates are excluded. |
+| `slug`        | No       | From filename | URL path (derived from filename if omitted)           |
+| `description` | No       | `""`          | Short description for cards and RSS feed              |
+| `expire_on`   | No       | `""`          | Expiry date. Posts past this date are excluded.       |
+| `updated_on`  | No       | `""`          | Last updated date                                     |
+| `author`      | No       | `resume.name` | Author name                                           |
+| `draft`       | No       | `false`       | Drafts are excluded from build                        |
+| `featured`    | No       | `false`       | Shown prominently on blog index                       |
+| `tags`        | No       | `[]`          | Post tags for filtering                               |
+| `image`       | No       | `""`          | Hero/card image                                       |
 
 Blog posts include automatic reading time calculation and RSS feed generation (`feed.xml`).
 
