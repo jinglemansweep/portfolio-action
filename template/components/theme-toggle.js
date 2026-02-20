@@ -17,6 +17,7 @@ class ThemeToggle extends I18nMixin(LitElement) {
     this._mediaQuery = matchMedia('(prefers-color-scheme: dark)');
     this._onMediaChange = () => this._apply();
     this._mediaQuery.addEventListener('change', this._onMediaChange);
+    this._apply();
   }
 
   disconnectedCallback() {
