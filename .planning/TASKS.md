@@ -463,11 +463,11 @@
 
 ### Task 33: Final Quality Checks & Release
 
-- [ ] Run full test suite: `npm run test:coverage` — all tests pass, coverage >= 80%
-- [ ] Run lint: `npm run lint` — no errors
-- [ ] Run format check: `npm run format:check` — all files formatted
-- [ ] Run CLI smoke test: `node src/cli.js --data-dir test/fixtures/full --pages-dir test/fixtures/full/pages --blog-dir test/fixtures/full/blog --media-dir test/fixtures/full/media --output-dir /tmp/smoke-test` — succeeds
-- [ ] Verify all expected output files present in smoke test output
-- [ ] Review all files for accidental secret exposure, hardcoded paths, or debug code
-- [ ] Tag `v1` release
-- [ ] Commit
+- [x] Run full test suite: `npm run test:coverage` — all tests pass, coverage >= 80%
+- [x] Run lint: `npm run lint` — no errors
+- [x] Run format check: `npm run format:check` — all files formatted
+- [x] Run CLI smoke test: `node src/cli.js --data-dir test/fixtures/full --pages-dir test/fixtures/full/pages --blog-dir test/fixtures/full/blog --media-dir test/fixtures/full/media --output-dir /tmp/smoke-test` — succeeds
+- [x] Verify all expected output files present in smoke test output
+- [x] Review all files for accidental secret exposure, hardcoded paths, or debug code
+- [x] Tag `v1` release
+- [x] Commit
