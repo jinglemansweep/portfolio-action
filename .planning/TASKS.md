@@ -49,36 +49,13 @@
 
 ### Task 5: YAML Compilation & Validation (`compile-yaml.js`, `validate.js`)
 
-- [ ] Create `src/lib/compile-yaml.js` — YAML file reader + parser:
-  - Read YAML file from path, parse with `js-yaml`
-  - Merge visibility defaults (all true except email, phone → false)
-  - Merge SEO defaults (indexing, follow_links, sitemap, llms_txt, rss → true)
-  - Return parsed and merged data object
-  - Handle missing file (throw descriptive error)
-  - Handle malformed YAML (throw descriptive error with parse details)
-- [ ] Create `src/lib/validate.js` — schema validation:
-  - Validate `site.yml` required fields (title, description, lang)
-  - Validate `resume.yml` required fields (name, tagline)
-  - Validate `skills.yml` structure (categories array with skills)
-  - Validate `projects.yml` structure (projects array with name, description, start)
-  - Return array of validation errors with file, field, and reason
-  - Provide helpful error messages for common mistakes
-- [ ] Create `test/unit/compile-yaml.test.js`:
-  - Test: parses valid YAML files correctly
-  - Test: merges visibility defaults (email/phone false, others true)
-  - Test: merges SEO defaults
-  - Test: throws on missing file with descriptive message
-  - Test: throws on malformed YAML with parse error details
-  - Test: user overrides are preserved over defaults
-- [ ] Create `test/unit/validate.test.js`:
-  - Test: valid minimal fixture passes validation
-  - Test: valid full fixture passes validation
-  - Test: missing required fields produce specific errors
-  - Test: invalid types produce specific errors
-  - Test: empty/missing file produces clear error
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-yaml.js` — YAML file reader + parser
+- [x] Create `src/lib/validate.js` — schema validation
+- [x] Create `test/unit/compile-yaml.test.js` (6 tests)
+- [x] Create `test/unit/validate.test.js` (5 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 6: Visibility Stripping (`strip-visibility.js`)
 
