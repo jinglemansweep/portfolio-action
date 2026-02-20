@@ -215,7 +215,7 @@ Your content here with full **markdown** support.
 | `title`       | Yes      | —             | Page title             |
 | `slug`        | No       | From filename | URL path               |
 | `description` | No       | `""`          | Meta description       |
-| `nav_order`   | No       | `99`          | Position in navigation |
+| `nav_order`   | No       | `999`         | Position in navigation |
 | `show_in_nav` | No       | `true`        | Show in navigation bar |
 
 ## Blog

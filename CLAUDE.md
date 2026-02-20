@@ -1,5 +1,9 @@
 # Instant Portfolio — Agent Coding Guidelines
 
+> **MANDATORY: Pre-commit hooks (Husky + lint-staged) MUST be installed and enabled at all times. Run `npm install` to set them up. NEVER skip or disable hooks (e.g. `--no-verify`). If hooks are missing, reinstall them before proceeding.**
+
+> **MANDATORY: Before committing and pushing, ALL tests and quality checks MUST pass. No exceptions. Run `npm run lint`, `npm run format:check`, `npm test`, and `npm run test:coverage` and confirm every check is green before creating a commit.**
+
 ## Project Overview
 
 **Instant Portfolio** is a reusable GitHub Action that builds a modern SPA-like personal portfolio/resume site from YAML data and Markdown pages. The action compiles user content into a static site deployable to any hosting platform.
@@ -238,16 +242,20 @@ import {
 The build orchestrator (`src/lib/index.js`) runs these steps in order:
 
 1. Load & validate YAML (`compile-yaml.js`, `validate.js`)
-2. Strip visibility (`strip-visibility.js`)
-3. Compile markdown pages (`compile-markdown.js`)
-4. Compile blog posts (`compile-blog.js`)
-5. Resolve i18n (`compile-i18n.js`)
+2. Compile markdown pages (`compile-markdown.js`)
+3. Compile blog posts (`compile-blog.js`)
+4. Resolve i18n (`compile-i18n.js`)
+5. Strip visibility (`strip-visibility.js`)
 6. Generate crossref index (`compile-crossref.js`)
 7. Generate manifest (`generate-manifest.js`)
 8. Write JSON data files
 9. Generate index.html (`generate-index.js`)
-10. Copy components, 404.html, media
-11. Generate SEO files (`compile-seo.js`)
+10. Copy template components
+11. Copy 404.html
+12. Copy media (with warnings for files >1 MB)
+13. Write CNAME (if `custom_domain` set in site.yml)
+14. Write `.nojekyll`
+15. Generate SEO files (`compile-seo.js`)
 
 ### CLI Usage
 
@@ -259,7 +267,8 @@ node src/cli.js \
   --media-dir ./media \
   --output-dir ./_site \
   --base-path / \
-  --site-url https://example.com
+  --site-url https://example.com \
+  --build-date 2026-01-15
 ```
 
 ## Quality Gates
