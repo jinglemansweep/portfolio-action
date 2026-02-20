@@ -59,31 +59,11 @@
 
 ### Task 6: Visibility Stripping (`strip-visibility.js`)
 
-- [ ] Create `src/lib/strip-visibility.js`:
-  - Strip contact fields (email, phone, location, website, links) from resume when flag is false
-  - Strip section arrays (education, experience, community, accreditations) from resume when flag is false
-  - Omit skills data entirely when visibility.skills is false
-  - Omit projects data entirely when visibility.projects is false
-  - Omit blog data entirely when visibility.blog is false
-  - Return new objects (do not mutate inputs)
-- [ ] Create `test/unit/strip-visibility.test.js`:
-  - Test: default visibility preserves all data
-  - Test: email=false strips contact.email from output
-  - Test: phone=false strips contact.phone from output
-  - Test: location=false strips contact.location
-  - Test: website=false strips contact.website
-  - Test: links=false strips contact.links array
-  - Test: education=false removes education array entirely
-  - Test: experience=false removes experience array entirely
-  - Test: community=false removes community array
-  - Test: accreditations=false removes accreditations array
-  - Test: skills=false returns null/undefined for skills data
-  - Test: projects=false returns null/undefined for projects data
-  - Test: all flags false strips everything — output contains NO hidden data
-  - Test: original input objects are not mutated
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/strip-visibility.js`
+- [x] Create `test/unit/strip-visibility.test.js` (14 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 7: Markdown Compilation (`compile-markdown.js`)
 
