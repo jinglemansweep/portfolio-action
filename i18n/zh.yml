@@ -1,0 +1,75 @@
+locale: zh
+dir: ltr
+
+labels:
+  summary: 简介
+  experience: 工作经历
+  education: 教育背景
+  skills: 技能
+  projects: 项目
+  community: 社区
+  accreditations: 资质认证
+  contact: 联系方式
+
+  skill_level_beginner: 入门
+  skill_level_intermediate: 中级
+  skill_level_advanced: 高级
+  skill_level_expert: 专家
+  skill_years: '{n}年'
+  skill_used_in: 应用于
+  skill_links: 链接
+  skill_filter_placeholder: 筛选技能...
+  skill_all_categories: 所有分类
+
+  experience_present: 至今
+  experience_skills: 技能
+
+  project_ongoing: 进行中
+  project_completed: 已完成
+  project_visit: 访问
+  project_source: 源码
+
+  nav_home: 首页
+  nav_skills: 技能
+  nav_projects: 项目
+  nav_blog: 博客
+
+  route_skills: skills
+  route_projects: projects
+  route_blog: blog
+
+  hero_contact_email: 邮箱
+  hero_contact_phone: 电话
+  hero_view_skills: 查看技能
+
+  pdf_export: 导出PDF
+  pdf_generating: 正在生成PDF...
+
+  blog_title: 博客
+  blog_read_more: 阅读更多
+  blog_reading_time: '{n}分钟阅读'
+  blog_published: 发布于
+  blog_updated: 更新于
+  blog_tagged: 标签
+  blog_all_posts: 所有文章
+  blog_filter_by_tag: 按标签筛选
+  blog_no_posts: 未找到文章
+  blog_draft: 草稿
+  blog_featured: 精选
+
+  theme_light: 浅色
+  theme_dark: 深色
+  theme_system: 跟随系统
+
+  footer_built_with: 构建工具
+
+  not_found_title: 页面未找到
+  not_found_message: 您访问的页面不存在。
+  not_found_home: 返回首页
+
+  date_format: 'YYYY年M月D日'
+
+  a11y_skip_to_content: 跳至内容
+  a11y_toggle_theme: 切换主题
+  a11y_open_menu: 打开菜单
+  a11y_close_menu: 关闭菜单

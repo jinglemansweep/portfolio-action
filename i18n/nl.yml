@@ -1,0 +1,75 @@
+locale: nl
+dir: ltr
+
+labels:
+  summary: Samenvatting
+  experience: Ervaring
+  education: Opleiding
+  skills: Vaardigheden
+  projects: Projecten
+  community: Gemeenschap
+  accreditations: Accreditaties
+  contact: Contact
+
+  skill_level_beginner: Beginner
+  skill_level_intermediate: Gemiddeld
+  skill_level_advanced: Gevorderd
+  skill_level_expert: Expert
+  skill_years: '{n} jaar'
+  skill_used_in: Gebruikt in
+  skill_links: Links
+  skill_filter_placeholder: Vaardigheden filteren...
+  skill_all_categories: Alle categorieën
+
+  experience_present: Heden
+  experience_skills: Vaardigheden
+
+  project_ongoing: Lopend
+  project_completed: Voltooid
+  project_visit: Bezoeken
+  project_source: Bron
+
+  nav_home: Home
+  nav_skills: Vaardigheden
+  nav_projects: Projecten
+  nav_blog: Blog
+
+  route_skills: vaardigheden
+  route_projects: projecten
+  route_blog: blog
+
+  hero_contact_email: E-mail
+  hero_contact_phone: Telefoon
+  hero_view_skills: Vaardigheden bekijken
+
+  pdf_export: PDF exporteren
+  pdf_generating: PDF wordt gegenereerd...
+
+  blog_title: Blog
+  blog_read_more: Lees meer
+  blog_reading_time: '{n} min leestijd'
+  blog_published: Gepubliceerd
+  blog_updated: Bijgewerkt
+  blog_tagged: Gelabeld
+  blog_all_posts: Alle berichten
+  blog_filter_by_tag: Filteren op label
+  blog_no_posts: Geen berichten gevonden
+  blog_draft: Concept
+  blog_featured: Uitgelicht
+
+  theme_light: Licht
+  theme_dark: Donker
+  theme_system: Systeem
+
+  footer_built_with: Gebouwd met
+
+  not_found_title: Pagina niet gevonden
+  not_found_message: De pagina die u zoekt bestaat niet.
+  not_found_home: Naar home
+
+  date_format: 'D MMM YYYY'
+
+  a11y_skip_to_content: Ga naar inhoud
+  a11y_toggle_theme: Thema wisselen
+  a11y_open_menu: Menu openen
+  a11y_close_menu: Menu sluiten

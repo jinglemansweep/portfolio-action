@@ -1,0 +1,4 @@
+projects:
+  - name: 'Blog Test Project'
+    description: 'Placeholder project for blog fixture tests.'
+    start: '2025-01'

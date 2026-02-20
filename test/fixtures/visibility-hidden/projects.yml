@@ -1,0 +1,24 @@
+projects:
+  - name: 'Project Phantom'
+    description: |
+      A classified project that should be completely stripped from
+      the build output when visibility.projects is false.
+    url: 'https://phantom.example.com'
+    repo: 'https://github.com/hidden/phantom'
+    start: '2023-01'
+    end: ''
+    image: ''
+    skills: ['Stealth', 'Encryption']
+    tags: ['classified', 'secret']
+    featured: true
+
+  - name: 'Operation Shadow'
+    description: 'Another project that should be stripped from output.'
+    url: ''
+    repo: ''
+    start: '2024-06'
+    end: '2024-12'
+    image: ''
+    skills: ['Surveillance']
+    tags: ['covert']
+    featured: false

@@ -1,0 +1,75 @@
+locale: ar
+dir: rtl
+
+labels:
+  summary: الملخص
+  experience: الخبرة
+  education: التعليم
+  skills: المهارات
+  projects: المشاريع
+  community: المجتمع
+  accreditations: الاعتمادات
+  contact: التواصل
+
+  skill_level_beginner: مبتدئ
+  skill_level_intermediate: متوسط
+  skill_level_advanced: متقدم
+  skill_level_expert: خبير
+  skill_years: '{n} سنوات'
+  skill_used_in: مستخدم في
+  skill_links: روابط
+  skill_filter_placeholder: تصفية المهارات...
+  skill_all_categories: جميع الفئات
+
+  experience_present: الحالي
+  experience_skills: المهارات
+
+  project_ongoing: جاري
+  project_completed: مكتمل
+  project_visit: زيارة
+  project_source: المصدر
+
+  nav_home: الرئيسية
+  nav_skills: المهارات
+  nav_projects: المشاريع
+  nav_blog: المدونة
+
+  route_skills: skills
+  route_projects: projects
+  route_blog: blog
+
+  hero_contact_email: البريد الإلكتروني
+  hero_contact_phone: الهاتف
+  hero_view_skills: عرض المهارات
+
+  pdf_export: تصدير PDF
+  pdf_generating: جاري إنشاء PDF...
+
+  blog_title: المدونة
+  blog_read_more: اقرأ المزيد
+  blog_reading_time: '{n} دقائق للقراءة'
+  blog_published: نُشر في
+  blog_updated: تم التحديث
+  blog_tagged: الوسوم
+  blog_all_posts: جميع المقالات
+  blog_filter_by_tag: تصفية حسب الوسم
+  blog_no_posts: لم يتم العثور على مقالات
+  blog_draft: مسودة
+  blog_featured: مميز
+
+  theme_light: فاتح
+  theme_dark: داكن
+  theme_system: النظام
+
+  footer_built_with: بُني باستخدام
+
+  not_found_title: الصفحة غير موجودة
+  not_found_message: الصفحة التي تبحث عنها غير موجودة.
+  not_found_home: العودة للرئيسية
+
+  date_format: 'D MMM YYYY'
+
+  a11y_skip_to_content: انتقل إلى المحتوى
+  a11y_toggle_theme: تبديل المظهر
+  a11y_open_menu: فتح القائمة
+  a11y_close_menu: إغلاق القائمة

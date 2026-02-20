@@ -1,0 +1,7 @@
+node_modules/
+_site/
+coverage/
+.planning/
+.claude/
+package-lock.json
+test/fixtures/invalid/malformed.yml

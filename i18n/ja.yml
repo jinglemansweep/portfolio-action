@@ -1,0 +1,75 @@
+locale: ja
+dir: ltr
+
+labels:
+  summary: 概要
+  experience: 経験
+  education: 学歴
+  skills: スキル
+  projects: プロジェクト
+  community: コミュニティ
+  accreditations: 資格
+  contact: 連絡先
+
+  skill_level_beginner: 初心者
+  skill_level_intermediate: 中級者
+  skill_level_advanced: 上級者
+  skill_level_expert: エキスパート
+  skill_years: '{n}年'
+  skill_used_in: 使用先
+  skill_links: リンク
+  skill_filter_placeholder: スキルを検索...
+  skill_all_categories: すべてのカテゴリ
+
+  experience_present: 現在
+  experience_skills: スキル
+
+  project_ongoing: 進行中
+  project_completed: 完了
+  project_visit: 訪問
+  project_source: ソース
+
+  nav_home: ホーム
+  nav_skills: スキル
+  nav_projects: プロジェクト
+  nav_blog: ブログ
+
+  route_skills: skills
+  route_projects: projects
+  route_blog: blog
+
+  hero_contact_email: メール
+  hero_contact_phone: 電話
+  hero_view_skills: スキルを見る
+
+  pdf_export: PDF出力
+  pdf_generating: PDF生成中...
+
+  blog_title: ブログ
+  blog_read_more: 続きを読む
+  blog_reading_time: '{n}分で読めます'
+  blog_published: 公開日
+  blog_updated: 更新日
+  blog_tagged: タグ
+  blog_all_posts: すべての記事
+  blog_filter_by_tag: タグで絞り込み
+  blog_no_posts: 記事が見つかりません
+  blog_draft: 下書き
+  blog_featured: 注目
+
+  theme_light: ライト
+  theme_dark: ダーク
+  theme_system: システム
+
+  footer_built_with: 使用技術
+
+  not_found_title: ページが見つかりません
+  not_found_message: お探しのページは存在しません。
+  not_found_home: ホームへ戻る
+
+  date_format: 'YYYY年M月D日'
+
+  a11y_skip_to_content: コンテンツへスキップ
+  a11y_toggle_theme: テーマ切替
+  a11y_open_menu: メニューを開く
+  a11y_close_menu: メニューを閉じる

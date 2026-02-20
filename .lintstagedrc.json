@@ -1,0 +1,6 @@
+{
+  "src/**/*.js": ["eslint --fix", "prettier --write"],
+  "test/**/*.js": ["eslint --fix", "prettier --write"],
+  "template/**/*.js": ["eslint --fix", "prettier --write"],
+  "i18n/**/*.yml": ["prettier --write"]
+}
