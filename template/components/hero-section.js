@@ -43,7 +43,7 @@ class HeroSection extends I18nMixin(LitElement) {
     // LinkedIn was removed from Simple Icons; use an inline SVG fallback
     if (platform === 'linkedin') {
       return html`<svg
-        class="h-4 w-4"
+        class="h-4 w-4 print:h-3 print:w-3"
         viewBox="0 0 24 24"
         fill="currentColor"
         aria-hidden="true"
@@ -56,7 +56,7 @@ class HeroSection extends I18nMixin(LitElement) {
     return html`<img
       src="https://cdn.simpleicons.org/${platform}/white"
       alt="${platform}"
-      class="h-4 w-4"
+      class="h-4 w-4 print:h-3 print:w-3"
       loading="lazy"
     />`;
   }
@@ -67,14 +67,17 @@ class HeroSection extends I18nMixin(LitElement) {
 
     const pills = [];
 
+    const pillClass =
+      'inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/30 print:gap-1 print:rounded-none print:bg-transparent print:px-0 print:py-0 print:text-xs print:text-gray-700 print:backdrop-blur-none';
+    const pillStaticClass =
+      'inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white backdrop-blur-sm print:gap-1 print:rounded-none print:bg-transparent print:px-0 print:py-0 print:text-xs print:text-gray-700 print:backdrop-blur-none';
+    const iconClass = 'h-4 w-4 print:h-3 print:w-3';
+
     if (contact.email) {
       pills.push(html`
-        <a
-          href="mailto:${contact.email}"
-          class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/30"
-        >
+        <a href="mailto:${contact.email}" class=${pillClass}>
           <svg
-            class="h-4 w-4"
+            class=${iconClass}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -94,12 +97,9 @@ class HeroSection extends I18nMixin(LitElement) {
 
     if (contact.phone) {
       pills.push(html`
-        <a
-          href="tel:${contact.phone}"
-          class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/30"
-        >
+        <a href="tel:${contact.phone}" class=${pillClass}>
           <svg
-            class="h-4 w-4"
+            class=${iconClass}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -119,11 +119,9 @@ class HeroSection extends I18nMixin(LitElement) {
 
     if (contact.location) {
       pills.push(html`
-        <span
-          class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white backdrop-blur-sm"
-        >
+        <span class=${pillStaticClass}>
           <svg
-            class="h-4 w-4"
+            class=${iconClass}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -153,10 +151,10 @@ class HeroSection extends I18nMixin(LitElement) {
           href=${contact.website}
           target="_blank"
           rel="noopener noreferrer"
-          class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/30"
+          class=${pillClass}
         >
           <svg
-            class="h-4 w-4"
+            class=${iconClass}
             fill="none"
             viewBox="0 0 24 24"
             stroke="currentColor"
@@ -177,15 +175,22 @@ class HeroSection extends I18nMixin(LitElement) {
     if (contact.links?.length) {
       for (const link of contact.links) {
         const platform = link.platform || '';
+        const label = platform || new URL(link.url).hostname;
+        // Extract username from URL path for print display
+        const urlPath = new URL(link.url).pathname.replace(/^\/+|\/+$/g, '');
+        const printLabel = urlPath
+          ? `${platform || new URL(link.url).hostname}/${urlPath}`
+          : label;
         pills.push(html`
           <a
             href=${link.url}
             target="_blank"
             rel="noopener noreferrer"
-            class="inline-flex items-center gap-1.5 rounded-full bg-white/20 px-3 py-1.5 text-sm capitalize text-white no-underline backdrop-blur-sm transition-colors hover:bg-white/30"
+            class="${pillClass} capitalize"
           >
             ${platform ? this._renderSocialIcon(platform) : ''}
-            ${platform || new URL(link.url).hostname}
+            <span class="print:hidden">${label}</span>
+            <span class="hidden print:inline">${printLabel}</span>
           </a>
         `);
       }
@@ -249,10 +254,10 @@ class HeroSection extends I18nMixin(LitElement) {
         <div
           class="${isImage
             ? 'relative'
-            : ''} mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24"
+            : ''} mx-auto max-w-6xl px-4 py-16 sm:px-6 sm:py-20 lg:px-8 lg:py-24 print:px-0 print:py-4"
         >
           <div
-            class="flex flex-col items-center gap-8 text-center md:flex-row md:text-left"
+            class="flex flex-col items-center gap-8 text-center md:flex-row md:text-left print:gap-2 print:text-left"
           >
             <!-- Photo -->
             ${photo
@@ -277,7 +282,7 @@ class HeroSection extends I18nMixin(LitElement) {
               </h1>
               ${tagline
                 ? html`<p
-                    class="mb-6 text-lg text-white/90 sm:text-xl print:text-base print:text-gray-600"
+                    class="mb-6 text-lg text-white/90 sm:text-xl print:mb-2 print:text-base print:text-gray-600"
                   >
                     ${tagline}
                   </p>`
@@ -285,7 +290,7 @@ class HeroSection extends I18nMixin(LitElement) {
 
               <!-- Contact pills -->
               <div
-                class="mb-6 flex flex-wrap justify-center gap-2 md:justify-start print:gap-1"
+                class="mb-6 flex flex-wrap justify-center gap-2 md:justify-start print:mb-0 print:gap-x-3 print:gap-y-0.5"
               >
                 ${this._renderContactPills()}
               </div>
