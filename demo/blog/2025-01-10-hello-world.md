@@ -18,7 +18,7 @@ reading_time: true
 ## Welcome
 
 After years of meaning to start a blog, I've finally done it. This site is built
-with **Instant Portfolio**, a GitHub Action that turns YAML and Markdown into a
+with **Portfolio Action**, a GitHub Action that turns YAML and Markdown into a
 full portfolio site — no framework, no bundler, just static files.
 
 ### What to Expect

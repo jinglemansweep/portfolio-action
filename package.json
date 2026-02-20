@@ -1,6 +1,6 @@
 {
   "name": "portfolio",
-  "description": "Instant Portfolio — build engine",
+  "description": "Portfolio Action — build engine",
   "version": "1.0.0",
   "type": "module",
   "engines": {
@@ -33,5 +33,5 @@
     "prettier": "^3.0.0",
     "vitest": "^3.0.0"
   },
-  "license": "MIT"
+  "license": "GPL-3.0"
 }
