@@ -101,9 +101,11 @@ class SkillCard extends I18nMixin(LitElement) {
             <h3 class="font-semibold text-gray-900 dark:text-white">
               ${s.name}
             </h3>
-            ${s.years
+            ${s.start_year
               ? html`<p class="text-xs text-gray-500 dark:text-gray-400">
-                  ${this.t('skill_years', { n: s.years })}
+                  ${this.t('skill_years', {
+                    n: new Date().getFullYear() - s.start_year,
+                  })}
                 </p>`
               : ''}
           </div>

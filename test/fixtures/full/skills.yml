@@ -3,7 +3,7 @@ categories:
     skills:
       - name: React
         level: expert
-        years: 7
+        start_year: 2019
         icon: react
         tags: ['frontend', 'ui', 'spa']
         links:
@@ -13,7 +13,7 @@ categories:
             url: 'https://janesmith.dev/react-guide'
       - name: TypeScript
         level: advanced
-        years: 5
+        start_year: 2021
         icon: typescript
         tags: ['frontend', 'backend', 'typed']
         links:
@@ -21,7 +21,7 @@ categories:
             url: 'https://www.typescriptlang.org/docs/'
       - name: CSS
         level: advanced
-        years: 8
+        start_year: 2018
         tags: ['frontend', 'styling']
         links:
           - url: 'https://developer.mozilla.org/en-US/docs/Web/CSS'
@@ -30,7 +30,7 @@ categories:
     skills:
       - name: Node.js
         level: expert
-        years: 8
+        start_year: 2018
         icon: nodedotjs
         tags: ['backend', 'runtime']
         links:
@@ -38,7 +38,7 @@ categories:
             url: 'https://nodejs.org'
       - name: Python
         level: advanced
-        years: 6
+        start_year: 2020
         icon: python
         tags: ['backend', 'scripting']
         links:
@@ -46,7 +46,7 @@ categories:
             url: 'https://docs.python.org'
       - name: PostgreSQL
         level: intermediate
-        years: 4
+        start_year: 2022
         icon: postgresql
         tags: ['database', 'sql']
         links:
@@ -56,7 +56,7 @@ categories:
     skills:
       - name: Docker
         level: advanced
-        years: 5
+        start_year: 2021
         icon: docker
         tags: ['containers', 'devops']
         links:
@@ -64,7 +64,7 @@ categories:
             url: 'https://docs.docker.com'
       - name: JavaScript
         level: expert
-        years: 10
+        start_year: 2016
         icon: javascript
         tags: ['frontend', 'backend']
         links:

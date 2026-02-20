@@ -172,7 +172,10 @@ export function generateLlmsTxt(data) {
       for (const skill of cat.skills || []) {
         const parts = [skill.name];
         if (skill.level) parts.push(`Level: ${skill.level}`);
-        if (skill.years) parts.push(`${skill.years} years`);
+        if (skill.start_year) {
+          const years = new Date().getFullYear() - skill.start_year;
+          parts.push(`${years} years`);
+        }
         lines.push(`- ${parts.join(', ')}`);
       }
       lines.push('');
