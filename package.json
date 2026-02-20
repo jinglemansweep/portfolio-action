@@ -14,6 +14,8 @@
     "test:watch": "vitest",
     "test:coverage": "vitest run --coverage",
     "build": "node src/cli.js",
+    "demo": "node src/cli.js --data-dir demo --pages-dir demo/pages --blog-dir demo/blog --output-dir _site --base-path / --site-url http://localhost:3000",
+    "demo:serve": "npx serve _site",
     "prepare": "husky"
   },
   "dependencies": {
