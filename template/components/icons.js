@@ -478,5 +478,6 @@ export function brandIcon(type, cls = 'h-4 w-4') {
     class=${cls}
     crossorigin="anonymous"
     loading="lazy"
+    @error=${(e) => e.target.remove()}
   />`;
 }

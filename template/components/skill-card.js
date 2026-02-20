@@ -90,7 +90,17 @@ class SkillCard extends I18nMixin(LitElement) {
                   class="h-8 w-8 dark:invert"
                   crossorigin="anonymous"
                   loading="lazy"
+                  @error=${(e) => {
+                    e.target.style.display = 'none';
+                    e.target.nextElementSibling.style.display = 'flex';
+                  }}
                 />
+                <div
+                  style="display: none"
+                  class="flex h-8 w-8 items-center justify-center rounded-lg bg-gray-100 text-sm font-bold text-gray-500 dark:bg-gray-700 dark:text-gray-400"
+                >
+                  ${s.name.charAt(0).toUpperCase()}
+                </div>
               `
             : html`
                 <div

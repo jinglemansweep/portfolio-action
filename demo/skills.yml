@@ -48,7 +48,7 @@ categories:
       - name: CSS
         level: advanced
         start_year: 2016
-        icon: css3
+        icon: css
         tags: ['frontend', 'styling']
         links:
           - label: 'MDN CSS'
