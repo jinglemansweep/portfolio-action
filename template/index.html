@@ -20,9 +20,13 @@
     <!-- App components -->
     <script type="module" src="./components/app-shell.js"></script>
 
+    <!-- Dark mode: class-based strategy for Tailwind v4 browser build -->
+    <style type="text/tailwindcss">
+      @custom-variant dark (&:where(.dark, .dark *));
+    </style>
+
     <!-- Theme custom properties -->
     <style>
-      @custom-variant dark (&:where(.dark, .dark *));
       :root {
         --color-primary: ${primary};
         --color-accent: ${accent};
