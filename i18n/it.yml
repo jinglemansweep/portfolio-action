@@ -1,0 +1,75 @@
+locale: it
+dir: ltr
+
+labels:
+  summary: Riepilogo
+  experience: Esperienza
+  education: Istruzione
+  skills: Competenze
+  projects: Progetti
+  community: Comunità
+  accreditations: Accreditamenti
+  contact: Contatto
+
+  skill_level_beginner: Principiante
+  skill_level_intermediate: Intermedio
+  skill_level_advanced: Avanzato
+  skill_level_expert: Esperto
+  skill_years: "{n} anni"
+  skill_used_in: Usato in
+  skill_links: Link
+  skill_filter_placeholder: Filtra competenze...
+  skill_all_categories: Tutte le categorie
+
+  experience_present: Presente
+  experience_skills: Competenze
+
+  project_ongoing: In corso
+  project_completed: Completato
+  project_visit: Visita
+  project_source: Sorgente
+
+  nav_home: Home
+  nav_skills: Competenze
+  nav_projects: Progetti
+  nav_blog: Blog
+
+  route_skills: competenze
+  route_projects: progetti
+  route_blog: blog
+
+  hero_contact_email: E-mail
+  hero_contact_phone: Telefono
+  hero_view_skills: Vedi competenze
+
+  pdf_export: Esporta PDF
+  pdf_generating: Generazione PDF...
+
+  blog_title: Blog
+  blog_read_more: Leggi di più
+  blog_reading_time: "{n} min di lettura"
+  blog_published: Pubblicato
+  blog_updated: Aggiornato
+  blog_tagged: Etichettato
+  blog_all_posts: Tutti gli articoli
+  blog_filter_by_tag: Filtra per etichetta
+  blog_no_posts: Nessun articolo trovato
+  blog_draft: Bozza
+  blog_featured: In evidenza
+
+  theme_light: Chiaro
+  theme_dark: Scuro
+  theme_system: Sistema
+
+  footer_built_with: Realizzato con
+
+  not_found_title: Pagina non trovata
+  not_found_message: La pagina che stai cercando non esiste.
+  not_found_home: Torna alla home
+
+  date_format: "D MMM YYYY"
+
+  a11y_skip_to_content: Vai al contenuto
+  a11y_toggle_theme: Cambia tema
+  a11y_open_menu: Apri menu
+  a11y_close_menu: Chiudi menu

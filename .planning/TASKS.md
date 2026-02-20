@@ -91,26 +91,12 @@
 
 ### Task 10: i18n Resolution (`compile-i18n.js`)
 
-- [ ] Create `src/lib/compile-i18n.js`:
-  - Load built-in language pack for site.lang from i18n/ directory (fallback: en)
-  - Support `lang: custom` with `i18n_file` path
-  - Deep-merge i18n_overrides from site.yml over base pack
-  - Validate all required keys present (collect warnings for missing)
-  - Return `{ i18n, warnings }` object
-- [ ] Create built-in language packs in `i18n/`:
-  - `en.yml` (reference — all keys as per PLAN.md)
-  - `fr.yml`, `de.yml`, `es.yml`, `pt.yml`, `nl.yml`, `it.yml`, `ja.yml`, `zh.yml`, `ar.yml` (RTL)
-- [ ] Create `test/unit/compile-i18n.test.js`:
-  - Test: loads English pack by default
-  - Test: loads specified language pack (e.g. fr)
-  - Test: deep-merges user overrides
-  - Test: falls back to English for unknown language
-  - Test: warns on missing keys after merge
-  - Test: supports custom locale file via i18n_file
-  - Test: ar pack has dir: rtl
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-i18n.js`
+- [x] Create built-in language packs (en, fr, de, es, pt, nl, it, ja, zh, ar)
+- [x] Create `test/unit/compile-i18n.test.js` (7 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 11: SEO File Generation (`compile-seo.js`)
 

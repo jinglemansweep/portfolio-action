@@ -1,0 +1,75 @@
+locale: en
+dir: ltr
+
+labels:
+  summary: Summary
+  experience: Experience
+  education: Education
+  skills: Skills
+  projects: Projects
+  community: Community
+  accreditations: Accreditations
+  contact: Contact
+
+  skill_level_beginner: Beginner
+  skill_level_intermediate: Intermediate
+  skill_level_advanced: Advanced
+  skill_level_expert: Expert
+  skill_years: "{n} years"
+  skill_used_in: Used in
+  skill_links: Links
+  skill_filter_placeholder: Filter skills...
+  skill_all_categories: All Categories
+
+  experience_present: Present
+  experience_skills: Skills
+
+  project_ongoing: Ongoing
+  project_completed: Completed
+  project_visit: Visit
+  project_source: Source
+
+  nav_home: Home
+  nav_skills: Skills
+  nav_projects: Projects
+  nav_blog: Blog
+
+  route_skills: skills
+  route_projects: projects
+  route_blog: blog
+
+  hero_contact_email: Email
+  hero_contact_phone: Phone
+  hero_view_skills: View Skills
+
+  pdf_export: Export PDF
+  pdf_generating: Generating PDF...
+
+  blog_title: Blog
+  blog_read_more: Read more
+  blog_reading_time: "{n} min read"
+  blog_published: Published
+  blog_updated: Updated
+  blog_tagged: Tagged
+  blog_all_posts: All Posts
+  blog_filter_by_tag: Filter by tag
+  blog_no_posts: No posts found
+  blog_draft: Draft
+  blog_featured: Featured
+
+  theme_light: Light
+  theme_dark: Dark
+  theme_system: System
+
+  footer_built_with: Built with
+
+  not_found_title: Page Not Found
+  not_found_message: The page you are looking for does not exist.
+  not_found_home: Go Home
+
+  date_format: "MMM D, YYYY"
+
+  a11y_skip_to_content: Skip to content
+  a11y_toggle_theme: Toggle theme
+  a11y_open_menu: Open menu
+  a11y_close_menu: Close menu
