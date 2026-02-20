@@ -67,23 +67,11 @@
 
 ### Task 7: Markdown Compilation (`compile-markdown.js`)
 
-- [ ] Create `src/lib/compile-markdown.js`:
-  - Read markdown files from directory (pages/ or individual files)
-  - Parse frontmatter with `gray-matter`
-  - Render markdown body to HTML with `markdown-it`
-  - Rewrite media paths as relative (`media/filename.ext`)
-  - Derive slug from filename if not in frontmatter
-  - Return array of `{ slug, title, description, content_html, meta }` objects
-- [ ] Create `test/unit/compile-markdown.test.js`:
-  - Test: parses frontmatter fields (title, slug, description, nav_order, show_in_nav)
-  - Test: renders markdown to HTML (headings, bold, lists, code blocks)
-  - Test: rewrites media paths (`media/image.png` stays relative)
-  - Test: derives slug from filename when frontmatter slug omitted
-  - Test: handles empty pages directory gracefully (returns empty array)
-  - Test: handles file with no frontmatter
-- [ ] Verify: `npm test` passes
-- [ ] Verify: `npm run lint` passes
-- [ ] Commit
+- [x] Create `src/lib/compile-markdown.js`
+- [x] Create `test/unit/compile-markdown.test.js` (9 tests)
+- [x] Verify: `npm test` passes
+- [x] Verify: `npm run lint` passes
+- [x] Commit
 
 ### Task 8: Blog Compilation (`compile-blog.js`)
 
