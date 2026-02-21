@@ -149,6 +149,24 @@ export async function build(options) {
     stripped.resume.summary_html = renderMarkdown(stripped.resume.summary);
   }
 
+  // Render experience description markdown
+  if (stripped.resume.experience) {
+    for (const exp of stripped.resume.experience) {
+      if (exp.description) {
+        exp.description_html = renderMarkdown(exp.description);
+      }
+    }
+  }
+
+  // Render education description markdown
+  if (stripped.resume.education) {
+    for (const edu of stripped.resume.education) {
+      if (edu.description) {
+        edu.description_html = renderMarkdown(edu.description);
+      }
+    }
+  }
+
   await writeJson(join(dataOutputDir, 'site.json'), {
     ...site,
     visibility: site.visibility,
