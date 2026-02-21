@@ -27,7 +27,7 @@ function makeResume() {
       location: 'London, UK',
       website: 'https://example.com',
       socials: [{ type: 'github', username: 'test' }],
-      links: [{ platform: 'github', url: 'https://github.com/test' }],
+      links: [{ title: 'github', url: 'https://github.com/test' }],
     },
     education: [
       { institution: 'Uni', qualification: 'BSc', start: '2012', end: '2015' },

@@ -138,12 +138,12 @@ class HeroSection extends I18nMixin(LitElement) {
 
     if (contact.links?.length) {
       for (const link of contact.links) {
-        const platform = link.platform || '';
-        const label = platform || new URL(link.url).hostname;
+        const title = link.title || '';
+        const label = title || new URL(link.url).hostname;
         // Extract username from URL path for print display
         const urlPath = new URL(link.url).pathname.replace(/^\/+|\/+$/g, '');
         const printLabel = urlPath
-          ? `${platform || new URL(link.url).hostname}/${urlPath}`
+          ? `${title || new URL(link.url).hostname}/${urlPath}`
           : label;
         pills.push(html`
           <a

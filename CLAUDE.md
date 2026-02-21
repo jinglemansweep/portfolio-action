@@ -143,11 +143,16 @@ customElements.define('my-component', MyComponent);
 
 ### I18nMixin
 
-All components extend `I18nMixin(LitElement)`. Use `this.t('key')` for translated strings. Supports `{n}` parameter interpolation.
+All components extend `I18nMixin(LitElement)`. Use `this.t('key')` for translated strings. Supports `{n}` parameter interpolation. Use `this.formatDate(dateStr)` for locale-aware date formatting.
 
 ```javascript
 html`<h2>${this.t('experience')}</h2>`;
 html`<span>${this.t('skill_years', { n: 5 })}</span>`;
+
+// Locale-aware date formatting via Intl.DateTimeFormat
+// "2022-01" → "Jan 2022", "2025-01-10" → "Jan 10, 2025",
+// "2022" → "2022", "present" → translated
+html`<time>${this.formatDate('2022-01')}</time>`;
 ```
 
 ### Properties

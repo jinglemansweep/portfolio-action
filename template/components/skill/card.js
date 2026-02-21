@@ -112,12 +112,16 @@ class SkillCard extends I18nMixin(LitElement) {
           <div>
             <h3 class="font-semibold text-gray-900 dark:text-white">
               ${s.name}
+              ${s.status
+                ? html`<span
+                    class="ml-1.5 inline-flex items-center rounded-full bg-amber-100 px-2 py-0.5 text-xs font-medium text-amber-800 align-middle dark:bg-amber-900/40 dark:text-amber-300"
+                    >${this.t(`skill_status_${s.status}`)}</span
+                  >`
+                : ''}
             </h3>
-            ${s.start_year
+            ${s.years_active
               ? html`<p class="text-xs text-gray-500 dark:text-gray-400">
-                  ${this.t('skill_years', {
-                    n: new Date().getFullYear() - s.start_year,
-                  })}
+                  ${this.t('skill_years', { n: s.years_active })}
                 </p>`
               : ''}
           </div>
@@ -205,11 +209,6 @@ class SkillCard extends I18nMixin(LitElement) {
         ${hasUsedIn
           ? html`
               <div class="border-t border-gray-100 pt-3 dark:border-gray-700">
-                <p
-                  class="mb-1.5 text-xs font-medium text-gray-500 uppercase dark:text-gray-400"
-                >
-                  ${this.t('skill_used_in')}
-                </p>
                 <div class="flex flex-col gap-1">
                   ${experiences.map((exp) => {
                     const slug = this._slugify(`${exp.title}--${exp.company}`);

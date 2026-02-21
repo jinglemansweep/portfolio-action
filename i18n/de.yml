@@ -20,6 +20,7 @@ labels:
   skill_links: Links
   skill_filter_placeholder: Fähigkeiten filtern...
   skill_all_categories: Alle Kategorien
+  skill_status_dormant: Ruhend
 
   experience_present: Gegenwart
   experience_skills: Fähigkeiten

@@ -130,14 +130,15 @@ class PageBlogPost extends I18nMixin(LitElement) {
             ${post.publish_on
               ? html`
                   <span class="flex items-center gap-1">
-                    ${iconCalendar()} ${post.publish_on}
+                    ${iconCalendar()} ${this.formatDate(post.publish_on)}
                   </span>
                 `
               : ''}
             ${post.updated_on
               ? html`
                   <span class="flex items-center gap-1">
-                    (${this.t('blog_updated')}: ${post.updated_on})
+                    (${this.t('blog_updated')}:
+                    ${this.formatDate(post.updated_on)})
                   </span>
                 `
               : ''}

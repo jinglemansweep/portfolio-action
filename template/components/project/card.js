@@ -103,7 +103,8 @@ class ProjectCard extends I18nMixin(LitElement) {
 
           <!-- Date range -->
           <p class="mb-3 text-sm text-gray-500 dark:text-gray-400">
-            ${p.start} &mdash; ${p.end || this.t('experience_present')}
+            ${this.formatDate(p.start)} &mdash;
+            ${this.formatDate(p.end) || this.t('experience_present')}
           </p>
 
           <!-- Description -->
