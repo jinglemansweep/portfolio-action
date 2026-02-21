@@ -228,7 +228,7 @@ export async function build(options) {
     join(templateDir, '404.html'),
     'utf8',
   );
-  const notFoundHtml = notFoundTemplate.replace('__BASE_PATH__', basePath);
+  const notFoundHtml = notFoundTemplate.replaceAll('__BASE_PATH__', basePath);
   await writeFile(join(outputDir, '404.html'), notFoundHtml);
   await cp(join(templateDir, 'prose.css'), join(outputDir, 'prose.css'));
 
