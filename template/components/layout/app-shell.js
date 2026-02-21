@@ -64,8 +64,12 @@ class AppShell extends I18nMixin(LitElement) {
     const params = new URLSearchParams(window.location.search);
     const redirectPath = params.get('p');
     if (redirectPath) {
+      const base = document.querySelector('base')?.getAttribute('href') || '/';
       const decoded = decodeURIComponent(redirectPath);
-      window.history.replaceState(null, '', decoded);
+      // The ?p= value is relative to the base path, so prepend it
+      const prefix = base.endsWith('/') ? base.slice(0, -1) : base;
+      const restored = decoded.startsWith('/') ? prefix + decoded : decoded;
+      window.history.replaceState(null, '', restored);
     }
   }
 

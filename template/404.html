@@ -4,15 +4,26 @@
     <meta charset="utf-8" />
     <title>Redirecting...</title>
     <script>
-      // SPA fallback: encode the original path as a query parameter
-      // and redirect to index.html for client-side routing
-      var path = window.location.pathname;
+      // SPA fallback: redirect to index.html with the original path
+      // encoded as a query parameter for client-side routing.
+      // __BASE_PATH__ is replaced at build time with the configured base path.
+      var basePath = '__BASE_PATH__';
+      var fullPath = window.location.pathname;
       var query = window.location.search;
       var hash = window.location.hash;
+      // Strip base path prefix so the SPA receives a relative route
+      var relative = fullPath;
+      if (
+        basePath !== '/' &&
+        relative.startsWith(basePath.replace(/\/$/, ''))
+      ) {
+        relative = relative.slice(basePath.replace(/\/$/, '').length) || '/';
+      }
       window.location.replace(
         window.location.origin +
-          '/?p=' +
-          encodeURIComponent(path + query + hash),
+          basePath +
+          '?p=' +
+          encodeURIComponent(relative + query + hash),
       );
     </script>
   </head>
