@@ -15,9 +15,9 @@ contact:
     - type: mastodon
       username: '@janesmith@mastodon.social'
   links:
-    - platform: portfolio
+    - title: portfolio
       url: 'https://janesmith.dev/projects'
-    - platform: community
+    - title: community
       url: 'https://bristoljs.example.com'
 
 summary: |

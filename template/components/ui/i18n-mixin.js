@@ -24,4 +24,46 @@ export const I18nMixin = (superClass) =>
       }
       return str;
     }
+
+    /**
+     * Format a date string using locale-aware Intl.DateTimeFormat.
+     * Handles: "YYYY-MM" → "Jan 2022", "YYYY-MM-DD" → "Jan 10, 2025",
+     * "YYYY" → as-is, "present" → translated via i18n key.
+     *
+     * @param {string} dateStr - The date string to format
+     * @returns {string} The formatted date
+     */
+    formatDate(dateStr) {
+      if (!dateStr) return '';
+      const lower = dateStr.toLowerCase();
+      if (lower === 'present') return this.t('experience_present');
+
+      const locale = window.__i18n?.locale || 'en';
+
+      // YYYY only — return as-is
+      if (/^\d{4}$/.test(dateStr)) return dateStr;
+
+      // YYYY-MM — month and year
+      if (/^\d{4}-\d{2}$/.test(dateStr)) {
+        const [year, month] = dateStr.split('-').map(Number);
+        const d = new Date(year, month - 1);
+        return new Intl.DateTimeFormat(locale, {
+          month: 'short',
+          year: 'numeric',
+        }).format(d);
+      }
+
+      // YYYY-MM-DD — full date
+      if (/^\d{4}-\d{2}-\d{2}$/.test(dateStr)) {
+        const [year, month, day] = dateStr.split('-').map(Number);
+        const d = new Date(year, month - 1, day);
+        return new Intl.DateTimeFormat(locale, {
+          month: 'short',
+          day: 'numeric',
+          year: 'numeric',
+        }).format(d);
+      }
+
+      return dateStr;
+    }
   };

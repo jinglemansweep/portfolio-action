@@ -118,7 +118,7 @@ export function generateLlmsTxt(data) {
     }
     if (resume.contact.links) {
       for (const link of resume.contact.links) {
-        contactFields.push(`- ${link.platform}: ${link.url}`);
+        contactFields.push(`- ${link.title}: ${link.url}`);
       }
     }
     if (contactFields.length > 0) {
@@ -177,9 +177,8 @@ export function generateLlmsTxt(data) {
       for (const skill of cat.skills || []) {
         const parts = [skill.name];
         if (skill.level) parts.push(`Level: ${skill.level}`);
-        if (skill.start_year) {
-          const years = new Date().getFullYear() - skill.start_year;
-          parts.push(`${years} years`);
+        if (skill.years_active) {
+          parts.push(`${skill.years_active} years`);
         }
         lines.push(`- ${parts.join(', ')}`);
       }

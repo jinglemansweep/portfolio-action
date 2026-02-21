@@ -32,11 +32,7 @@ class TimelineItem extends I18nMixin(LitElement) {
   }
 
   _formatDate(dateStr) {
-    if (!dateStr) return '';
-    const lower = dateStr.toLowerCase();
-    if (lower === 'present') return this.t('experience_present');
-    // Simple date formatting — show as-is for YYYY or YYYY-MM
-    return dateStr;
+    return this.formatDate(dateStr);
   }
 
   _isSkillMatched(skillName) {

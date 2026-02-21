@@ -20,6 +20,7 @@ labels:
   skill_links: Links
   skill_filter_placeholder: Filter skills...
   skill_all_categories: All Categories
+  skill_status_dormant: Dormant
 
   experience_present: Present
   experience_skills: Skills

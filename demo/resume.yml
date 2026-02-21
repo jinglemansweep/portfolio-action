@@ -15,9 +15,9 @@ contact:
     - type: x
       username: another_dev
   links:
-    - platform: blog
+    - title: blog
       url: 'https://blog.another.dev'
-    - platform: community
+    - title: example
       url: 'https://londoncloud.example.com'
 
 summary: |

@@ -67,6 +67,11 @@ class SkillExplorer extends I18nMixin(LitElement) {
     return [...tags].sort();
   }
 
+  _getLevelRank(level) {
+    const ranks = { expert: 4, advanced: 3, intermediate: 2, beginner: 1 };
+    return ranks[level] || 0;
+  }
+
   _filterSkills(skills) {
     let filtered = [...skills];
 
@@ -86,6 +91,14 @@ class SkillExplorer extends I18nMixin(LitElement) {
         s.tags?.some((t) => t === this._selectedTag),
       );
     }
+
+    // Sort: descending by level, then descending by years_active
+    filtered.sort((a, b) => {
+      const levelDiff =
+        this._getLevelRank(b.level) - this._getLevelRank(a.level);
+      if (levelDiff !== 0) return levelDiff;
+      return (b.years_active || 0) - (a.years_active || 0);
+    });
 
     return filtered;
   }

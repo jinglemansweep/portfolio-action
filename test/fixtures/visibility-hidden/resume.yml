@@ -13,7 +13,7 @@ contact:
     - type: linkedin
       username: hiddenuser
   links:
-    - platform: blog
+    - title: blog
       url: 'https://hiddenuser.example.com/blog'
 
 summary: |

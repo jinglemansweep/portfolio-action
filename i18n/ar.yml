@@ -20,6 +20,7 @@ labels:
   skill_links: روابط
   skill_filter_placeholder: تصفية المهارات...
   skill_all_categories: جميع الفئات
+  skill_status_dormant: خامل
 
   experience_present: الحالي
   experience_skills: المهارات

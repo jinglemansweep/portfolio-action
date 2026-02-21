@@ -141,7 +141,7 @@ contact:
     - type: x
       username: username
   links:
-    - platform: blog
+    - title: blog
       url: 'https://blog.example.com'
 
 summary: |
@@ -184,7 +184,8 @@ categories:
     skills:
       - name: Docker
         level: expert # beginner | intermediate | advanced | expert
-        start_year: 2017 # Calculates years dynamically
+        years_active: 9 # Static integer — displayed as "{n} years"
+        status: dormant # Optional status badge (e.g. dormant)
         icon: docker # Simple Icons slug (optional)
         comment: 'Primary container platform' # Optional note
         tags: ['containers']

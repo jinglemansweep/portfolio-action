@@ -20,6 +20,7 @@ labels:
   skill_links: リンク
   skill_filter_placeholder: スキルを検索...
   skill_all_categories: すべてのカテゴリ
+  skill_status_dormant: 休止中
 
   experience_present: 現在
   experience_skills: スキル

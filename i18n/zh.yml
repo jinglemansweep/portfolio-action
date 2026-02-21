@@ -20,6 +20,7 @@ labels:
   skill_links: 链接
   skill_filter_placeholder: 筛选技能...
   skill_all_categories: 所有分类
+  skill_status_dormant: 闲置
 
   experience_present: 至今
   experience_skills: 技能

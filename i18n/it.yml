@@ -20,6 +20,7 @@ labels:
   skill_links: Link
   skill_filter_placeholder: Filtra competenze...
   skill_all_categories: Tutte le categorie
+  skill_status_dormant: Inattivo
 
   experience_present: Presente
   experience_skills: Competenze

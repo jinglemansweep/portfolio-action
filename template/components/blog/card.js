@@ -68,7 +68,7 @@ class BlogCard extends I18nMixin(LitElement) {
           <div
             class="mb-2 flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400"
           >
-            <time>${p.publish_on}</time>
+            <time>${this.formatDate(p.publish_on)}</time>
             ${p.reading_time
               ? html`
                   <span>&middot;</span>

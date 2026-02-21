@@ -3,7 +3,7 @@ categories:
     skills:
       - name: TypeScript
         level: expert
-        start_year: 2018
+        years_active: 8
         comment: 'Go-to language for all new projects'
         icon: typescript
         tags: ['language', 'typed']
@@ -12,7 +12,7 @@ categories:
             url: 'https://www.typescriptlang.org/docs/'
       - name: JavaScript
         level: expert
-        start_year: 2014
+        years_active: 12
         icon: javascript
         tags: ['language', 'web']
         links:
@@ -20,7 +20,7 @@ categories:
             url: 'https://developer.mozilla.org/en-US/docs/Web/JavaScript'
       - name: Python
         level: advanced
-        start_year: 2018
+        years_active: 8
         icon: python
         tags: ['language', 'scripting']
         links:
@@ -28,7 +28,7 @@ categories:
             url: 'https://docs.python.org'
       - name: Go
         level: intermediate
-        start_year: 2023
+        years_active: 3
         icon: go
         tags: ['language', 'systems']
         links:
@@ -39,7 +39,7 @@ categories:
     skills:
       - name: React
         level: expert
-        start_year: 2019
+        years_active: 7
         icon: react
         tags: ['frontend', 'ui']
         links:
@@ -47,7 +47,8 @@ categories:
             url: 'https://react.dev'
       - name: CSS
         level: advanced
-        start_year: 2016
+        years_active: 10
+        status: dormant
         icon: css
         tags: ['frontend', 'styling']
         links:
@@ -58,7 +59,7 @@ categories:
     skills:
       - name: Node.js
         level: expert
-        start_year: 2017
+        years_active: 9
         icon: nodedotjs
         tags: ['backend', 'runtime']
         links:
@@ -66,7 +67,7 @@ categories:
             url: 'https://nodejs.org'
       - name: PostgreSQL
         level: advanced
-        start_year: 2019
+        years_active: 7
         icon: postgresql
         tags: ['database', 'sql']
         links:
@@ -74,7 +75,8 @@ categories:
             url: 'https://www.postgresql.org'
       - name: Redis
         level: intermediate
-        start_year: 2022
+        years_active: 4
+        status: dormant
         icon: redis
         tags: ['database', 'cache']
         links:
@@ -82,7 +84,7 @@ categories:
             url: 'https://redis.io/docs/'
       - name: Kafka
         level: intermediate
-        start_year: 2023
+        years_active: 3
         icon: apachekafka
         tags: ['messaging', 'streaming']
         links:
@@ -93,7 +95,7 @@ categories:
     skills:
       - name: Docker
         level: advanced
-        start_year: 2020
+        years_active: 6
         icon: docker
         tags: ['containers', 'devops']
         links:
@@ -101,7 +103,7 @@ categories:
             url: 'https://docs.docker.com'
       - name: Kubernetes
         level: advanced
-        start_year: 2022
+        years_active: 4
         icon: kubernetes
         tags: ['orchestration', 'cloud']
         links:
@@ -109,7 +111,7 @@ categories:
             url: 'https://kubernetes.io/docs/'
       - name: Terraform
         level: intermediate
-        start_year: 2023
+        years_active: 3
         icon: terraform
         tags: ['iac', 'cloud']
         links:

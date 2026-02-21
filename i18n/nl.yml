@@ -20,6 +20,7 @@ labels:
   skill_links: Links
   skill_filter_placeholder: Vaardigheden filteren...
   skill_all_categories: Alle categorieën
+  skill_status_dormant: Slapend
 
   experience_present: Heden
   experience_skills: Vaardigheden
