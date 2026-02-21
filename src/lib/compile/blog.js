@@ -61,9 +61,9 @@ export async function compileBlog(dir, options = {}) {
       title: frontmatter.title || slug,
       description: frontmatter.description || '',
       author: frontmatter.author || defaultAuthor,
-      publish_on: frontmatter.publish_on || null,
-      expire_on: frontmatter.expire_on || null,
-      updated_on: frontmatter.updated_on || null,
+      publish_on: normalizeDate(frontmatter.publish_on),
+      expire_on: normalizeDate(frontmatter.expire_on),
+      updated_on: normalizeDate(frontmatter.updated_on),
       draft: false,
       featured: frontmatter.featured || false,
       tags: frontmatter.tags || [],
@@ -92,6 +92,23 @@ export async function compileBlog(dir, options = {}) {
   }
 
   return { posts, tags };
+}
+
+/**
+ * Normalize a date value to a YYYY-MM-DD string.
+ * js-yaml parses bare dates (e.g. 2026-01-01) into Date objects,
+ * which serialize to ISO strings. This converts them back to
+ * the YYYY-MM-DD format expected by formatDate().
+ */
+function normalizeDate(value) {
+  if (!value) return null;
+  if (value instanceof Date) {
+    const y = value.getUTCFullYear();
+    const m = String(value.getUTCMonth() + 1).padStart(2, '0');
+    const d = String(value.getUTCDate()).padStart(2, '0');
+    return `${y}-${m}-${d}`;
+  }
+  return String(value);
 }
 
 function deriveSlug(filename) {
