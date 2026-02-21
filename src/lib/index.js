@@ -1,5 +1,12 @@
 import { join } from 'node:path';
-import { mkdir, writeFile, cp, readdir, stat } from 'node:fs/promises';
+import {
+  mkdir,
+  readFile,
+  writeFile,
+  cp,
+  readdir,
+  stat,
+} from 'node:fs/promises';
 import { compileYaml } from './compile/yaml.js';
 import { validate } from './utils/validate.js';
 import { stripVisibility } from './utils/strip-visibility.js';
@@ -216,8 +223,13 @@ export async function build(options) {
     // Components directory may not exist yet during early development
   }
 
-  // Step 11: Copy 404.html and prose.css
-  await cp(join(templateDir, '404.html'), join(outputDir, '404.html'));
+  // Step 11: Generate 404.html (with base path) and copy prose.css
+  const notFoundTemplate = await readFile(
+    join(templateDir, '404.html'),
+    'utf8',
+  );
+  const notFoundHtml = notFoundTemplate.replace('__BASE_PATH__', basePath);
+  await writeFile(join(outputDir, '404.html'), notFoundHtml);
   await cp(join(templateDir, 'prose.css'), join(outputDir, 'prose.css'));
 
   // Step 12: Copy media
