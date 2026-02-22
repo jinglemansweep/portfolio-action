@@ -8,11 +8,13 @@ class SiteFooter extends I18nMixin(LitElement) {
 
   static properties = {
     site: { type: Object },
+    resume: { type: Object },
   };
 
   constructor() {
     super();
     this.site = {};
+    this.resume = {};
   }
 
   render() {
@@ -28,11 +30,7 @@ class SiteFooter extends I18nMixin(LitElement) {
           >
             <p class="text-sm text-gray-500 dark:text-gray-400">
               &copy; ${year}
-              ${this.site?.title
-                ? html`<span
-                    >${this.site.title.split(/\s*[—–|]\s*/)[0].trim()}</span
-                  >`
-                : ''}
+              ${this.resume?.name ? html`<span>${this.resume.name}</span>` : ''}
             </p>
             <p class="text-sm text-gray-400 print:hidden dark:text-gray-500">
               ${this.t('footer_built_with')}

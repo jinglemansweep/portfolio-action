@@ -5,7 +5,8 @@ photo: 'media/headshot.jpg'
 contact:
   email: 'hidden@example.com'
   phone: '+44 7700 000000'
-  location: 'Secret Location'
+  location:
+    city: Secret Location
   website: 'https://hidden.example.com'
   socials:
     - type: github

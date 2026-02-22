@@ -28,7 +28,7 @@ function makeResume() {
     contact: {
       email: 'test@example.com',
       phone: '+1234567890',
-      location: 'London, UK',
+      location: { city: 'London', country: 'UK' },
       website: 'https://example.com',
       socials: [{ type: 'github', username: 'test' }],
       links: [{ title: 'github', url: 'https://github.com/test' }],

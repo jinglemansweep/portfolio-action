@@ -2,4 +2,5 @@ name: 'Blog Tester'
 tagline: 'Testing blog post scheduling'
 
 contact:
-  location: 'Test City'
+  location:
+    city: Test City

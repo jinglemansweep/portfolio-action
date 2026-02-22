@@ -12,6 +12,7 @@ class NavBar extends I18nMixin(LitElement) {
   static properties = {
     nav: { type: Array },
     site: { type: Object },
+    resume: { type: Object },
     currentPath: { type: String, attribute: 'current-path' },
     _menuOpen: { state: true },
   };
@@ -20,6 +21,7 @@ class NavBar extends I18nMixin(LitElement) {
     super();
     this.nav = [];
     this.site = {};
+    this.resume = {};
     this.currentPath = '/';
     this._menuOpen = false;
   }
@@ -38,9 +40,7 @@ class NavBar extends I18nMixin(LitElement) {
   }
 
   render() {
-    const siteTitle = this.site?.title || 'Portfolio';
-    // Extract just the name part before any dash/pipe separator
-    const displayTitle = siteTitle.split(/\s*[—–|]\s*/)[0].trim();
+    const displayTitle = this.resume?.name || 'Portfolio';
 
     return html`
       <nav

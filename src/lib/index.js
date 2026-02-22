@@ -7,7 +7,7 @@ import {
   readdir,
   stat,
 } from 'node:fs/promises';
-import { compileYaml } from './compile/yaml.js';
+import { compileYaml, deriveSiteMeta } from './compile/yaml.js';
 import { validate } from './utils/validate.js';
 import { stripVisibility } from './utils/strip-visibility.js';
 import { compileMarkdown, renderMarkdown } from './compile/markdown.js';
@@ -88,6 +88,11 @@ export async function build(options) {
     }
     throw new Error('Validation failed');
   }
+
+  // Derive site title and description from resume data
+  const derived = deriveSiteMeta(resume);
+  site.title = derived.title;
+  site.description = derived.description;
 
   // Step 2: Read & parse pages
   const pages = pagesDir ? await compileMarkdown(pagesDir) : [];
