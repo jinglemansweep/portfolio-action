@@ -43,8 +43,8 @@ labels:
   hero_contact_phone: Telefoon
   hero_view_skills: Vaardigheden bekijken
 
-  pdf_export: PDF exporteren
-  pdf_generating: PDF wordt gegenereerd...
+  doc_download_pdf: PDF downloaden
+  doc_download_docx: DOCX downloaden
 
   blog_title: Blog
   blog_read_more: Lees meer

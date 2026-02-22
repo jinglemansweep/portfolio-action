@@ -43,8 +43,8 @@ labels:
   hero_contact_phone: Telefon
   hero_view_skills: Fähigkeiten ansehen
 
-  pdf_export: PDF exportieren
-  pdf_generating: PDF wird erstellt...
+  doc_download_pdf: PDF herunterladen
+  doc_download_docx: DOCX herunterladen
 
   blog_title: Blog
   blog_read_more: Weiterlesen

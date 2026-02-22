@@ -43,8 +43,8 @@ labels:
   hero_contact_phone: 电话
   hero_view_skills: 查看技能
 
-  pdf_export: 导出PDF
-  pdf_generating: 正在生成PDF...
+  doc_download_pdf: 下载PDF
+  doc_download_docx: 下载DOCX
 
   blog_title: 博客
   blog_read_more: 阅读更多
