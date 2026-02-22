@@ -35,11 +35,19 @@ class SkillExplorer extends I18nMixin(LitElement) {
       this._highlightedSkill = highlight.toLowerCase();
       // Auto-scroll to highlighted skill after render
       this.updateComplete.then(() => {
-        const slug = this._slugify(highlight);
-        const el = document.querySelector(`#skill-${slug}`);
-        if (el) {
-          el.scrollIntoView({ behavior: 'smooth', block: 'center' });
-        }
+        // Double-rAF + setTimeout ensures layout has settled before scrolling,
+        // which is critical on mobile where responsive grid reflow changes positions
+        requestAnimationFrame(() => {
+          requestAnimationFrame(() => {
+            setTimeout(() => {
+              const slug = this._slugify(highlight);
+              const el = document.querySelector(`#skill-${slug}`);
+              if (el) {
+                el.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }, 100);
+          });
+        });
       });
     }
   }
