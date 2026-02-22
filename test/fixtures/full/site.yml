@@ -29,6 +29,12 @@ visibility:
   contact_website: true
   links: true
 
+documents:
+  pdf: true
+  docx: true
+  page_size: A4
+  filename: resume
+
 seo:
   robots:
     indexing: true
