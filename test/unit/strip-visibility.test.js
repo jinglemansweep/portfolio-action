@@ -1,7 +1,9 @@
 import { describe, it, expect } from 'vitest';
 import {
   stripVisibility,
+  stripVisibilityForPrint,
   isWebVisible,
+  isPrintVisible,
 } from '../../src/lib/utils/strip-visibility.js';
 
 const DEFAULTS = {
@@ -75,6 +77,76 @@ describe('isWebVisible', () => {
 
   it('returns false for "none"', () => {
     expect(isWebVisible('none')).toBe(false);
+  });
+});
+
+describe('isPrintVisible', () => {
+  it('returns true for "all"', () => {
+    expect(isPrintVisible('all')).toBe(true);
+  });
+
+  it('returns true for "print"', () => {
+    expect(isPrintVisible('print')).toBe(true);
+  });
+
+  it('returns false for "web"', () => {
+    expect(isPrintVisible('web')).toBe(false);
+  });
+
+  it('returns false for "none"', () => {
+    expect(isPrintVisible('none')).toBe(false);
+  });
+});
+
+describe('stripVisibilityForPrint', () => {
+  it('"print" value keeps data visible for print output', () => {
+    const vis = {
+      ...DEFAULTS,
+      contact_email: 'print',
+      contact_phone: 'print',
+      experience_company: 'print',
+      skills: 'print',
+    };
+    const { resume, skills } = stripVisibilityForPrint(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+    );
+    expect(resume.contact.email).toBe('test@example.com');
+    expect(resume.contact.phone).toBe('+1234567890');
+    expect(resume.experience[0].company).toBe('Corp');
+    expect(skills).not.toBeNull();
+  });
+
+  it('"web" value hides data from print output', () => {
+    const vis = { ...DEFAULTS, contact_email: 'web', skills: 'web' };
+    const { resume, skills } = stripVisibilityForPrint(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+    );
+    expect(resume.contact.email).toBeUndefined();
+    expect(skills).toBeNull();
+  });
+
+  it('"none" value hides data from print output', () => {
+    const vis = { ...DEFAULTS, experience_company: 'none' };
+    const { resume } = stripVisibilityForPrint(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+    );
+    expect(resume.experience[0].company).toBeUndefined();
+  });
+
+  it('does not mutate input data', () => {
+    const vis = { ...DEFAULTS, contact_email: 'none' };
+    const originalResume = makeResume();
+    stripVisibilityForPrint(vis, originalResume, makeSkills(), makeProjects());
+    expect(originalResume.contact.email).toBe('test@example.com');
   });
 });
 
