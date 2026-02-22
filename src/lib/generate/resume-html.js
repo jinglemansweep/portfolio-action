@@ -108,9 +108,9 @@ function buildCss(primary) {
     .entry-body { margin-top: 2pt; }
     .entry-body p { margin-bottom: 4pt; }
     .entry-skills { font-size: 9pt; color: #666; margin-top: 2pt; }
-    .skill-category { font-weight: 700; margin-top: 8pt; margin-bottom: 4pt; }
-    .skill-list { list-style: disc; padding-left: 18pt; }
-    .skill-list li { margin-bottom: 1pt; }
+    .skills-badges { display: flex; flex-wrap: wrap; gap: 4pt; margin-top: 4pt; }
+    .skill-badge { display: inline-block; font-size: 8pt; padding: 2pt 6pt; border: 1px solid #ccc; border-radius: 3pt; color: #333; white-space: nowrap; }
+    .skill-badge .skill-years { color: #888; margin-left: 3pt; }
     .community-entry { margin-bottom: 8pt; }
     .project-url { font-size: 9pt; color: #666; }
     a { color: ${primary}; text-decoration: none; }
@@ -157,7 +157,7 @@ function buildContent(data, skillsData, projectsData, labels) {
     }
   }
 
-  // Skills (filtered to those referenced in experience/projects)
+  // Skills (filtered to those referenced in experience/projects, rendered as badges)
   const filteredSkills = filterSkillsForDocument(
     skillsData,
     data,
@@ -165,9 +165,7 @@ function buildContent(data, skillsData, projectsData, labels) {
   );
   if (filteredSkills?.categories?.length > 0) {
     parts.push(`<h2>${esc(labels.skills || 'Skills')}</h2>`);
-    for (const cat of filteredSkills.categories) {
-      parts.push(buildSkillCategoryHtml(cat, labels));
-    }
+    parts.push(buildSkillBadgesHtml(filteredSkills, labels));
   }
 
   // Community
@@ -316,26 +314,34 @@ function buildAccreditationHtml(acc) {
   return html;
 }
 
-function buildSkillCategoryHtml(cat, labels) {
-  let html = '';
-  if (cat.name) {
-    html += `<div class="skill-category">${esc(cat.name)}</div>`;
-  }
-  if (cat.skills?.length > 0) {
-    html += '<ul class="skill-list">';
-    for (const skill of cat.skills) {
-      const parts = [skill.name || ''];
-      if (skill.level) parts.push(skill.level);
-      if (skill.years) {
-        const yearsLabel = labels.skill_years
-          ? labels.skill_years.replace('{n}', skill.years)
-          : `${skill.years} years`;
-        parts.push(yearsLabel);
+function buildSkillBadgesHtml(skillsData, labels) {
+  const allSkills = [];
+  for (const cat of skillsData.categories) {
+    if (cat.skills) {
+      for (const skill of cat.skills) {
+        allSkills.push(skill);
       }
-      html += `<li>${esc(parts.join(' — '))}</li>`;
     }
-    html += '</ul>';
   }
+
+  allSkills.sort(
+    (a, b) =>
+      (b.years_active || b.years || 0) - (a.years_active || a.years || 0),
+  );
+
+  let html = '<div class="skills-badges">';
+  for (const skill of allSkills) {
+    const years = skill.years_active || skill.years;
+    const yearsHtml = years
+      ? `<span class="skill-years">${esc(
+          labels.skill_years
+            ? labels.skill_years.replace('{n}', years)
+            : `${years}y`,
+        )}</span>`
+      : '';
+    html += `<span class="skill-badge">${esc(skill.name || '')}${yearsHtml}</span>`;
+  }
+  html += '</div>';
   return html;
 }
 
