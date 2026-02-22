@@ -116,9 +116,6 @@ class AppShell extends I18nMixin(LitElement) {
       this._manifest = manifestRes.ok ? await manifestRes.json() : {};
       this._crossref = crossrefRes.ok ? await crossrefRes.json() : {};
 
-      // Store site data globally for pdf-export
-      window.__site = this._site;
-
       // Conditionally load skills, projects, blog
       const optionalLoads = [];
 
