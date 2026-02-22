@@ -85,6 +85,64 @@ describe('validate', () => {
     expect(errors.some((e) => e.field === 'categories[0].skills')).toBe(true);
   });
 
+  it('validates documents config with valid values', () => {
+    const errors = validate(
+      {
+        lang: 'en',
+        documents: {
+          pdf: true,
+          docx: false,
+          page_size: 'Letter',
+          filename: 'cv',
+        },
+      },
+      { name: 'N', tagline: 'T' },
+      { categories: [] },
+      { projects: [] },
+    );
+    expect(errors.some((e) => e.field.startsWith('documents.'))).toBe(false);
+  });
+
+  it('validates invalid documents.page_size', () => {
+    const errors = validate(
+      { lang: 'en', documents: { page_size: 'B5' } },
+      { name: 'N', tagline: 'T' },
+      { categories: [] },
+      { projects: [] },
+    );
+    expect(errors.some((e) => e.field === 'documents.page_size')).toBe(true);
+  });
+
+  it('validates invalid documents.filename', () => {
+    const errors = validate(
+      { lang: 'en', documents: { filename: 'my/file.pdf' } },
+      { name: 'N', tagline: 'T' },
+      { categories: [] },
+      { projects: [] },
+    );
+    expect(errors.some((e) => e.field === 'documents.filename')).toBe(true);
+  });
+
+  it('validates empty documents.filename', () => {
+    const errors = validate(
+      { lang: 'en', documents: { filename: '' } },
+      { name: 'N', tagline: 'T' },
+      { categories: [] },
+      { projects: [] },
+    );
+    expect(errors.some((e) => e.field === 'documents.filename')).toBe(true);
+  });
+
+  it('validates documents.pdf must be boolean', () => {
+    const errors = validate(
+      { lang: 'en', documents: { pdf: 'yes' } },
+      { name: 'N', tagline: 'T' },
+      { categories: [] },
+      { projects: [] },
+    );
+    expect(errors.some((e) => e.field === 'documents.pdf')).toBe(true);
+  });
+
   it('validates non-object items in arrays', () => {
     const errors = validate(
       { lang: 'en' },

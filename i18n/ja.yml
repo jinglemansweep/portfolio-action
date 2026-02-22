@@ -43,8 +43,8 @@ labels:
   hero_contact_phone: 電話
   hero_view_skills: スキルを見る
 
-  pdf_export: PDF出力
-  pdf_generating: PDF生成中...
+  doc_download_pdf: PDFをダウンロード
+  doc_download_docx: DOCXをダウンロード
 
   blog_title: ブログ
   blog_read_more: 続きを読む

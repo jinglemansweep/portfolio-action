@@ -67,6 +67,8 @@ export async function build(options) {
     basePath = '/',
     siteUrl = '',
     buildDate,
+    noPdf,
+    noDocx,
   } = options;
 
   const templateDir = join(actionPath, 'template');
@@ -171,6 +173,10 @@ export async function build(options) {
       }
     }
   }
+
+  // Apply CLI overrides to documents config
+  if (noPdf) site.documents.pdf = false;
+  if (noDocx) site.documents.docx = false;
 
   await writeJson(join(dataOutputDir, 'site.json'), {
     ...site,
@@ -327,6 +333,53 @@ export async function build(options) {
     });
     if (feedXml) {
       await writeFile(join(outputDir, 'feed.xml'), feedXml);
+    }
+  }
+
+  // Step 16: Generate DOCX
+  if (site.documents.docx) {
+    const { generateDocx } = await import('./generate/docx.js');
+    const docxBuffer = await generateDocx({
+      resume: stripped.resume,
+      skills: stripped.skills,
+      projects: stripped.projects,
+      i18n,
+      pageSize: site.documents.page_size,
+      theme: site.theme,
+    });
+    await writeFile(
+      join(outputDir, `${site.documents.filename}.docx`),
+      docxBuffer,
+    );
+  }
+
+  // Step 17: Generate PDF
+  if (site.documents.pdf) {
+    try {
+      const { generatePdf } = await import('./generate/pdf.js');
+      const { generateResumeHtml } = await import('./generate/resume-html.js');
+      const htmlString = await generateResumeHtml({
+        resume: stripped.resume,
+        skills: stripped.skills,
+        projects: stripped.projects,
+        i18n,
+        theme: site.theme,
+      });
+      const pdfBuffer = await generatePdf(htmlString, {
+        pageSize: site.documents.page_size,
+      });
+      await writeFile(
+        join(outputDir, `${site.documents.filename}.pdf`),
+        pdfBuffer,
+      );
+    } catch (err) {
+      if (err.message?.includes('Puppeteer is required')) {
+        warn(
+          'PDF generation skipped: Puppeteer is not installed. Install it with: npm install puppeteer',
+        );
+      } else {
+        throw err;
+      }
     }
   }
 

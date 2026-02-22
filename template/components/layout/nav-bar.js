@@ -2,7 +2,6 @@ import { LitElement, html } from 'https://cdn.jsdelivr.net/npm/lit@3/+esm';
 import { I18nMixin } from '../ui/i18n-mixin.js';
 import { iconMenuOpen, iconMenuClosed } from '../ui/icons.js';
 import '../ui/theme-toggle.js';
-import '../ui/pdf-export.js';
 
 class NavBar extends I18nMixin(LitElement) {
   createRenderRoot() {
@@ -37,6 +36,48 @@ class NavBar extends I18nMixin(LitElement) {
   _isActive(path) {
     if (path === '/') return this.currentPath === '/';
     return this.currentPath === path || this.currentPath.startsWith(path + '/');
+  }
+
+  _renderDownloadLinks() {
+    const docs = this.site?.documents;
+    if (!docs) return '';
+
+    const basePath =
+      document.querySelector('base')?.getAttribute('href') || '/';
+    const filename = docs.filename || 'resume';
+    const links = [];
+
+    if (docs.pdf) {
+      links.push(html`
+        <a
+          href="${basePath}${filename}.pdf"
+          download
+          class="rounded-lg p-2 text-sm font-medium text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+          aria-label=${this.t('doc_download_pdf')}
+          title=${this.t('doc_download_pdf')}
+        >
+          <span class="hidden sm:inline">PDF</span>
+          <span class="sm:hidden" aria-hidden="true">PDF</span>
+        </a>
+      `);
+    }
+
+    if (docs.docx) {
+      links.push(html`
+        <a
+          href="${basePath}${filename}.docx"
+          download
+          class="rounded-lg p-2 text-sm font-medium text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
+          aria-label=${this.t('doc_download_docx')}
+          title=${this.t('doc_download_docx')}
+        >
+          <span class="hidden sm:inline">DOCX</span>
+          <span class="sm:hidden" aria-hidden="true">DOCX</span>
+        </a>
+      `);
+    }
+
+    return links;
   }
 
   render() {
@@ -79,15 +120,15 @@ class NavBar extends I18nMixin(LitElement) {
               <div
                 class="ml-2 flex items-center gap-1 border-l border-gray-200 pl-2 dark:border-gray-700"
               >
+                ${this._renderDownloadLinks()}
                 <theme-toggle></theme-toggle>
-                <pdf-export></pdf-export>
               </div>
             </div>
 
             <!-- Mobile menu button -->
             <div class="flex items-center gap-2 md:hidden">
+              ${this._renderDownloadLinks()}
               <theme-toggle></theme-toggle>
-              <pdf-export></pdf-export>
               <button
                 @click=${this._toggleMenu}
                 class="inline-flex items-center justify-center rounded-lg p-2 text-gray-600 hover:bg-gray-100 hover:text-gray-900 dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"

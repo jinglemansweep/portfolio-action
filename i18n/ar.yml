@@ -43,8 +43,8 @@ labels:
   hero_contact_phone: الهاتف
   hero_view_skills: عرض المهارات
 
-  pdf_export: تصدير PDF
-  pdf_generating: جاري إنشاء PDF...
+  doc_download_pdf: تحميل PDF
+  doc_download_docx: تحميل DOCX
 
   blog_title: المدونة
   blog_read_more: اقرأ المزيد

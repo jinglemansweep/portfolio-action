@@ -1,5 +1,9 @@
 lang: en
 
+documents:
+  pdf: false
+  docx: false
+
 visibility:
   education: none
   experience: none
