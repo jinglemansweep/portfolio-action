@@ -1,6 +1,10 @@
 import { describe, it, expect } from 'vitest';
 import { join } from 'node:path';
-import { compileYaml } from '../../src/lib/compile/yaml.js';
+import {
+  compileYaml,
+  deriveSiteMeta,
+  formatLocation,
+} from '../../src/lib/compile/yaml.js';
 import { fixturePath } from '../helpers/test-utils.js';
 
 describe('compileYaml', () => {
@@ -72,5 +76,79 @@ describe('compileYaml', () => {
     expect(data.visibility.experience).toBe('all');
     expect(data.visibility.contact_phone).toBe('none');
     expect(data.visibility.contact_email).toBe('all');
+  });
+});
+
+describe('formatLocation', () => {
+  it('formats a full location object', () => {
+    expect(
+      formatLocation({ city: 'London', region: 'England', country: 'UK' }),
+    ).toBe('London, England, UK');
+  });
+
+  it('omits empty parts', () => {
+    expect(formatLocation({ city: 'London', country: 'UK' })).toBe(
+      'London, UK',
+    );
+  });
+
+  it('handles city only', () => {
+    expect(formatLocation({ city: 'Berlin' })).toBe('Berlin');
+  });
+
+  it('returns empty string for null/undefined', () => {
+    expect(formatLocation(null)).toBe('');
+    expect(formatLocation(undefined)).toBe('');
+  });
+
+  it('passes through plain strings', () => {
+    expect(formatLocation('London, UK')).toBe('London, UK');
+  });
+
+  it('returns empty string for empty object', () => {
+    expect(formatLocation({})).toBe('');
+  });
+});
+
+describe('deriveSiteMeta', () => {
+  it('derives title with name, location, and tagline', () => {
+    const result = deriveSiteMeta({
+      name: 'Jane Smith',
+      tagline: 'Full-Stack Developer',
+      contact: { location: { city: 'Bristol', country: 'UK' } },
+    });
+    expect(result.title).toBe(
+      'Jane Smith (Bristol, UK) - Full-Stack Developer',
+    );
+    expect(result.description).toBe('Full-Stack Developer');
+  });
+
+  it('omits location when missing', () => {
+    const result = deriveSiteMeta({
+      name: 'Jane Smith',
+      tagline: 'Developer',
+    });
+    expect(result.title).toBe('Jane Smith - Developer');
+  });
+
+  it('omits tagline when missing', () => {
+    const result = deriveSiteMeta({
+      name: 'Jane Smith',
+      contact: { location: { city: 'London', country: 'UK' } },
+    });
+    expect(result.title).toBe('Jane Smith (London, UK)');
+    expect(result.description).toBe('');
+  });
+
+  it('handles name only', () => {
+    const result = deriveSiteMeta({ name: 'Jane Smith' });
+    expect(result.title).toBe('Jane Smith');
+    expect(result.description).toBe('');
+  });
+
+  it('handles null/undefined resume', () => {
+    const result = deriveSiteMeta(null);
+    expect(result.title).toBe('');
+    expect(result.description).toBe('');
   });
 });

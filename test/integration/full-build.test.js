@@ -103,7 +103,12 @@ describe('full build integration', () => {
 
   it('JSON content is valid and contains expected data', async () => {
     const site = await readOutputJson(outputDir, 'data/site.json');
-    expect(site.title).toBeTruthy();
+    expect(site.title).toBe(
+      'Jane Smith (Bristol, UK) - Full-Stack Developer & Open-Source Enthusiast',
+    );
+    expect(site.description).toBe(
+      'Full-Stack Developer & Open-Source Enthusiast',
+    );
     expect(site.visibility).toBeDefined();
 
     const resume = await readOutputJson(outputDir, 'data/resume.json');

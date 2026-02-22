@@ -76,9 +76,19 @@ class HeroSection extends I18nMixin(LitElement) {
     const iconClass = 'h-4 w-4 print:h-3 print:w-3';
 
     if (contact.location) {
+      const loc =
+        typeof contact.location === 'object'
+          ? [
+              contact.location.city,
+              contact.location.region,
+              contact.location.country,
+            ]
+              .filter(Boolean)
+              .join(', ')
+          : contact.location;
       pills.push(html`
         <span class=${pillStaticClass}>
-          ${iconLocation(iconClass)} ${contact.location}
+          ${iconLocation(iconClass)} ${loc}
         </span>
       `);
     }

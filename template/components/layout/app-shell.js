@@ -328,6 +328,7 @@ class AppShell extends I18nMixin(LitElement) {
         <nav-bar
           .nav=${this._manifest?.nav || []}
           .site=${this._site}
+          .resume=${this._resume}
           .currentPath=${this._currentPath}
         ></nav-bar>
 
@@ -335,7 +336,7 @@ class AppShell extends I18nMixin(LitElement) {
           ${this._renderPage()}
         </main>
 
-        <site-footer .site=${this._site}></site-footer>
+        <site-footer .site=${this._site} .resume=${this._resume}></site-footer>
       </div>
     `;
   }

@@ -5,7 +5,9 @@ photo: 'media/test-image.png'
 contact:
   email: 'jane@example.com'
   phone: '+44 7700 900000'
-  location: 'Bristol, UK'
+  location:
+    city: Bristol
+    country: UK
   website: 'https://janesmith.dev'
   socials:
     - type: github

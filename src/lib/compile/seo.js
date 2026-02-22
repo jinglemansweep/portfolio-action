@@ -105,8 +105,19 @@ export function generateLlmsTxt(data) {
   // Contact
   if (resume?.contact) {
     const contactFields = [];
-    if (resume.contact.location)
-      contactFields.push(`- Location: ${resume.contact.location}`);
+    if (resume.contact.location) {
+      const loc =
+        typeof resume.contact.location === 'object'
+          ? [
+              resume.contact.location.city,
+              resume.contact.location.region,
+              resume.contact.location.country,
+            ]
+              .filter(Boolean)
+              .join(', ')
+          : resume.contact.location;
+      contactFields.push(`- Location: ${loc}`);
+    }
     if (resume.contact.website)
       contactFields.push(`- Website: ${resume.contact.website}`);
     if (resume.contact.email)

@@ -130,13 +130,13 @@ describe('generateLlmsTxt', () => {
     const txt = generateLlmsTxt({
       resume: {
         name: 'Test',
-        contact: { location: 'London' },
+        contact: { location: { city: 'London', country: 'UK' } },
       },
       skills: null,
       projects: null,
       blog: null,
     });
-    expect(txt).toContain('London');
+    expect(txt).toContain('London, UK');
     expect(txt).not.toContain('email');
   });
 

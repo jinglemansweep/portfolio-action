@@ -10,8 +10,8 @@ const baseOptions = {
   templateDir,
   lang: 'en',
   dir: 'ltr',
-  title: 'Test Portfolio',
-  description: 'A test description',
+  title: 'Test User (London, UK) - Software Developer',
+  description: 'Software Developer',
   basePath: '/',
   primary: '#2563eb',
   accent: '#f59e0b',
@@ -34,8 +34,10 @@ describe('generateIndex', () => {
 
   it('interpolates title and description meta', async () => {
     const html = await generateIndex(baseOptions);
-    expect(html).toContain('<title>Test Portfolio</title>');
-    expect(html).toContain('content="A test description"');
+    expect(html).toContain(
+      '<title>Test User (London, UK) - Software Developer</title>',
+    );
+    expect(html).toContain('content="Software Developer"');
   });
 
   it('interpolates base_path in base href', async () => {

@@ -36,26 +36,17 @@ describe('validate', () => {
       { projects: [] },
     );
     expect(
-      errors.some((e) => e.file === 'site.yml' && e.field === 'title'),
-    ).toBe(true);
-    expect(
-      errors.some((e) => e.file === 'site.yml' && e.field === 'description'),
-    ).toBe(true);
-    expect(
       errors.some((e) => e.file === 'resume.yml' && e.field === 'tagline'),
     ).toBe(true);
   });
 
   it('invalid types produce specific errors', () => {
     const errors = validate(
-      { title: 123, description: null, lang: 'en' },
+      { lang: 'en' },
       { name: 'Test', tagline: 'Dev' },
       { categories: 'not-an-array' },
       { projects: 'not-an-array' },
     );
-    expect(
-      errors.some((e) => e.file === 'site.yml' && e.field === 'title'),
-    ).toBe(true);
     expect(
       errors.some((e) => e.file === 'skills.yml' && e.field === 'categories'),
     ).toBe(true);
@@ -72,7 +63,7 @@ describe('validate', () => {
 
   it('validates project items with missing required fields', () => {
     const errors = validate(
-      { title: 'T', description: 'D', lang: 'en' },
+      { lang: 'en' },
       { name: 'N', tagline: 'T' },
       { categories: [{ name: 'Cat', skills: [{ name: 'JS' }] }] },
       { projects: [{ url: 'https://example.com' }] },
@@ -86,7 +77,7 @@ describe('validate', () => {
 
   it('validates category objects with missing skills array', () => {
     const errors = validate(
-      { title: 'T', description: 'D', lang: 'en' },
+      { lang: 'en' },
       { name: 'N', tagline: 'T' },
       { categories: [{ name: 'Cat' }] },
       { projects: [] },
@@ -96,7 +87,7 @@ describe('validate', () => {
 
   it('validates non-object items in arrays', () => {
     const errors = validate(
-      { title: 'T', description: 'D', lang: 'en' },
+      { lang: 'en' },
       { name: 'N', tagline: 'T' },
       { categories: [null] },
       { projects: ['not-an-object'] },

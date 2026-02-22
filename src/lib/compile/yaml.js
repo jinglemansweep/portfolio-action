@@ -76,6 +76,38 @@ export async function compileYaml(filePath, options = {}) {
   return data;
 }
 
+/**
+ * Format a structured location object as a display string.
+ * @param {object|string} location - { city, region, country } or a string
+ * @returns {string} Formatted location string, e.g. "City, Region, Country"
+ */
+export function formatLocation(location) {
+  if (!location) return '';
+  if (typeof location === 'string') return location;
+  return [location.city, location.region, location.country]
+    .filter(Boolean)
+    .join(', ');
+}
+
+/**
+ * Derive site title and description from resume data.
+ * Title format: "Name (City, Country) - Tagline" (omitting parts gracefully)
+ * Description: resume tagline
+ * @param {object} resume - Parsed resume.yml data
+ * @returns {{ title: string, description: string }}
+ */
+export function deriveSiteMeta(resume) {
+  const name = resume?.name || '';
+  const tagline = resume?.tagline || '';
+  const location = formatLocation(resume?.contact?.location);
+
+  let title = name;
+  if (location) title += ` (${location})`;
+  if (tagline) title += ` - ${tagline}`;
+
+  return { title, description: tagline };
+}
+
 function deepMerge(target, source) {
   for (const key of Object.keys(source)) {
     if (

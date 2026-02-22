@@ -5,7 +5,9 @@ photo: 'media/profile.png'
 contact:
   email: 'hello@another.dev'
   phone: '+44 7700 900000'
-  location: 'London, UK'
+  location:
+    city: London
+    country: UK
   website: 'https://another.dev'
   socials:
     - type: github

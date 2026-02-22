@@ -1,5 +1,3 @@
-title: 'Hidden Sections Test'
-description: 'Testing that all visibility flags set to none strip data correctly'
 lang: en
 
 visibility:

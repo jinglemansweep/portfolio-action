@@ -260,20 +260,21 @@ import {
 The build orchestrator (`src/lib/index.js`) runs these steps in order:
 
 1. Load & validate YAML (`compile/yaml.js`, `utils/validate.js`)
-2. Compile markdown pages (`compile/markdown.js`)
-3. Compile blog posts (`compile/blog.js`)
-4. Resolve i18n (`compile/i18n.js`)
-5. Strip visibility (`utils/strip-visibility.js`)
-6. Generate crossref index (`compile/crossref.js`)
-7. Generate manifest (`generate/manifest.js`)
-8. Write JSON data files
-9. Generate index.html (`generate/index.js`)
-10. Copy template components
-11. Copy 404.html and prose.css
-12. Copy media (with warnings for files >1 MB)
-13. Write CNAME (if `custom_domain` set in site.yml)
-14. Write `.nojekyll`
-15. Generate SEO files (`compile/seo.js`)
+2. Derive site meta — title and description from resume data (`compile/yaml.js` → `deriveSiteMeta()`)
+3. Compile markdown pages (`compile/markdown.js`)
+4. Compile blog posts (`compile/blog.js`)
+5. Resolve i18n (`compile/i18n.js`)
+6. Strip visibility (`utils/strip-visibility.js`)
+7. Generate crossref index (`compile/crossref.js`)
+8. Generate manifest (`generate/manifest.js`)
+9. Write JSON data files
+10. Generate index.html (`generate/index.js`)
+11. Copy template components
+12. Copy 404.html and prose.css
+13. Copy media (with warnings for files >1 MB)
+14. Write CNAME (if `custom_domain` set in site.yml)
+15. Write `.nojekyll`
+16. Generate SEO files (`compile/seo.js`)
 
 ### CLI Usage
 
@@ -296,7 +297,7 @@ All checks must pass before committing:
 ```bash
 npm run lint          # ESLint (flat config v9)
 npm run format:check  # Prettier
-npm test              # Vitest (130 tests)
+npm test              # Vitest (141 tests)
 npm run test:coverage # Must meet 80% threshold
 ```
 

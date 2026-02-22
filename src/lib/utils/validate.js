@@ -30,20 +30,6 @@ function validateSite(data) {
     return errors;
   }
 
-  if (!data.title || typeof data.title !== 'string') {
-    errors.push({
-      file,
-      field: 'title',
-      reason: 'is required and must be a string',
-    });
-  }
-  if (!data.description || typeof data.description !== 'string') {
-    errors.push({
-      file,
-      field: 'description',
-      reason: 'is required and must be a string',
-    });
-  }
   if (!data.lang || typeof data.lang !== 'string') {
     errors.push({
       file,

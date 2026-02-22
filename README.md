@@ -77,9 +77,9 @@ All four YAML files are **required**: `site.yml`, `resume.yml`, `skills.yml`, an
 
 ### `site.yml`
 
+> **Note:** `title` and `description` are **automatically derived** from `resume.yml`. The browser title follows the format `Name (City, Country) - Tagline`, and the description is set to the resume tagline. You do not need to specify these in `site.yml`.
+
 ```yaml
-title: 'Jane Doe — Software Engineer'
-description: 'Personal portfolio and resume'
 lang: en # Language code (en, fr, de, es, pt, nl, it, ja, zh, ar)
 
 theme:
@@ -132,7 +132,10 @@ photo: 'media/headshot.jpg' # Optional
 contact:
   email: 'hello@example.com'
   phone: ''
-  location: 'London, UK'
+  location:
+    city: London
+    region: '' # Optional
+    country: UK
   website: 'https://example.com'
   socials:
     - type: github
