@@ -1,18 +1,19 @@
 title: 'Hidden Sections Test'
-description: 'Testing that all visibility flags set to false strip data correctly'
+description: 'Testing that all visibility flags set to none strip data correctly'
 lang: en
 
 visibility:
-  education: false
-  experience: false
-  projects: false
-  community: false
-  accreditations: false
-  skills: false
-  blog: false
-  email: false
-  phone: false
-  location: false
-  website: false
-  socials: false
-  links: false
+  education: none
+  experience: none
+  experience_company: none
+  projects: none
+  community: none
+  accreditations: none
+  skills: none
+  blog: none
+  contact_email: none
+  contact_phone: none
+  location: none
+  contact_website: none
+  socials: none
+  links: none

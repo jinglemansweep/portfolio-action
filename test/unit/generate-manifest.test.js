@@ -14,9 +14,9 @@ const baseI18n = {
 };
 
 const allVisible = {
-  skills: true,
-  projects: true,
-  blog: true,
+  skills: 'all',
+  projects: 'all',
+  blog: 'all',
 };
 
 describe('generateManifest', () => {
@@ -32,7 +32,7 @@ describe('generateManifest', () => {
     expect(routes).toContain('/');
   });
 
-  it('includes skills route when visibility.skills true', () => {
+  it('includes skills route when visibility.skills is "all"', () => {
     const { routes } = generateManifest({
       visibility: allVisible,
       skills: { categories: [{ name: 'Dev', skills: [] }] },
@@ -44,9 +44,33 @@ describe('generateManifest', () => {
     expect(routes).toContain('/skills');
   });
 
-  it('excludes skills route when visibility.skills false', () => {
+  it('excludes skills route when visibility.skills is "none"', () => {
     const { routes } = generateManifest({
-      visibility: { ...allVisible, skills: false },
+      visibility: { ...allVisible, skills: 'none' },
+      skills: { categories: [] },
+      projects: null,
+      blog: null,
+      pages: [],
+      i18n: baseI18n,
+    });
+    expect(routes).not.toContain('/skills');
+  });
+
+  it('includes skills route when visibility.skills is "web"', () => {
+    const { routes } = generateManifest({
+      visibility: { ...allVisible, skills: 'web' },
+      skills: { categories: [{ name: 'Dev', skills: [] }] },
+      projects: null,
+      blog: null,
+      pages: [],
+      i18n: baseI18n,
+    });
+    expect(routes).toContain('/skills');
+  });
+
+  it('excludes skills route when visibility.skills is "print"', () => {
+    const { routes } = generateManifest({
+      visibility: { ...allVisible, skills: 'print' },
       skills: { categories: [] },
       projects: null,
       blog: null,
@@ -70,7 +94,7 @@ describe('generateManifest', () => {
 
   it('excludes projects route when hidden or data absent', () => {
     const { routes: r1 } = generateManifest({
-      visibility: { ...allVisible, projects: false },
+      visibility: { ...allVisible, projects: 'none' },
       skills: null,
       projects: { projects: [{ name: 'P' }] },
       blog: null,
@@ -104,7 +128,7 @@ describe('generateManifest', () => {
 
   it('excludes blog route when disabled', () => {
     const { routes } = generateManifest({
-      visibility: { ...allVisible, blog: false },
+      visibility: { ...allVisible, blog: 'none' },
       skills: null,
       projects: null,
       blog: { posts: [{ slug: 'test' }] },
@@ -134,7 +158,7 @@ describe('generateManifest', () => {
 
   it('nav items match routes; hidden routes omitted from nav', () => {
     const { nav } = generateManifest({
-      visibility: { ...allVisible, skills: false },
+      visibility: { ...allVisible, skills: 'none' },
       skills: null,
       projects: { projects: [{ name: 'P', description: 'D', start: '2025' }] },
       blog: null,

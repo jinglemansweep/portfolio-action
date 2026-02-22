@@ -14,14 +14,15 @@ describe('compileYaml', () => {
     const data = await compileYaml(join(fixturePath('minimal'), 'site.yml'), {
       isSiteConfig: true,
     });
-    expect(data.visibility.email).toBe(false);
-    expect(data.visibility.phone).toBe(false);
-    expect(data.visibility.education).toBe(true);
-    expect(data.visibility.experience).toBe(true);
-    expect(data.visibility.location).toBe(true);
-    expect(data.visibility.socials).toBe(true);
-    expect(data.visibility.skills).toBe(true);
-    expect(data.visibility.blog).toBe(true);
+    expect(data.visibility.contact_email).toBe('none');
+    expect(data.visibility.contact_phone).toBe('none');
+    expect(data.visibility.education).toBe('all');
+    expect(data.visibility.experience).toBe('all');
+    expect(data.visibility.experience_company).toBe('all');
+    expect(data.visibility.location).toBe('all');
+    expect(data.visibility.socials).toBe('all');
+    expect(data.visibility.skills).toBe('all');
+    expect(data.visibility.blog).toBe('all');
   });
 
   it('merges SEO defaults when isSiteConfig is true', async () => {
@@ -52,12 +53,24 @@ describe('compileYaml', () => {
       join(fixturePath('visibility-hidden'), 'site.yml'),
       { isSiteConfig: true },
     );
-    expect(data.visibility.email).toBe(false);
-    expect(data.visibility.phone).toBe(false);
-    expect(data.visibility.education).toBe(false);
-    expect(data.visibility.experience).toBe(false);
-    expect(data.visibility.skills).toBe(false);
-    expect(data.visibility.projects).toBe(false);
-    expect(data.visibility.blog).toBe(false);
+    expect(data.visibility.contact_email).toBe('none');
+    expect(data.visibility.contact_phone).toBe('none');
+    expect(data.visibility.education).toBe('none');
+    expect(data.visibility.experience).toBe('none');
+    expect(data.visibility.experience_company).toBe('none');
+    expect(data.visibility.skills).toBe('none');
+    expect(data.visibility.projects).toBe('none');
+    expect(data.visibility.blog).toBe('none');
+  });
+
+  it('normalizes boolean true to "all" and false to "none"', async () => {
+    const data = await compileYaml(join(fixturePath('full'), 'site.yml'), {
+      isSiteConfig: true,
+    });
+    // full/site.yml has boolean values — they should be normalized
+    expect(data.visibility.education).toBe('all');
+    expect(data.visibility.experience).toBe('all');
+    expect(data.visibility.contact_phone).toBe('none');
+    expect(data.visibility.contact_email).toBe('all');
   });
 });

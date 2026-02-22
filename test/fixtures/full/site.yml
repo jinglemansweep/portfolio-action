@@ -25,10 +25,10 @@ visibility:
   accreditations: true
   skills: true
   blog: true
-  email: true
-  phone: false
+  contact_email: true
+  contact_phone: false
   location: true
-  website: true
+  contact_website: true
   links: true
 
 seo:

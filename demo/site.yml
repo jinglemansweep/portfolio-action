@@ -18,18 +18,19 @@ hero:
   style: gradient
 
 visibility:
-  education: true
-  experience: true
-  projects: true
-  community: true
-  accreditations: true
-  skills: true
-  blog: true
-  email: true
-  phone: false
-  location: true
-  website: true
-  links: true
+  education: all
+  experience: all
+  experience_company: print
+  projects: all
+  community: all
+  accreditations: all
+  skills: all
+  blog: all
+  contact_email: all
+  contact_phone: none
+  location: all
+  contact_website: all
+  links: all
 
 seo:
   robots:

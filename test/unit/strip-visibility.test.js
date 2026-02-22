@@ -1,20 +1,24 @@
 import { describe, it, expect } from 'vitest';
-import { stripVisibility } from '../../src/lib/utils/strip-visibility.js';
+import {
+  stripVisibility,
+  isWebVisible,
+} from '../../src/lib/utils/strip-visibility.js';
 
 const DEFAULTS = {
-  education: true,
-  experience: true,
-  projects: true,
-  community: true,
-  accreditations: true,
-  skills: true,
-  blog: true,
-  email: false,
-  phone: false,
-  location: true,
-  website: true,
-  socials: true,
-  links: true,
+  education: 'all',
+  experience: 'all',
+  experience_company: 'all',
+  projects: 'all',
+  community: 'all',
+  accreditations: 'all',
+  skills: 'all',
+  blog: 'all',
+  contact_email: 'none',
+  contact_phone: 'none',
+  location: 'all',
+  contact_website: 'all',
+  socials: 'all',
+  links: 'all',
 };
 
 function makeResume() {
@@ -56,11 +60,33 @@ function makeBlog() {
   return { posts: [{ slug: 'test', title: 'Test Post' }], tags: {} };
 }
 
+describe('isWebVisible', () => {
+  it('returns true for "all"', () => {
+    expect(isWebVisible('all')).toBe(true);
+  });
+
+  it('returns true for "web"', () => {
+    expect(isWebVisible('web')).toBe(true);
+  });
+
+  it('returns false for "print"', () => {
+    expect(isWebVisible('print')).toBe(false);
+  });
+
+  it('returns false for "none"', () => {
+    expect(isWebVisible('none')).toBe(false);
+  });
+});
+
 describe('stripVisibility', () => {
   it('default visibility preserves all data', () => {
-    const allTrue = { ...DEFAULTS, email: true, phone: true };
+    const allVisible = {
+      ...DEFAULTS,
+      contact_email: 'all',
+      contact_phone: 'all',
+    };
     const { resume } = stripVisibility(
-      allTrue,
+      allVisible,
       makeResume(),
       makeSkills(),
       makeProjects(),
@@ -72,8 +98,8 @@ describe('stripVisibility', () => {
     expect(resume.experience).toHaveLength(1);
   });
 
-  it('email=false strips contact.email from output', () => {
-    const vis = { ...DEFAULTS, email: false };
+  it('contact_email="none" strips contact.email from output', () => {
+    const vis = { ...DEFAULTS, contact_email: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -84,8 +110,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.email).toBeUndefined();
   });
 
-  it('phone=false strips contact.phone from output', () => {
-    const vis = { ...DEFAULTS, phone: false };
+  it('contact_phone="none" strips contact.phone from output', () => {
+    const vis = { ...DEFAULTS, contact_phone: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -96,8 +122,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.phone).toBeUndefined();
   });
 
-  it('location=false strips contact.location', () => {
-    const vis = { ...DEFAULTS, location: false };
+  it('location="none" strips contact.location', () => {
+    const vis = { ...DEFAULTS, location: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -108,8 +134,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.location).toBeUndefined();
   });
 
-  it('website=false strips contact.website', () => {
-    const vis = { ...DEFAULTS, website: false };
+  it('contact_website="none" strips contact.website', () => {
+    const vis = { ...DEFAULTS, contact_website: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -120,8 +146,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.website).toBeUndefined();
   });
 
-  it('socials=false strips contact.socials array', () => {
-    const vis = { ...DEFAULTS, socials: false };
+  it('socials="none" strips contact.socials array', () => {
+    const vis = { ...DEFAULTS, socials: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -132,8 +158,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.socials).toBeUndefined();
   });
 
-  it('links=false strips contact.links array', () => {
-    const vis = { ...DEFAULTS, links: false };
+  it('links="none" strips contact.links array', () => {
+    const vis = { ...DEFAULTS, links: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -144,8 +170,8 @@ describe('stripVisibility', () => {
     expect(resume.contact.links).toBeUndefined();
   });
 
-  it('education=false removes education array entirely', () => {
-    const vis = { ...DEFAULTS, education: false };
+  it('education="none" removes education array entirely', () => {
+    const vis = { ...DEFAULTS, education: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -156,8 +182,8 @@ describe('stripVisibility', () => {
     expect(resume.education).toBeUndefined();
   });
 
-  it('experience=false removes experience array entirely', () => {
-    const vis = { ...DEFAULTS, experience: false };
+  it('experience="none" removes experience array entirely', () => {
+    const vis = { ...DEFAULTS, experience: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -168,8 +194,8 @@ describe('stripVisibility', () => {
     expect(resume.experience).toBeUndefined();
   });
 
-  it('community=false removes community array', () => {
-    const vis = { ...DEFAULTS, community: false };
+  it('community="none" removes community array', () => {
+    const vis = { ...DEFAULTS, community: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -180,8 +206,8 @@ describe('stripVisibility', () => {
     expect(resume.community).toBeUndefined();
   });
 
-  it('accreditations=false removes accreditations array', () => {
-    const vis = { ...DEFAULTS, accreditations: false };
+  it('accreditations="none" removes accreditations array', () => {
+    const vis = { ...DEFAULTS, accreditations: 'none' };
     const { resume } = stripVisibility(
       vis,
       makeResume(),
@@ -192,8 +218,8 @@ describe('stripVisibility', () => {
     expect(resume.accreditations).toBeUndefined();
   });
 
-  it('skills=false returns null for skills data', () => {
-    const vis = { ...DEFAULTS, skills: false };
+  it('skills="none" returns null for skills data', () => {
+    const vis = { ...DEFAULTS, skills: 'none' };
     const { skills } = stripVisibility(
       vis,
       makeResume(),
@@ -204,8 +230,8 @@ describe('stripVisibility', () => {
     expect(skills).toBeNull();
   });
 
-  it('projects=false returns null for projects data', () => {
-    const vis = { ...DEFAULTS, projects: false };
+  it('projects="none" returns null for projects data', () => {
+    const vis = { ...DEFAULTS, projects: 'none' };
     const { projects } = stripVisibility(
       vis,
       makeResume(),
@@ -216,24 +242,114 @@ describe('stripVisibility', () => {
     expect(projects).toBeNull();
   });
 
-  it('all flags false strips everything — output contains NO hidden data', () => {
-    const allFalse = {
-      education: false,
-      experience: false,
-      projects: false,
-      community: false,
-      accreditations: false,
-      skills: false,
-      blog: false,
-      email: false,
-      phone: false,
-      location: false,
-      website: false,
-      socials: false,
-      links: false,
+  it('"web" value makes data visible for web output', () => {
+    const vis = { ...DEFAULTS, contact_email: 'web', skills: 'web' };
+    const { resume, skills } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.contact.email).toBe('test@example.com');
+    expect(skills).not.toBeNull();
+  });
+
+  it('"print" value hides data from web output', () => {
+    const vis = { ...DEFAULTS, contact_email: 'print', skills: 'print' };
+    const { resume, skills } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.contact.email).toBeUndefined();
+    expect(skills).toBeNull();
+  });
+
+  it('experience_company="none" strips company from each experience entry', () => {
+    const vis = { ...DEFAULTS, experience_company: 'none' };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience).toHaveLength(1);
+    expect(resume.experience[0].title).toBe('Dev');
+    expect(resume.experience[0].company).toBeUndefined();
+  });
+
+  it('experience_company="all" preserves company field', () => {
+    const vis = { ...DEFAULTS, experience_company: 'all' };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience[0].company).toBe('Corp');
+  });
+
+  it('experience_company="none" with multiple entries strips all companies', () => {
+    const vis = { ...DEFAULTS, experience_company: 'none' };
+    const multiResume = makeResume();
+    multiResume.experience.push({
+      title: 'Junior',
+      company: 'Startup',
+      start: '2018',
+      end: '2020',
+    });
+    const { resume } = stripVisibility(
+      vis,
+      multiResume,
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience).toHaveLength(2);
+    expect(resume.experience[0].company).toBeUndefined();
+    expect(resume.experience[1].company).toBeUndefined();
+  });
+
+  it('experience="none" takes precedence — no experience_company stripping needed', () => {
+    const vis = {
+      ...DEFAULTS,
+      experience: 'none',
+      experience_company: 'none',
+    };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience).toBeUndefined();
+  });
+
+  it('all flags "none" strips everything — output contains NO hidden data', () => {
+    const allNone = {
+      education: 'none',
+      experience: 'none',
+      experience_company: 'none',
+      projects: 'none',
+      community: 'none',
+      accreditations: 'none',
+      skills: 'none',
+      blog: 'none',
+      contact_email: 'none',
+      contact_phone: 'none',
+      location: 'none',
+      contact_website: 'none',
+      socials: 'none',
+      links: 'none',
     };
     const result = stripVisibility(
-      allFalse,
+      allNone,
       makeResume(),
       makeSkills(),
       makeProjects(),
@@ -257,9 +373,9 @@ describe('stripVisibility', () => {
   it('original input objects are not mutated', () => {
     const vis = {
       ...DEFAULTS,
-      email: false,
-      education: false,
-      skills: false,
+      contact_email: 'none',
+      education: 'none',
+      skills: 'none',
     };
     const originalResume = makeResume();
     const originalSkills = makeSkills();

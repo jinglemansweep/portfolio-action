@@ -1,3 +1,5 @@
+import { isWebVisible } from '../utils/strip-visibility.js';
+
 /**
  * Generate site manifest with routes and nav.
  * @param {object} options
@@ -17,14 +19,14 @@ export function generateManifest(options) {
   const nav = [{ label: labels.nav_home || 'Home', path: '/' }];
 
   // Skills route
-  if (visibility.skills && skills) {
+  if (isWebVisible(visibility.skills) && skills) {
     const skillsPath = `/${labels.route_skills || 'skills'}`;
     routes.push(skillsPath);
     nav.push({ label: labels.nav_skills || 'Skills', path: skillsPath });
   }
 
   // Projects route
-  if (visibility.projects && projects?.projects?.length > 0) {
+  if (isWebVisible(visibility.projects) && projects?.projects?.length > 0) {
     const projectsPath = `/${labels.route_projects || 'projects'}`;
     routes.push(projectsPath);
     nav.push({
@@ -34,7 +36,7 @@ export function generateManifest(options) {
   }
 
   // Blog route
-  if (visibility.blog && blog?.posts?.length > 0) {
+  if (isWebVisible(visibility.blog) && blog?.posts?.length > 0) {
     const blogPath = `/${labels.route_blog || 'blog'}`;
     routes.push(blogPath);
     nav.push({ label: labels.nav_blog || 'Blog', path: blogPath });

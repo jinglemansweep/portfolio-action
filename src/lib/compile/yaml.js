@@ -2,19 +2,20 @@ import { readFile } from 'node:fs/promises';
 import yaml from 'js-yaml';
 
 const VISIBILITY_DEFAULTS = {
-  education: true,
-  experience: true,
-  projects: true,
-  community: true,
-  accreditations: true,
-  skills: true,
-  blog: true,
-  email: false,
-  phone: false,
-  location: true,
-  website: true,
-  socials: true,
-  links: true,
+  education: 'all',
+  experience: 'all',
+  experience_company: 'all',
+  projects: 'all',
+  community: 'all',
+  accreditations: 'all',
+  skills: 'all',
+  blog: 'all',
+  contact_email: 'none',
+  contact_phone: 'none',
+  location: 'all',
+  contact_website: 'all',
+  socials: 'all',
+  links: 'all',
 };
 
 const SEO_DEFAULTS = {
@@ -65,6 +66,10 @@ export async function compileYaml(filePath, options = {}) {
       ...VISIBILITY_DEFAULTS,
       ...(data.visibility || {}),
     };
+    for (const [key, val] of Object.entries(data.visibility)) {
+      if (val === true) data.visibility[key] = 'all';
+      else if (val === false) data.visibility[key] = 'none';
+    }
     data.seo = deepMerge(structuredClone(SEO_DEFAULTS), data.seo || {});
   }
 
