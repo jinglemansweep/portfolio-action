@@ -29,6 +29,9 @@ inputs:
   build_date:
     description: 'Override build date (YYYY-MM-DD) for reproducible builds and blog scheduling'
     default: ''
+  pdf:
+    description: 'Install Chrome for PDF generation (set false to skip Chrome setup and save install time)'
+    default: 'true'
 
 outputs:
   output_path:
@@ -48,6 +51,16 @@ runs:
       run: npm ci
       working-directory: ${{ github.action_path }}
 
+    - name: Setup Chrome for PDF generation
+      if: inputs.pdf != 'false'
+      uses: browser-actions/setup-chrome@latest
+
+    - name: Install Puppeteer for PDF generation
+      if: inputs.pdf != 'false'
+      shell: bash
+      run: npm install puppeteer && npx puppeteer browsers install chrome
+      working-directory: ${{ github.action_path }}
+
     - name: Build site
       shell: bash
       run: |
@@ -59,5 +72,6 @@ runs:
           --output-dir "${{ inputs.output_dir }}" \
           --base-path "${{ inputs.base_path }}" \
           --site-url "${{ inputs.site_url }}" \
-          --build-date "${{ inputs.build_date }}"
+          --build-date "${{ inputs.build_date }}" \
+          ${{ inputs.pdf == 'false' && '--no-pdf' || '' }}
       working-directory: ${{ github.workspace }}
