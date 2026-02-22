@@ -9,6 +9,11 @@ const fullResume = {
     phone: '+1 555-0100',
     location: { city: 'London', country: 'UK' },
     website: 'https://jane.dev',
+    socials: [
+      { type: 'github', username: 'janesmith' },
+      { type: 'linkedin', username: 'janesmith' },
+    ],
+    links: [{ title: 'Blog', url: 'https://blog.jane.dev' }],
   },
   summary: 'Experienced engineer with **10+ years** building scalable systems.',
   experience: [
@@ -163,6 +168,103 @@ describe('generateResumeHtml', () => {
     });
     expect(html).toContain('Minimal');
     expect(html).toContain('<!doctype html>');
+  });
+
+  it('renders social icons as inline SVGs in contact section', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<svg');
+    expect(html).toContain('janesmith');
+    // Should not include "github:" prefix with icons
+    expect(html).not.toContain('github:');
+  });
+
+  it('renders contact icons for email, phone, location, and website', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('jane@example.com');
+    expect(html).toContain('+1 555-0100');
+    expect(html).toContain('London, UK');
+    expect(html).toContain('https://jane.dev');
+  });
+
+  it('filters skills to those referenced in experience', async () => {
+    const skills = {
+      categories: [
+        {
+          name: 'Languages',
+          skills: [
+            { name: 'TypeScript', level: 'Expert', years: 8 },
+            { name: 'Rust', level: 'Beginner', years: 1 },
+          ],
+        },
+      ],
+    };
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('TypeScript');
+    expect(html).not.toContain('Rust');
+  });
+
+  it('shows all skills when no experience skills are referenced', async () => {
+    const resume = { name: 'Test', tagline: 'Dev' };
+    const skills = {
+      categories: [
+        {
+          name: 'Languages',
+          skills: [
+            { name: 'TypeScript', level: 'Expert', years: 8 },
+            { name: 'Rust', level: 'Beginner', years: 1 },
+          ],
+        },
+      ],
+    };
+    const html = await generateResumeHtml({
+      resume,
+      skills,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('TypeScript');
+    expect(html).toContain('Rust');
+  });
+
+  it('includes skills referenced in projects', async () => {
+    const resume = { name: 'Test', tagline: 'Dev' };
+    const skills = {
+      categories: [
+        {
+          name: 'Languages',
+          skills: [
+            { name: 'TypeScript', level: 'Expert', years: 8 },
+            { name: 'Rust', level: 'Beginner', years: 1 },
+          ],
+        },
+      ],
+    };
+    const projects = {
+      projects: [{ name: 'Tool', skills: ['Rust'] }],
+    };
+    const html = await generateResumeHtml({
+      resume,
+      skills,
+      projects,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('Rust');
+    expect(html).not.toContain('TypeScript');
   });
 
   it('does not mutate input data', async () => {

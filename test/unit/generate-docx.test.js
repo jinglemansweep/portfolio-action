@@ -217,6 +217,48 @@ describe('generateDocx', () => {
     expect(buffer.length).toBeGreaterThan(0);
   });
 
+  it('filters skills to those referenced in experience', async () => {
+    const resume = {
+      name: 'Test',
+      tagline: 'Dev',
+      experience: [
+        { title: 'Engineer', company: 'Co', start: '2020', skills: ['Go'] },
+      ],
+    };
+    const skills = {
+      categories: [
+        {
+          name: 'Languages',
+          skills: [
+            { name: 'TypeScript', level: 'Expert', years: 8 },
+            { name: 'Go', level: 'Advanced', years: 3 },
+            { name: 'Rust', level: 'Beginner', years: 1 },
+          ],
+        },
+      ],
+    };
+    const buffer = await generateDocx({
+      resume,
+      skills,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(buffer).toBeInstanceOf(Buffer);
+    expect(buffer.length).toBeGreaterThan(0);
+  });
+
+  it('shows all skills when no experience/project skills are referenced', async () => {
+    const resume = { name: 'Test', tagline: 'Dev' };
+    const buffer = await generateDocx({
+      resume,
+      skills: fullSkills,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(buffer).toBeInstanceOf(Buffer);
+    expect(buffer.length).toBeGreaterThan(0);
+  });
+
   it('does not mutate input data', async () => {
     const resume = structuredClone(fullResume);
     const skills = structuredClone(fullSkills);

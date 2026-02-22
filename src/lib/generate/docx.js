@@ -30,6 +30,19 @@ const SECTION_HEADING_SIZE = 24; // 12pt
 const SUBTITLE_SIZE = 22; // 11pt
 const SMALL_SIZE = 18; // 9pt
 
+const SOCIAL_LABELS = {
+  github: 'GitHub',
+  linkedin: 'LinkedIn',
+  mastodon: 'Mastodon',
+  x: 'X',
+  twitter: 'Twitter',
+  tiktok: 'TikTok',
+  youtube: 'YouTube',
+  instagram: 'Instagram',
+  facebook: 'Facebook',
+  bluesky: 'Bluesky',
+};
+
 /**
  * Generate a DOCX resume buffer from stripped data.
  * @param {object} options
@@ -94,10 +107,15 @@ export async function generateDocx({
     sections.push(...buildAccreditations(data.accreditations, page));
   }
 
-  // Skills
-  if (skillsData?.categories?.length > 0) {
+  // Skills (filtered to those referenced in experience/projects)
+  const filteredSkills = filterSkillsForDocument(
+    skillsData,
+    data,
+    projectsData,
+  );
+  if (filteredSkills?.categories?.length > 0) {
     sections.push(...buildSectionHeading(labels.skills || 'Skills', primary));
-    sections.push(...buildSkills(skillsData.categories, labels));
+    sections.push(...buildSkills(filteredSkills.categories, labels));
   }
 
   // Community
@@ -242,7 +260,10 @@ function buildContactParts(data) {
 
   if (contact.socials) {
     for (const s of contact.socials) {
-      if (s.username) parts.push(`${s.type || ''}: ${s.username}`.trim());
+      if (s.username) {
+        const label = SOCIAL_LABELS[s.type] || s.type || '';
+        parts.push(`${label}: ${s.username}`.trim());
+      }
     }
   }
 
@@ -678,6 +699,40 @@ function formatDateRange(start, end, labels = {}) {
     : '';
   if (startStr && endStr) return `${startStr} – ${endStr}`;
   return startStr || endStr;
+}
+
+function filterSkillsForDocument(skillsData, resume, projects) {
+  if (!skillsData?.categories) return skillsData;
+
+  const referenced = new Set();
+  if (resume?.experience) {
+    for (const exp of resume.experience) {
+      if (exp.skills) {
+        for (const s of exp.skills) referenced.add(s.toLowerCase());
+      }
+    }
+  }
+  if (projects?.projects) {
+    for (const proj of projects.projects) {
+      if (proj.skills) {
+        for (const s of proj.skills) referenced.add(s.toLowerCase());
+      }
+    }
+  }
+
+  if (referenced.size === 0) return skillsData;
+
+  return {
+    ...skillsData,
+    categories: skillsData.categories
+      .map((cat) => ({
+        ...cat,
+        skills: (cat.skills || []).filter((s) =>
+          referenced.has((s.name || '').toLowerCase()),
+        ),
+      }))
+      .filter((cat) => cat.skills.length > 0),
+  };
 }
 
 function stripMarkdown(text) {
