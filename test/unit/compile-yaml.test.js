@@ -67,6 +67,16 @@ describe('compileYaml', () => {
     expect(data.visibility.blog).toBe('none');
   });
 
+  it('merges documents defaults when isSiteConfig is true', async () => {
+    const data = await compileYaml(join(fixturePath('minimal'), 'site.yml'), {
+      isSiteConfig: true,
+    });
+    expect(data.documents.pdf).toBe(true);
+    expect(data.documents.docx).toBe(true);
+    expect(data.documents.page_size).toBe('A4');
+    expect(data.documents.filename).toBe('resume');
+  });
+
   it('normalizes boolean true to "all" and false to "none"', async () => {
     const data = await compileYaml(join(fixturePath('full'), 'site.yml'), {
       isSiteConfig: true,

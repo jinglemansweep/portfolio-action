@@ -38,6 +38,51 @@ function validateSite(data) {
     });
   }
 
+  if (data.documents) {
+    const docs = data.documents;
+    if (docs.pdf !== undefined && typeof docs.pdf !== 'boolean') {
+      errors.push({
+        file,
+        field: 'documents.pdf',
+        reason: 'must be a boolean',
+      });
+    }
+    if (docs.docx !== undefined && typeof docs.docx !== 'boolean') {
+      errors.push({
+        file,
+        field: 'documents.docx',
+        reason: 'must be a boolean',
+      });
+    }
+    if (
+      docs.page_size !== undefined &&
+      docs.page_size !== 'A4' &&
+      docs.page_size !== 'Letter'
+    ) {
+      errors.push({
+        file,
+        field: 'documents.page_size',
+        reason: "must be 'A4' or 'Letter'",
+      });
+    }
+    if (docs.filename !== undefined) {
+      if (
+        typeof docs.filename !== 'string' ||
+        docs.filename.length === 0 ||
+        docs.filename.includes('/') ||
+        docs.filename.includes('\\') ||
+        docs.filename.includes('.')
+      ) {
+        errors.push({
+          file,
+          field: 'documents.filename',
+          reason:
+            'must be a non-empty string without slashes or file extensions',
+        });
+      }
+    }
+  }
+
   return errors;
 }
 

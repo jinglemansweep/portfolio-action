@@ -18,6 +18,13 @@ const VISIBILITY_DEFAULTS = {
   links: 'all',
 };
 
+const DOCUMENTS_DEFAULTS = {
+  pdf: true,
+  docx: true,
+  page_size: 'A4',
+  filename: 'resume',
+};
+
 const SEO_DEFAULTS = {
   robots: {
     indexing: true,
@@ -71,6 +78,7 @@ export async function compileYaml(filePath, options = {}) {
       else if (val === false) data.visibility[key] = 'none';
     }
     data.seo = deepMerge(structuredClone(SEO_DEFAULTS), data.seo || {});
+    data.documents = { ...DOCUMENTS_DEFAULTS, ...(data.documents || {}) };
   }
 
   return data;
