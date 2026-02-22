@@ -28,6 +28,8 @@ beforeAll(async () => {
     basePath: '/',
     siteUrl: 'https://example.com',
     buildDate: '2026-06-15',
+    noPdf: true,
+    noDocx: true,
   });
 });
 

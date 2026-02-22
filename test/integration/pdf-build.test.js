@@ -17,16 +17,21 @@ async function fileExists(path) {
   }
 }
 
-// Check if Puppeteer is available
-let puppeteerAvailable = false;
+// Check if Puppeteer can actually launch a browser
+let chromeAvailable = false;
 try {
-  await import('puppeteer');
-  puppeteerAvailable = true;
+  const puppeteer = await import('puppeteer');
+  const browser = await puppeteer.default.launch({
+    headless: true,
+    args: ['--no-sandbox', '--disable-setuid-sandbox'],
+  });
+  await browser.close();
+  chromeAvailable = true;
 } catch {
-  // Puppeteer not installed
+  // Puppeteer not installed or Chrome not available
 }
 
-describe.skipIf(!puppeteerAvailable)('PDF build integration', () => {
+describe.skipIf(!chromeAvailable)('PDF build integration', () => {
   let outputDir, cleanup;
 
   beforeAll(async () => {
