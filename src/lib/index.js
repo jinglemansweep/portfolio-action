@@ -9,7 +9,10 @@ import {
 } from 'node:fs/promises';
 import { compileYaml, deriveSiteMeta } from './compile/yaml.js';
 import { validate } from './utils/validate.js';
-import { stripVisibility } from './utils/strip-visibility.js';
+import {
+  stripVisibility,
+  stripVisibilityForPrint,
+} from './utils/strip-visibility.js';
 import { compileMarkdown, renderMarkdown } from './compile/markdown.js';
 import { compileBlog } from './compile/blog.js';
 import { compileCrossref } from './compile/crossref.js';
@@ -336,49 +339,60 @@ export async function build(options) {
     }
   }
 
-  // Step 16: Generate DOCX
-  if (site.documents.docx) {
-    const { generateDocx } = await import('./generate/docx.js');
-    const docxBuffer = await generateDocx({
-      resume: stripped.resume,
-      skills: stripped.skills,
-      projects: stripped.projects,
-      i18n,
-      pageSize: site.documents.page_size,
-      theme: site.theme,
-    });
-    await writeFile(
-      join(outputDir, `${site.documents.filename}.docx`),
-      docxBuffer,
+  // Step 16–17: Generate documents (PDF/DOCX) with print-aware visibility
+  if (site.documents.docx || site.documents.pdf) {
+    const printStripped = stripVisibilityForPrint(
+      site.visibility,
+      resume,
+      skills,
+      projects,
     );
-  }
 
-  // Step 17: Generate PDF
-  if (site.documents.pdf) {
-    try {
-      const { generatePdf } = await import('./generate/pdf.js');
-      const { generateResumeHtml } = await import('./generate/resume-html.js');
-      const htmlString = await generateResumeHtml({
-        resume: stripped.resume,
-        skills: stripped.skills,
-        projects: stripped.projects,
+    // Step 16: Generate DOCX
+    if (site.documents.docx) {
+      const { generateDocx } = await import('./generate/docx.js');
+      const docxBuffer = await generateDocx({
+        resume: printStripped.resume,
+        skills: printStripped.skills,
+        projects: printStripped.projects,
         i18n,
+        pageSize: site.documents.page_size,
         theme: site.theme,
       });
-      const pdfBuffer = await generatePdf(htmlString, {
-        pageSize: site.documents.page_size,
-      });
       await writeFile(
-        join(outputDir, `${site.documents.filename}.pdf`),
-        pdfBuffer,
+        join(outputDir, `${site.documents.filename}.docx`),
+        docxBuffer,
       );
-    } catch (err) {
-      if (err.message?.includes('Puppeteer is required')) {
-        warn(
-          'PDF generation skipped: Puppeteer is not installed. Install it with: npm install puppeteer',
+    }
+
+    // Step 17: Generate PDF
+    if (site.documents.pdf) {
+      try {
+        const { generatePdf } = await import('./generate/pdf.js');
+        const { generateResumeHtml } =
+          await import('./generate/resume-html.js');
+        const htmlString = await generateResumeHtml({
+          resume: printStripped.resume,
+          skills: printStripped.skills,
+          projects: printStripped.projects,
+          i18n,
+          theme: site.theme,
+        });
+        const pdfBuffer = await generatePdf(htmlString, {
+          pageSize: site.documents.page_size,
+        });
+        await writeFile(
+          join(outputDir, `${site.documents.filename}.pdf`),
+          pdfBuffer,
         );
-      } else {
-        throw err;
+      } catch (err) {
+        if (err.message?.includes('Puppeteer is required')) {
+          warn(
+            'PDF generation skipped: Puppeteer is not installed. Install it with: npm install puppeteer',
+          );
+        } else {
+          throw err;
+        }
       }
     }
   }
