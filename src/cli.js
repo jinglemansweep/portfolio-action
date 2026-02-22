@@ -16,6 +16,8 @@ const { values } = parseArgs({
     'base-path': { type: 'string', default: '/' },
     'site-url': { type: 'string', default: '' },
     'build-date': { type: 'string', default: '' },
+    'no-pdf': { type: 'boolean', default: false },
+    'no-docx': { type: 'boolean', default: false },
   },
 });
 
@@ -30,6 +32,8 @@ try {
     basePath: values['base-path'],
     siteUrl: values['site-url'],
     buildDate: values['build-date'] || undefined,
+    noPdf: values['no-pdf'],
+    noDocx: values['no-docx'],
   });
 } catch (err) {
   process.stderr.write(`Error: ${err.message}\n`);
