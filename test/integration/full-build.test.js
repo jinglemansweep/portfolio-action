@@ -31,6 +31,8 @@ beforeAll(async () => {
     basePath: '/',
     siteUrl: 'https://example.com',
     buildDate: '2026-02-15',
+    noPdf: true,
+    noDocx: true,
   });
 });
 
@@ -117,6 +119,20 @@ describe('full build integration', () => {
     const manifest = await readOutputJson(outputDir, 'data/manifest.json');
     expect(manifest.routes).toContain('/');
     expect(manifest.nav.length).toBeGreaterThan(0);
+  });
+
+  it('produces no .pdf or .docx files with --no-pdf --no-docx', async () => {
+    expect(await fileExists(join(outputDir, 'resume.pdf'))).toBe(false);
+    expect(await fileExists(join(outputDir, 'resume.docx'))).toBe(false);
+  });
+
+  it('site.json contains documents config with overrides applied', async () => {
+    const site = await readOutputJson(outputDir, 'data/site.json');
+    expect(site.documents).toBeDefined();
+    expect(site.documents.pdf).toBe(false);
+    expect(site.documents.docx).toBe(false);
+    expect(site.documents.page_size).toBe('A4');
+    expect(site.documents.filename).toBe('resume');
   });
 
   it('index.html contains interpolated values', async () => {
