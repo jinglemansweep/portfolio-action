@@ -115,7 +115,7 @@ export async function generateDocx({
   );
   if (filteredSkills?.categories?.length > 0) {
     sections.push(...buildSectionHeading(labels.skills || 'Skills', primary));
-    sections.push(...buildSkills(filteredSkills.categories, labels));
+    sections.push(...buildSkillsInline(filteredSkills, labels));
   }
 
   // Community
@@ -506,55 +506,64 @@ function buildAccreditations(accreditations, page) {
   return paragraphs;
 }
 
-function buildSkills(categories, labels) {
-  const paragraphs = [];
-
-  for (const cat of categories) {
-    if (cat.name) {
-      paragraphs.push(
-        new Paragraph({
-          children: [
-            new TextRun({
-              text: cat.name,
-              bold: true,
-              size: BODY_SIZE,
-              font: FONT,
-            }),
-          ],
-          spacing: { before: 120, after: 40 },
-        }),
-      );
-    }
-
-    if (cat.skills?.length > 0) {
+function buildSkillsInline(skillsData, labels) {
+  const allSkills = [];
+  for (const cat of skillsData.categories) {
+    if (cat.skills) {
       for (const skill of cat.skills) {
-        const parts = [skill.name || ''];
-        if (skill.level) parts.push(skill.level);
-        if (skill.years) {
-          const yearsLabel = labels.skill_years
-            ? labels.skill_years.replace('{n}', skill.years)
-            : `${skill.years} years`;
-          parts.push(yearsLabel);
-        }
-
-        paragraphs.push(
-          new Paragraph({
-            children: [
-              new TextRun({
-                text: parts.join(' — '),
-                size: BODY_SIZE,
-                font: FONT,
-              }),
-            ],
-            numbering: { reference: 'bullet-list', level: 0 },
-            spacing: { after: 20 },
-          }),
-        );
+        allSkills.push(skill);
       }
     }
   }
 
-  return paragraphs;
+  allSkills.sort(
+    (a, b) =>
+      (b.years_active || b.years || 0) - (a.years_active || a.years || 0),
+  );
+
+  const runs = [];
+  for (let i = 0; i < allSkills.length; i++) {
+    if (i > 0) {
+      runs.push(
+        new TextRun({
+          text: '  ·  ',
+          size: BODY_SIZE,
+          font: FONT,
+          color: '999999',
+        }),
+      );
+    }
+    const skill = allSkills[i];
+    runs.push(
+      new TextRun({
+        text: skill.name || '',
+        bold: true,
+        size: BODY_SIZE,
+        font: FONT,
+      }),
+    );
+    const years = skill.years_active || skill.years;
+    if (years) {
+      const yearsLabel = labels.skill_years
+        ? labels.skill_years.replace('{n}', years)
+        : `${years}y`;
+      runs.push(
+        new TextRun({
+          text: ` ${yearsLabel}`,
+          size: SMALL_SIZE,
+          font: FONT,
+          color: '666666',
+        }),
+      );
+    }
+  }
+
+  return [
+    new Paragraph({
+      children: runs,
+      spacing: { after: 80 },
+    }),
+  ];
 }
 
 function buildCommunity(community) {

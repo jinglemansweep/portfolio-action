@@ -196,6 +196,38 @@ describe('generateResumeHtml', () => {
     expect(html).toContain('https://jane.dev');
   });
 
+  it('renders skills as inline badges sorted by years descending', async () => {
+    const skills = {
+      categories: [
+        {
+          name: 'Backend',
+          skills: [{ name: 'Go', level: 'Advanced', years: 3 }],
+        },
+        {
+          name: 'Frontend',
+          skills: [{ name: 'TypeScript', level: 'Expert', years: 8 }],
+        },
+      ],
+    };
+    const resume = {
+      name: 'Test',
+      experience: [{ title: 'Dev', skills: ['TypeScript', 'Go'] }],
+    };
+    const html = await generateResumeHtml({
+      resume,
+      skills,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('skill-badge');
+    expect(html).toContain('skills-badges');
+    expect(html).not.toContain('<ul');
+    // TypeScript (8y) should appear before Go (3y)
+    const tsPos = html.indexOf('TypeScript');
+    const goPos = html.indexOf('Go');
+    expect(tsPos).toBeLessThan(goPos);
+  });
+
   it('filters skills to those referenced in experience', async () => {
     const skills = {
       categories: [
