@@ -19,6 +19,7 @@
     "prepare": "husky"
   },
   "dependencies": {
+    "docx": "^9.0.0",
     "gray-matter": "^4.0.3",
     "js-yaml": "^4.1.0",
     "markdown-it": "^14.1.0"
