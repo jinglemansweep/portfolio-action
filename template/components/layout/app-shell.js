@@ -198,13 +198,14 @@ class AppShell extends I18nMixin(LitElement) {
     if (!anchor) return;
 
     const href = anchor.getAttribute('href');
-    // Skip external links, hash-only links, and non-http links
+    // Skip external links, hash-only links, non-http links, and downloads
     if (
       !href ||
       href.startsWith('http') ||
       href.startsWith('mailto:') ||
       href.startsWith('tel:') ||
-      href.startsWith('#')
+      href.startsWith('#') ||
+      anchor.hasAttribute('download')
     ) {
       return;
     }
