@@ -93,19 +93,20 @@ hero:
   overlay_opacity: 0.6 # Dark overlay opacity (0-1)
 
 visibility:
-  education: true
-  experience: true
-  projects: true
-  community: true
-  accreditations: true
-  skills: true # false disables /skills page
-  blog: true # false disables blog entirely
-  email: false # Hidden by default (privacy)
-  phone: false # Hidden by default (privacy)
-  location: true
-  website: true
-  socials: true # Social media profiles
-  links: true # Custom profile links
+  education: all
+  experience: all
+  experience_company: all # Company names in experience entries
+  projects: all
+  community: all
+  accreditations: all
+  skills: all # 'none' disables /skills page
+  blog: all # 'none' disables blog entirely
+  contact_email: none # Hidden by default (privacy)
+  contact_phone: none # Hidden by default (privacy)
+  location: all
+  contact_website: all
+  socials: all # Social media profiles
+  links: all # Custom profile links
 
 custom_domain: '' # Write CNAME file for custom domain hosting
 
@@ -286,13 +287,25 @@ Blog posts include automatic reading time calculation and RSS feed generation (`
 
 ## Visibility System
 
-The visibility system in `site.yml` controls what data appears in the built site. Hidden data is **stripped at build time** and never reaches the browser.
+The visibility system in `site.yml` controls what data appears in the built site. Each flag accepts one of four values:
 
-- **Contact fields** (`email`, `phone`, `location`, `website`, `socials`, `links`): Control individual field visibility
+| Value   | Web output | Print output (future) |
+| ------- | ---------- | --------------------- |
+| `all`   | visible    | visible               |
+| `web`   | visible    | hidden                |
+| `print` | hidden     | visible               |
+| `none`  | hidden     | hidden                |
+
+Boolean values (`true`/`false`) are accepted for backward compatibility and normalized to `all`/`none`.
+
+Hidden data is **stripped at build time** and never reaches the browser.
+
+- **Contact fields** (`contact_email`, `contact_phone`, `location`, `contact_website`, `socials`, `links`): Control individual field visibility
 - **Sections** (`education`, `experience`, `community`, `accreditations`): Hide entire resume sections
+- **Experience detail** (`experience_company`): Control company name visibility independently
 - **Pages** (`skills`, `projects`, `blog`): Disable dedicated pages and navigation entries
 
-Defaults: `email` and `phone` are hidden by default for privacy. All other fields default to visible.
+Defaults: `contact_email` and `contact_phone` are `none` by default for privacy. All other flags default to `all`.
 
 ## Internationalisation (i18n)
 

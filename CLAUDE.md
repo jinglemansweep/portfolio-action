@@ -121,7 +121,7 @@ Always use `structuredClone()` before mutating data. Never modify function input
 
 ```javascript
 const result = structuredClone(resume);
-if (!visibility.email) delete result.contact.email;
+if (!isWebVisible(visibility.contact_email)) delete result.contact.email;
 return result;
 ```
 
@@ -241,7 +241,7 @@ afterAll(async () => {
 | `full/`              | All features: YAML + pages + blog + media          |
 | `blog/`              | Blog scheduling: published, draft, future, expired |
 | `i18n-override/`     | Custom i18n label overrides                        |
-| `visibility-hidden/` | All visibility flags false                         |
+| `visibility-hidden/` | All visibility flags `none`                        |
 | `invalid/`           | Malformed YAML, missing fields                     |
 
 ### Helpers
@@ -296,7 +296,7 @@ All checks must pass before committing:
 ```bash
 npm run lint          # ESLint (flat config v9)
 npm run format:check  # Prettier
-npm test              # Vitest (117 tests)
+npm test              # Vitest (130 tests)
 npm run test:coverage # Must meet 80% threshold
 ```
 
@@ -325,7 +325,7 @@ Draft, future, and expired posts are filtered during compilation. They are never
 
 ### Manifest-Driven Routing
 
-`manifest.json` contains only routes where visibility is true and data exists. The SPA router in `app-shell.js` reads the manifest — no manual route filtering needed.
+`manifest.json` contains only routes where visibility is web-visible (`all` or `web`) and data exists. The SPA router in `app-shell.js` reads the manifest — no manual route filtering needed.
 
 ### 404.html SPA Redirect
 

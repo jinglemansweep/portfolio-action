@@ -4,6 +4,15 @@
  */
 
 /**
+ * Check if a visibility value means "visible on web".
+ * @param {string} value - Visibility enum value ('all', 'web', 'print', 'none')
+ * @returns {boolean}
+ */
+export function isWebVisible(value) {
+  return value === 'all' || value === 'web';
+}
+
+/**
  * @param {object} visibility - Visibility flags from site.yml
  * @param {object} resume - Parsed resume data
  * @param {object|null} skills - Parsed skills data
@@ -13,9 +22,9 @@
  */
 export function stripVisibility(visibility, resume, skills, projects, blog) {
   const strippedResume = stripResume(visibility, resume);
-  const strippedSkills = visibility.skills ? skills : null;
-  const strippedProjects = visibility.projects ? projects : null;
-  const strippedBlog = visibility.blog ? blog : null;
+  const strippedSkills = isWebVisible(visibility.skills) ? skills : null;
+  const strippedProjects = isWebVisible(visibility.projects) ? projects : null;
+  const strippedBlog = isWebVisible(visibility.blog) ? blog : null;
 
   return {
     resume: strippedResume,
@@ -29,18 +38,25 @@ function stripResume(visibility, resume) {
   const result = structuredClone(resume);
 
   if (result.contact) {
-    if (!visibility.email) delete result.contact.email;
-    if (!visibility.phone) delete result.contact.phone;
-    if (!visibility.location) delete result.contact.location;
-    if (!visibility.website) delete result.contact.website;
-    if (!visibility.socials) delete result.contact.socials;
-    if (!visibility.links) delete result.contact.links;
+    if (!isWebVisible(visibility.contact_email)) delete result.contact.email;
+    if (!isWebVisible(visibility.contact_phone)) delete result.contact.phone;
+    if (!isWebVisible(visibility.location)) delete result.contact.location;
+    if (!isWebVisible(visibility.contact_website))
+      delete result.contact.website;
+    if (!isWebVisible(visibility.socials)) delete result.contact.socials;
+    if (!isWebVisible(visibility.links)) delete result.contact.links;
   }
 
-  if (!visibility.education) delete result.education;
-  if (!visibility.experience) delete result.experience;
-  if (!visibility.community) delete result.community;
-  if (!visibility.accreditations) delete result.accreditations;
+  if (!isWebVisible(visibility.education)) delete result.education;
+  if (!isWebVisible(visibility.experience)) delete result.experience;
+  if (!isWebVisible(visibility.community)) delete result.community;
+  if (!isWebVisible(visibility.accreditations)) delete result.accreditations;
+
+  if (result.experience && !isWebVisible(visibility.experience_company)) {
+    for (const exp of result.experience) {
+      delete exp.company;
+    }
+  }
 
   return result;
 }

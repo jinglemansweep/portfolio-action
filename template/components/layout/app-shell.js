@@ -122,7 +122,8 @@ class AppShell extends I18nMixin(LitElement) {
       // Conditionally load skills, projects, blog
       const optionalLoads = [];
 
-      if (this._site?.visibility?.skills !== false) {
+      const sv = this._site?.visibility || {};
+      if (sv.skills === 'all' || sv.skills === 'web') {
         optionalLoads.push(
           fetch('data/skills.json')
             .then((r) => (r.ok ? r.json() : null))
@@ -130,7 +131,7 @@ class AppShell extends I18nMixin(LitElement) {
         );
       }
 
-      if (this._site?.visibility?.projects !== false) {
+      if (sv.projects === 'all' || sv.projects === 'web') {
         optionalLoads.push(
           fetch('data/projects.json')
             .then((r) => (r.ok ? r.json() : null))
@@ -138,7 +139,7 @@ class AppShell extends I18nMixin(LitElement) {
         );
       }
 
-      if (this._site?.visibility?.blog !== false) {
+      if (sv.blog === 'all' || sv.blog === 'web') {
         optionalLoads.push(
           fetch('data/blog/index.json')
             .then((r) => (r.ok ? r.json() : null))
