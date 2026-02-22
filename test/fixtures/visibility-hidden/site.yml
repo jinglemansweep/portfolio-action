@@ -5,6 +5,7 @@ lang: en
 visibility:
   education: false
   experience: false
+  experience_company: false
   projects: false
   community: false
   accreditations: false

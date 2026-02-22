@@ -4,6 +4,7 @@ import { stripVisibility } from '../../src/lib/utils/strip-visibility.js';
 const DEFAULTS = {
   education: true,
   experience: true,
+  experience_company: true,
   projects: true,
   community: true,
   accreditations: true,
@@ -168,6 +169,44 @@ describe('stripVisibility', () => {
     expect(resume.experience).toBeUndefined();
   });
 
+  it('experience_company=false strips company from each experience entry', () => {
+    const vis = { ...DEFAULTS, experience_company: false };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience).toHaveLength(1);
+    expect(resume.experience[0].title).toBe('Dev');
+    expect(resume.experience[0].company).toBeUndefined();
+  });
+
+  it('experience_company=true preserves company in experience entries', () => {
+    const vis = { ...DEFAULTS, experience_company: true };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience[0].company).toBe('Corp');
+  });
+
+  it('experience_company=false has no effect when experience=false', () => {
+    const vis = { ...DEFAULTS, experience: false, experience_company: false };
+    const { resume } = stripVisibility(
+      vis,
+      makeResume(),
+      makeSkills(),
+      makeProjects(),
+      makeBlog(),
+    );
+    expect(resume.experience).toBeUndefined();
+  });
+
   it('community=false removes community array', () => {
     const vis = { ...DEFAULTS, community: false };
     const { resume } = stripVisibility(
@@ -220,6 +259,7 @@ describe('stripVisibility', () => {
     const allFalse = {
       education: false,
       experience: false,
+      experience_company: false,
       projects: false,
       community: false,
       accreditations: false,

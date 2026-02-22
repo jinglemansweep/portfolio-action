@@ -42,5 +42,11 @@ function stripResume(visibility, resume) {
   if (!visibility.community) delete result.community;
   if (!visibility.accreditations) delete result.accreditations;
 
+  if (!visibility.experience_company && result.experience) {
+    for (const exp of result.experience) {
+      delete exp.company;
+    }
+  }
+
   return result;
 }

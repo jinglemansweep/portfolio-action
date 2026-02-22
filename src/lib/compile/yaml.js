@@ -4,6 +4,7 @@ import yaml from 'js-yaml';
 const VISIBILITY_DEFAULTS = {
   education: true,
   experience: true,
+  experience_company: true,
   projects: true,
   community: true,
   accreditations: true,
