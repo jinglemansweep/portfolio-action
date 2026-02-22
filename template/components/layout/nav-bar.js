@@ -42,15 +42,13 @@ class NavBar extends I18nMixin(LitElement) {
     const docs = this.site?.documents;
     if (!docs) return '';
 
-    const basePath =
-      document.querySelector('base')?.getAttribute('href') || '/';
     const filename = docs.filename || 'resume';
     const links = [];
 
     if (docs.pdf) {
       links.push(html`
         <a
-          href="${basePath}${filename}.pdf"
+          href="${filename}.pdf"
           download
           class="rounded-lg p-2 text-sm font-medium text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
           aria-label=${this.t('doc_download_pdf')}
@@ -65,7 +63,7 @@ class NavBar extends I18nMixin(LitElement) {
     if (docs.docx) {
       links.push(html`
         <a
-          href="${basePath}${filename}.docx"
+          href="${filename}.docx"
           download
           class="rounded-lg p-2 text-sm font-medium text-gray-600 no-underline transition-colors hover:bg-gray-100 hover:text-gray-900 focus:ring-2 focus:ring-blue-500 focus:outline-none dark:text-gray-300 dark:hover:bg-gray-800 dark:hover:text-white"
           aria-label=${this.t('doc_download_docx')}
