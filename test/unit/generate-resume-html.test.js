@@ -1,0 +1,184 @@
+import { describe, it, expect } from 'vitest';
+import { generateResumeHtml } from '../../src/lib/generate/resume-html.js';
+
+const fullResume = {
+  name: 'Jane Smith',
+  tagline: 'Senior Software Engineer',
+  contact: {
+    email: 'jane@example.com',
+    phone: '+1 555-0100',
+    location: { city: 'London', country: 'UK' },
+    website: 'https://jane.dev',
+  },
+  summary: 'Experienced engineer with **10+ years** building scalable systems.',
+  experience: [
+    {
+      title: 'Principal Engineer',
+      company: 'Acme Corp',
+      start: '2022-01',
+      end: 'present',
+      description: 'Leading platform architecture.',
+      skills: ['TypeScript', 'Go'],
+    },
+  ],
+  education: [
+    {
+      institution: 'MIT',
+      qualification: 'BSc Computer Science',
+      start: '2008',
+      end: '2012',
+    },
+  ],
+  accreditations: [{ title: 'AWS SA Pro', issuer: 'AWS', date: '2024' }],
+  community: [
+    { name: 'Tech Meetup', role: 'Organiser', description: 'Monthly meetup.' },
+  ],
+};
+
+const fullSkills = {
+  categories: [
+    {
+      name: 'Languages',
+      skills: [{ name: 'TypeScript', level: 'Expert', years: 8 }],
+    },
+  ],
+};
+
+const fullProjects = {
+  projects: [
+    {
+      name: 'Open Source Tool',
+      description: 'A CLI tool.',
+      start: '2023',
+      url: 'https://example.com',
+      skills: ['TypeScript'],
+    },
+  ],
+};
+
+const defaultI18n = {
+  locale: 'en',
+  dir: 'ltr',
+  labels: {
+    summary: 'Summary',
+    experience: 'Experience',
+    education: 'Education',
+    skills: 'Skills',
+    projects: 'Projects',
+    community: 'Community',
+    accreditations: 'Accreditations',
+    experience_present: 'Present',
+    experience_skills: 'Skills',
+    skill_years: '{n} years',
+  },
+};
+
+describe('generateResumeHtml', () => {
+  it('returns string containing <!DOCTYPE html>', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: fullSkills,
+      projects: fullProjects,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<!doctype html>');
+  });
+
+  it('contains resume name in heading element', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<h1>Jane Smith</h1>');
+  });
+
+  it('contains expected section headings based on i18n labels', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: fullSkills,
+      projects: fullProjects,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<h2>Experience</h2>');
+    expect(html).toContain('<h2>Education</h2>');
+    expect(html).toContain('<h2>Skills</h2>');
+    expect(html).toContain('<h2>Projects</h2>');
+    expect(html).toContain('<h2>Community</h2>');
+    expect(html).toContain('<h2>Accreditations</h2>');
+  });
+
+  it('excludes sections not present in input data', async () => {
+    const html = await generateResumeHtml({
+      resume: { name: 'Test', tagline: 'Dev' },
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).not.toContain('<h2>Skills</h2>');
+    expect(html).not.toContain('<h2>Experience</h2>');
+    expect(html).not.toContain('<h2>Projects</h2>');
+  });
+
+  it('renders markdown in summary (contains <p> tags)', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<p>');
+    expect(html).toContain('<strong>');
+  });
+
+  it('contains inline <style> block', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('<style>');
+    expect(html).toContain('</style>');
+  });
+
+  it('does not contain external stylesheet or script references', async () => {
+    const html = await generateResumeHtml({
+      resume: fullResume,
+      skills: fullSkills,
+      projects: fullProjects,
+      i18n: defaultI18n,
+    });
+    expect(html).not.toContain('<link rel="stylesheet"');
+    expect(html).not.toContain('<script');
+  });
+
+  it('handles resume with minimal data (name only)', async () => {
+    const html = await generateResumeHtml({
+      resume: { name: 'Minimal' },
+      skills: null,
+      projects: null,
+      i18n: defaultI18n,
+    });
+    expect(html).toContain('Minimal');
+    expect(html).toContain('<!doctype html>');
+  });
+
+  it('does not mutate input data', async () => {
+    const resume = structuredClone(fullResume);
+    const skills = structuredClone(fullSkills);
+    const projects = structuredClone(fullProjects);
+
+    await generateResumeHtml({
+      resume,
+      skills,
+      projects,
+      i18n: defaultI18n,
+    });
+
+    expect(resume).toEqual(fullResume);
+    expect(skills).toEqual(fullSkills);
+    expect(projects).toEqual(fullProjects);
+  });
+});
