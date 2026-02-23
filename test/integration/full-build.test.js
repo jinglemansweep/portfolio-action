@@ -121,6 +121,13 @@ describe('full build integration', () => {
     expect(manifest.nav.length).toBeGreaterThan(0);
   });
 
+  it('projects have description_html rendered from markdown', async () => {
+    const data = await readOutputJson(outputDir, 'data/projects.json');
+    const first = data.projects[0];
+    expect(first.description_html).toBeTruthy();
+    expect(first.description_html).toContain('<p>');
+  });
+
   it('produces no .pdf or .docx files with --no-pdf --no-docx', async () => {
     expect(await fileExists(join(outputDir, 'resume.pdf'))).toBe(false);
     expect(await fileExists(join(outputDir, 'resume.docx'))).toBe(false);
