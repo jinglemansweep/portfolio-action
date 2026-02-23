@@ -211,7 +211,9 @@ class SkillCard extends I18nMixin(LitElement) {
               <div class="border-t border-gray-100 pt-3 dark:border-gray-700">
                 <div class="flex flex-col gap-1">
                   ${experiences.map((exp) => {
-                    const slug = this._slugify(`${exp.title}--${exp.company}`);
+                    const slug = this._slugify(
+                      exp.company ? `${exp.title}--${exp.company}` : exp.title,
+                    );
                     return html`
                       <a
                         href="/#experience-${slug}"
@@ -219,7 +221,9 @@ class SkillCard extends I18nMixin(LitElement) {
                       >
                         ${iconBriefcase('h-3.5 w-3.5 flex-shrink-0')}
                         <span class="truncate"
-                          >${exp.title} @ ${exp.company}</span
+                          >${exp.title}${exp.company
+                            ? html` @ ${exp.company}`
+                            : ''}</span
                         >
                       </a>
                     `;
