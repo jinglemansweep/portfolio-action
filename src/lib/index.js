@@ -177,6 +177,15 @@ export async function build(options) {
     }
   }
 
+  // Render project description markdown
+  if (stripped.projects?.projects) {
+    for (const proj of stripped.projects.projects) {
+      if (proj.description) {
+        proj.description_html = renderMarkdown(proj.description);
+      }
+    }
+  }
+
   // Apply CLI overrides to documents config
   if (noPdf) site.documents.pdf = false;
   if (noDocx) site.documents.docx = false;
