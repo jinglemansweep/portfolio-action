@@ -32,7 +32,9 @@ export function compileCrossref(skills, resume, projects) {
   if (resume?.experience) {
     for (const exp of resume.experience) {
       if (!exp.skills) continue;
-      const expKey = slugify(`${exp.title}--${exp.company}`);
+      const expKey = slugify(
+        exp.company ? `${exp.title}--${exp.company}` : exp.title,
+      );
       const matchedSkills = [];
 
       for (const skillName of exp.skills) {
@@ -42,7 +44,7 @@ export function compileCrossref(skills, resume, projects) {
           if (!skillToExperience[key]) skillToExperience[key] = [];
           skillToExperience[key].push({
             title: exp.title,
-            company: exp.company,
+            ...(exp.company ? { company: exp.company } : {}),
             start: exp.start,
             end: exp.end || null,
           });

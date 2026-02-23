@@ -116,6 +116,31 @@ describe('compileCrossref', () => {
     expect(Object.keys(crossref.skillToExperience).length).toBeGreaterThan(0);
   });
 
+  it('handles experience with missing company (visibility hidden)', () => {
+    const resumeNoCompany = {
+      experience: [
+        {
+          title: 'Senior Engineer',
+          start: '2020',
+          end: 'present',
+          skills: ['Docker'],
+        },
+      ],
+    };
+    const { crossref } = compileCrossref(skills, resumeNoCompany, null);
+
+    // company should be omitted, not undefined
+    const entry = crossref.skillToExperience['docker'][0];
+    expect(entry.title).toBe('Senior Engineer');
+    expect(entry).not.toHaveProperty('company');
+
+    // experienceToSkills key should use title-only slug
+    expect(crossref.experienceToSkills['senior-engineer']).toHaveLength(1);
+    expect(crossref.experienceToSkills['senior-engineer'][0].name).toBe(
+      'Docker',
+    );
+  });
+
   it('handles null experience data (omits experience mappings)', () => {
     const { crossref } = compileCrossref(skills, null, projects);
     expect(crossref.skillToExperience).toEqual({});
