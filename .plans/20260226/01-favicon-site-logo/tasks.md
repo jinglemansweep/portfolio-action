@@ -22,7 +22,7 @@
 
 ## Frontend — Nav Bar Logo
 
-- [ ] **Add conditional logo image to `template/components/layout/nav-bar.js`** — In the `render()` method, inside the site title `<a>` tag (line 93–98), add a conditional `<img>` element before the `${displayTitle}` text. The image should only render when `this.site?.favicon` is truthy. Implementation: change the `<a>` tag content from `${displayTitle}` to `${this.site?.favicon ? html`<img src="${this.site.favicon}" alt="" class="h-7 w-7 rounded-full object-cover" loading="eager" />` : ''} ${displayTitle}`. Also add `flex items-center gap-2` to the `<a>` tag's class list so the logo and text align horizontally. The `alt=""` is intentional — the image is decorative since the site name text is adjacent.
+- [x] **Add conditional logo image to `template/components/layout/nav-bar.js`** — In the `render()` method, inside the site title `<a>` tag (line 93–98), add a conditional `<img>` element before the `${displayTitle}` text. The image should only render when `this.site?.favicon` is truthy. Implementation: change the `<a>` tag content from `${displayTitle}` to `${this.site?.favicon ? html`<img src="${this.site.favicon}" alt="" class="h-7 w-7 rounded-full object-cover" loading="eager" />` : ''} ${displayTitle}`. Also add `flex items-center gap-2` to the `<a>` tag's class list so the logo and text align horizontally. The `alt=""` is intentional — the image is decorative since the site name text is adjacent.
 
 ## Test Fixtures
 

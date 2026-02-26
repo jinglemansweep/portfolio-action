@@ -92,8 +92,16 @@ class NavBar extends I18nMixin(LitElement) {
             <div class="flex-shrink-0">
               <a
                 href="/"
-                class="text-lg font-bold text-gray-900 no-underline hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
+                class="flex items-center gap-2 text-lg font-bold text-gray-900 no-underline hover:text-blue-600 dark:text-white dark:hover:text-blue-400"
               >
+                ${this.site?.favicon
+                  ? html`<img
+                      src="${this.site.favicon}"
+                      alt=""
+                      class="h-7 w-7 rounded-full object-cover"
+                      loading="eager"
+                    />`
+                  : ''}
                 ${displayTitle}
               </a>
             </div>
