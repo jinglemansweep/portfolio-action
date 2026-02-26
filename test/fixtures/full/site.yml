@@ -3,7 +3,7 @@ theme:
   primary: '#2563eb'
   accent: '#f59e0b'
   mode: system
-favicon: ''
+favicon: 'media/test-image.png'
 og_image: 'media/test-image.png'
 analytics_id: 'G-TEST12345'
 custom_domain: ''
