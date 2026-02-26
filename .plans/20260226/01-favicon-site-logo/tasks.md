@@ -34,18 +34,18 @@
 
 ### Unit Tests
 
-- [ ] **Add favicon interpolation tests to `test/unit/generate-index.test.js`** — Add the following test cases to the existing `describe('generateIndex')` block:
-  - [ ] `it('interpolates custom favicon href')` — Call `generateIndex({ ...baseOptions, favicon: 'media/logo.png', appleTouchIcon: '<link rel="apple-touch-icon" href="media/logo.png" />' })`, assert the output contains `href="media/logo.png"` in a `<link rel="icon"` tag and contains the apple touch icon tag.
-  - [ ] `it('uses default favicon when not provided')` — Call `generateIndex({ ...baseOptions })` (no favicon option), assert the output contains `href="data:,"` (the fallback default from the replacements map).
-  - [ ] `it('includes apple-touch-icon when custom favicon set')` — Call with `appleTouchIcon` set to a link tag, assert the output contains `rel="apple-touch-icon"`.
-  - [ ] `it('omits apple-touch-icon when no custom favicon')` — Call with `appleTouchIcon` set to `''`, assert the output does not contain `apple-touch-icon`.
+- [x] **Add favicon interpolation tests to `test/unit/generate-index.test.js`** — Add the following test cases to the existing `describe('generateIndex')` block:
+  - [x] `it('interpolates custom favicon href')` — Call `generateIndex({ ...baseOptions, favicon: 'media/logo.png', appleTouchIcon: '<link rel="apple-touch-icon" href="media/logo.png" />' })`, assert the output contains `href="media/logo.png"` in a `<link rel="icon"` tag and contains the apple touch icon tag.
+  - [x] `it('uses default favicon when not provided')` — Call `generateIndex({ ...baseOptions })` (no favicon option), assert the output contains `href="data:,"` (the fallback default from the replacements map).
+  - [x] `it('includes apple-touch-icon when custom favicon set')` — Call with `appleTouchIcon` set to a link tag, assert the output contains `rel="apple-touch-icon"`.
+  - [x] `it('omits apple-touch-icon when no custom favicon')` — Call with `appleTouchIcon` set to `''`, assert the output does not contain `apple-touch-icon`.
 
-- [ ] **Add unit tests for `resolveFaviconHref()` and `resolveAppleTouchIconTag()`** — In `test/unit/generate-index.test.js`, add a new `describe('resolveFaviconHref')` block with:
-  - [ ] `it('returns custom path when favicon is set')` — Call `resolveFaviconHref('media/logo.png', '#2563eb')`, assert it returns `'media/logo.png'`.
-  - [ ] `it('returns SVG data URI when favicon is empty')` — Call `resolveFaviconHref('', '#2563eb')`, assert the result starts with `'data:image/svg+xml,'` and contains `fill=` with the encoded colour.
-  - [ ] `it('returns SVG data URI when favicon is undefined')` — Call `resolveFaviconHref(undefined, '#ff0000')`, assert it starts with `'data:image/svg+xml,'`.
-  - [ ] Add a `describe('resolveAppleTouchIconTag')` block with: `it('returns link tag when favicon set')` — assert returns a string containing `rel="apple-touch-icon"`; `it('returns empty string when favicon empty')` — assert returns `''`.
+- [x] **Add unit tests for `resolveFaviconHref()` and `resolveAppleTouchIconTag()`** — In `test/unit/generate-index.test.js`, add a new `describe('resolveFaviconHref')` block with:
+  - [x] `it('returns custom path when favicon is set')` — Call `resolveFaviconHref('media/logo.png', '#2563eb')`, assert it returns `'media/logo.png'`.
+  - [x] `it('returns SVG data URI when favicon is empty')` — Call `resolveFaviconHref('', '#2563eb')`, assert the result starts with `'data:image/svg+xml,'` and contains `fill=` with the encoded colour.
+  - [x] `it('returns SVG data URI when favicon is undefined')` — Call `resolveFaviconHref(undefined, '#ff0000')`, assert it starts with `'data:image/svg+xml,'`.
+  - [x] Add a `describe('resolveAppleTouchIconTag')` block with: `it('returns link tag when favicon set')` — assert returns a string containing `rel="apple-touch-icon"`; `it('returns empty string when favicon empty')` — assert returns `''`.
 
 ### Integration Tests
 
-- [ ] **Add favicon assertions to `test/integration/full-build.test.js`** — Add a new test case `it('index.html contains favicon link tag')` that reads `index.html` from the output directory and asserts it contains `<link rel="icon" href="media/test-image.png"` (matching the `full` fixture's `site.yml` favicon value). Also assert it contains `rel="apple-touch-icon"`. Optionally add `it('404.html contains favicon link tag')` that reads `404.html` and asserts the same favicon href is present.
+- [x] **Add favicon assertions to `test/integration/full-build.test.js`** — Add a new test case `it('index.html contains favicon link tag')` that reads `index.html` from the output directory and asserts it contains `<link rel="icon" href="media/test-image.png"` (matching the `full` fixture's `site.yml` favicon value). Also assert it contains `rel="apple-touch-icon"`. Optionally add `it('404.html contains favicon link tag')` that reads `404.html` and asserts the same favicon href is present.

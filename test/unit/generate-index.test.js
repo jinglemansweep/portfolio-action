@@ -1,5 +1,9 @@
 import { describe, it, expect } from 'vitest';
-import { generateIndex } from '../../src/lib/generate/index.js';
+import {
+  generateIndex,
+  resolveFaviconHref,
+  resolveAppleTouchIconTag,
+} from '../../src/lib/generate/index.js';
 import { join, dirname } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
@@ -106,5 +110,68 @@ describe('generateIndex', () => {
     expect(html).toContain("const mode = 'system'");
     expect(html).toContain('content="index, follow"');
     expect(html).toContain('Skip to content');
+  });
+
+  it('interpolates custom favicon href', async () => {
+    const html = await generateIndex({
+      ...baseOptions,
+      favicon: 'media/logo.png',
+      appleTouchIcon: '<link rel="apple-touch-icon" href="media/logo.png" />',
+    });
+    expect(html).toContain('<link rel="icon" href="media/logo.png"');
+    expect(html).toContain(
+      '<link rel="apple-touch-icon" href="media/logo.png" />',
+    );
+  });
+
+  it('uses default favicon when not provided', async () => {
+    const html = await generateIndex({ ...baseOptions });
+    expect(html).toContain('href="data:,"');
+  });
+
+  it('includes apple-touch-icon when custom favicon set', async () => {
+    const html = await generateIndex({
+      ...baseOptions,
+      appleTouchIcon: '<link rel="apple-touch-icon" href="media/logo.png" />',
+    });
+    expect(html).toContain('rel="apple-touch-icon"');
+  });
+
+  it('omits apple-touch-icon when no custom favicon', async () => {
+    const html = await generateIndex({
+      ...baseOptions,
+      appleTouchIcon: '',
+    });
+    expect(html).not.toContain('apple-touch-icon');
+  });
+});
+
+describe('resolveFaviconHref', () => {
+  it('returns custom path when favicon is set', () => {
+    expect(resolveFaviconHref('media/logo.png', '#2563eb')).toBe(
+      'media/logo.png',
+    );
+  });
+
+  it('returns SVG data URI when favicon is empty', () => {
+    const result = resolveFaviconHref('', '#2563eb');
+    expect(result).toMatch(/^data:image\/svg\+xml,/);
+    expect(result).toContain(`fill="${encodeURIComponent('#2563eb')}"`);
+  });
+
+  it('returns SVG data URI when favicon is undefined', () => {
+    const result = resolveFaviconHref(undefined, '#ff0000');
+    expect(result).toMatch(/^data:image\/svg\+xml,/);
+  });
+});
+
+describe('resolveAppleTouchIconTag', () => {
+  it('returns link tag when favicon set', () => {
+    const result = resolveAppleTouchIconTag('media/logo.png');
+    expect(result).toContain('rel="apple-touch-icon"');
+  });
+
+  it('returns empty string when favicon empty', () => {
+    expect(resolveAppleTouchIconTag('')).toBe('');
   });
 });

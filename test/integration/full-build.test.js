@@ -198,4 +198,16 @@ describe('full build integration', () => {
       '<loc>https://example.com/blog/getting-started-typescript</loc>',
     );
   });
+
+  it('index.html contains favicon link tag', async () => {
+    const html = await readOutputFile(outputDir, 'index.html');
+    expect(html).toContain('<link rel="icon" href="media/test-image.png"');
+    expect(html).toContain('rel="apple-touch-icon"');
+  });
+
+  it('404.html contains favicon link tag', async () => {
+    const html = await readOutputFile(outputDir, '404.html');
+    expect(html).toContain('<link rel="icon" href="media/test-image.png"');
+    expect(html).toContain('rel="apple-touch-icon"');
+  });
 });
