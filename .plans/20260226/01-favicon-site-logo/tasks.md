@@ -26,9 +26,9 @@
 
 ## Test Fixtures
 
-- [ ] **Set favicon in `test/fixtures/full/site.yml`** — Change line 6 from `favicon: ''` to `favicon: 'media/test-image.png'`. The file `test/fixtures/full/media/test-image.png` already exists, so no new fixture files are needed.
+- [x] **Set favicon in `test/fixtures/full/site.yml`** — Change line 6 from `favicon: ''` to `favicon: 'media/test-image.png'`. The file `test/fixtures/full/media/test-image.png` already exists, so no new fixture files are needed.
 
-- [ ] **Set favicon in `demo/site.yml`** — Change line 6 from `favicon: ''` to `favicon: 'media/avatar.jpg'` (or whichever logo/avatar image exists in the demo media directory). If no suitable image exists in `demo/media/`, leave this as an empty string and note it for the user to add their own image later.
+- [x] **Set favicon in `demo/site.yml`** — Change line 6 from `favicon: ''` to `favicon: 'media/avatar.jpg'` (or whichever logo/avatar image exists in the demo media directory). If no suitable image exists in `demo/media/`, leave this as an empty string and note it for the user to add their own image later.
 
 ## Tests
 

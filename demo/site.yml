@@ -3,7 +3,7 @@ theme:
   primary: '#6366f1'
   accent: '#f97316'
   mode: system
-favicon: ''
+favicon: 'media/profile.png'
 og_image: ''
 analytics_id: ''
 custom_domain: ''
