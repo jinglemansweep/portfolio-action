@@ -82,6 +82,20 @@ describe('generateIndex', () => {
     expect(html).not.toContain('application/rss+xml');
   });
 
+  it('includes canonical link when provided', async () => {
+    const canonicalLink =
+      '<link rel="canonical" href="https://example.com/" />';
+    const html = await generateIndex({ ...baseOptions, canonicalLink });
+    expect(html).toContain(
+      '<link rel="canonical" href="https://example.com/" />',
+    );
+  });
+
+  it('omits canonical link when not provided', async () => {
+    const html = await generateIndex(baseOptions);
+    expect(html).not.toContain('canonical');
+  });
+
   it('uses defaults for missing optional fields', async () => {
     const html = await generateIndex({ templateDir });
     expect(html).toContain('lang="en"');

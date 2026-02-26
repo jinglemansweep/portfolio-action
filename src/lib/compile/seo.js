@@ -44,8 +44,15 @@ export function generateMetaRobots(seo) {
 
 /**
  * Generate sitemap.xml content.
+ * @param {string[]} routes - Manifest routes
+ * @param {string} siteUrl - Full site URL
+ * @param {string|Date} buildDate - Build date
+ * @param {object} i18n - i18n bundle
+ * @param {object} [options] - Additional options
+ * @param {Array<{slug: string, publish_on?: string}>} [options.blogPosts] - Blog posts to include
+ * @param {string} [options.blogRoute='blog'] - Blog route segment
  */
-export function generateSitemapXml(routes, siteUrl, buildDate, i18n) {
+export function generateSitemapXml(routes, siteUrl, buildDate, i18n, options) {
   if (!siteUrl) return '';
 
   const date =
@@ -63,6 +70,18 @@ export function generateSitemapXml(routes, siteUrl, buildDate, i18n) {
     xml += `    <loc>${siteUrl}${route}</loc>\n`;
     xml += `    <lastmod>${date}</lastmod>\n`;
     xml += `    <priority>${priority}</priority>\n`;
+    xml += '  </url>\n';
+  }
+
+  // Include individual blog post URLs
+  const blogPosts = options?.blogPosts || [];
+  const blogRoute = options?.blogRoute || 'blog';
+  for (const post of blogPosts) {
+    const postDate = post.publish_on || date;
+    xml += '  <url>\n';
+    xml += `    <loc>${siteUrl}/${blogRoute}/${post.slug}</loc>\n`;
+    xml += `    <lastmod>${postDate}</lastmod>\n`;
+    xml += `    <priority>0.6</priority>\n`;
     xml += '  </url>\n';
   }
 

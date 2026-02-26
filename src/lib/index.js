@@ -27,6 +27,7 @@ import {
 } from './compile/seo.js';
 import { generateManifest } from './generate/manifest.js';
 import { generateIndex } from './generate/index.js';
+import { generateRoutePages } from './generate/route-pages.js';
 
 const isActions = !!process.env.GITHUB_ACTIONS;
 
@@ -239,6 +240,10 @@ export async function build(options) {
       ? '<link rel="alternate" type="application/rss+xml" title="RSS Feed" href="feed.xml" />'
       : '';
 
+  const canonicalLink = resolvedSiteUrl
+    ? `<link rel="canonical" href="${resolvedSiteUrl}/" />`
+    : '';
+
   const indexHtml = await generateIndex({
     templateDir,
     lang: i18n.locale || site.lang,
@@ -250,10 +255,22 @@ export async function build(options) {
     accent: site.theme?.accent || '#f59e0b',
     themeMode: site.theme?.mode || 'system',
     robotsMeta: generateMetaRobots(site.seo),
+    canonicalLink,
     rssLink,
     skipToContent: i18n.labels?.a11y_skip_to_content || 'Skip to content',
   });
   await writeFile(join(outputDir, 'index.html'), indexHtml);
+
+  // Step 9b: Generate static route pages for SEO (prevents 404s for bots)
+  const blogRoute = i18n.labels?.route_blog || 'blog';
+  await generateRoutePages({
+    routes: manifest.routes,
+    outputDir,
+    indexHtml,
+    siteUrl: resolvedSiteUrl,
+    blogPosts: stripped.blog?.posts || [],
+    blogRoute,
+  });
 
   // Step 10: Copy template components
   const componentsDir = join(templateDir, 'components');
@@ -319,6 +336,10 @@ export async function build(options) {
       resolvedSiteUrl,
       buildDate || new Date().toISOString().split('T')[0],
       i18n,
+      {
+        blogPosts: stripped.blog?.posts || [],
+        blogRoute,
+      },
     );
     if (sitemapXml) {
       await writeFile(join(outputDir, 'sitemap.xml'), sitemapXml);
