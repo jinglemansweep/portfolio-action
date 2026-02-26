@@ -15,6 +15,7 @@ import { join } from 'node:path';
  * @param {string} options.themeMode - Theme mode (light/dark/system)
  * @param {string} options.robotsMeta - Meta robots content
  * @param {string} options.rssLink - RSS link tag HTML or empty string
+ * @param {string} options.canonicalLink - Canonical link tag HTML or empty string
  * @param {string} options.skipToContent - Skip to content label
  * @returns {string} Compiled HTML string
  */
@@ -32,6 +33,7 @@ export async function generateIndex(options) {
     '${accent}': options.accent || '#f59e0b',
     '${theme_mode}': options.themeMode || 'system',
     '${robots_meta}': options.robotsMeta || 'index, follow',
+    '${canonical_link}': options.canonicalLink || '',
     '${rss_link}': options.rssLink || '',
     '${a11y_skip_to_content}': options.skipToContent || 'Skip to content',
   };

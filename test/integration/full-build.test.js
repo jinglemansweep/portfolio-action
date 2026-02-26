@@ -148,4 +148,54 @@ describe('full build integration', () => {
     expect(html).toContain('dir="ltr"');
     expect(html).not.toContain('${');
   });
+
+  it('index.html includes canonical link for root', async () => {
+    const html = await readOutputFile(outputDir, 'index.html');
+    expect(html).toContain(
+      '<link rel="canonical" href="https://example.com/" />',
+    );
+  });
+
+  it('generates static route pages for SEO', async () => {
+    const manifest = await readOutputJson(outputDir, 'data/manifest.json');
+    // Every non-root route should have a static index.html
+    for (const route of manifest.routes) {
+      if (route === '/') continue;
+      const routePage = join(outputDir, route.slice(1), 'index.html');
+      expect(await fileExists(routePage)).toBe(true);
+
+      const html = await readOutputFile(
+        outputDir,
+        `${route.slice(1)}/index.html`,
+      );
+      expect(html).toContain(`href="https://example.com${route}"`);
+      expect(html).toContain('rel="canonical"');
+    }
+  });
+
+  it('generates static pages for individual blog posts', async () => {
+    const postPage = join(
+      outputDir,
+      'blog',
+      'getting-started-typescript',
+      'index.html',
+    );
+    expect(await fileExists(postPage)).toBe(true);
+
+    const html = await readOutputFile(
+      outputDir,
+      'blog/getting-started-typescript/index.html',
+    );
+    expect(html).toContain('canonical');
+    expect(html).toContain(
+      'https://example.com/blog/getting-started-typescript',
+    );
+  });
+
+  it('sitemap.xml includes blog post URLs', async () => {
+    const sitemap = await readOutputFile(outputDir, 'sitemap.xml');
+    expect(sitemap).toContain(
+      '<loc>https://example.com/blog/getting-started-typescript</loc>',
+    );
+  });
 });

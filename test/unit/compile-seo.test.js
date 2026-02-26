@@ -100,6 +100,65 @@ describe('generateSitemapXml', () => {
     expect(xml).toContain('/competences');
     expect(xml).toContain('/projets');
   });
+
+  it('includes blog post URLs when provided', () => {
+    const xml = generateSitemapXml(
+      ['/', '/blog'],
+      'https://example.com',
+      '2026-01-15',
+      i18n,
+      {
+        blogPosts: [
+          { slug: 'hello-world', publish_on: '2026-01-10' },
+          { slug: 'second-post', publish_on: '2026-01-12' },
+        ],
+        blogRoute: 'blog',
+      },
+    );
+    expect(xml).toContain('<loc>https://example.com/blog/hello-world</loc>');
+    expect(xml).toContain('<loc>https://example.com/blog/second-post</loc>');
+    expect(xml).toContain('<lastmod>2026-01-10</lastmod>');
+    expect(xml).toContain('<lastmod>2026-01-12</lastmod>');
+  });
+
+  it('uses build date for blog posts without publish_on', () => {
+    const xml = generateSitemapXml(
+      ['/'],
+      'https://example.com',
+      '2026-01-15',
+      i18n,
+      { blogPosts: [{ slug: 'no-date' }] },
+    );
+    expect(xml).toContain('<loc>https://example.com/blog/no-date</loc>');
+    expect(xml).toMatch(
+      /<loc>https:\/\/example\.com\/blog\/no-date<\/loc>\n\s*<lastmod>2026-01-15<\/lastmod>/,
+    );
+  });
+
+  it('uses custom blogRoute for i18n', () => {
+    const xml = generateSitemapXml(
+      ['/'],
+      'https://example.com',
+      '2026-01-15',
+      i18n,
+      { blogPosts: [{ slug: 'mon-article' }], blogRoute: 'articles' },
+    );
+    expect(xml).toContain(
+      '<loc>https://example.com/articles/mon-article</loc>',
+    );
+  });
+
+  it('works without options (backward compatible)', () => {
+    const xml = generateSitemapXml(
+      ['/', '/skills'],
+      'https://example.com',
+      '2026-01-15',
+      i18n,
+    );
+    expect(xml).toContain('<loc>https://example.com/</loc>');
+    expect(xml).toContain('<loc>https://example.com/skills</loc>');
+    expect(xml).not.toContain('/blog/');
+  });
 });
 
 describe('generateLlmsTxt', () => {
