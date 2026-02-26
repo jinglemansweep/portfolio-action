@@ -26,7 +26,11 @@ import {
   resolveSiteUrl,
 } from './compile/seo.js';
 import { generateManifest } from './generate/manifest.js';
-import { generateIndex } from './generate/index.js';
+import {
+  generateIndex,
+  resolveFaviconHref,
+  resolveAppleTouchIconTag,
+} from './generate/index.js';
 import { generateRoutePages } from './generate/route-pages.js';
 
 const isActions = !!process.env.GITHUB_ACTIONS;
@@ -244,6 +248,12 @@ export async function build(options) {
     ? `<link rel="canonical" href="${resolvedSiteUrl}/" />`
     : '';
 
+  const faviconHref = resolveFaviconHref(
+    site.favicon,
+    site.theme?.primary || '#2563eb',
+  );
+  const appleTouchIconTag = resolveAppleTouchIconTag(site.favicon);
+
   const indexHtml = await generateIndex({
     templateDir,
     lang: i18n.locale || site.lang,
@@ -256,6 +266,8 @@ export async function build(options) {
     themeMode: site.theme?.mode || 'system',
     robotsMeta: generateMetaRobots(site.seo),
     canonicalLink,
+    favicon: faviconHref,
+    appleTouchIcon: appleTouchIconTag,
     rssLink,
     skipToContent: i18n.labels?.a11y_skip_to_content || 'Skip to content',
   });
@@ -286,7 +298,10 @@ export async function build(options) {
     join(templateDir, '404.html'),
     'utf8',
   );
-  const notFoundHtml = notFoundTemplate.replaceAll('__BASE_PATH__', basePath);
+  const notFoundHtml = notFoundTemplate
+    .replaceAll('__BASE_PATH__', basePath)
+    .replaceAll('${favicon}', faviconHref)
+    .replaceAll('${apple_touch_icon}', appleTouchIconTag);
   await writeFile(join(outputDir, '404.html'), notFoundHtml);
   await cp(join(templateDir, 'prose.css'), join(outputDir, 'prose.css'));
 

@@ -2,6 +2,27 @@ import { readFile } from 'node:fs/promises';
 import { join } from 'node:path';
 
 /**
+ * Resolve the favicon href value.
+ * @param {string} favicon - User-provided favicon path (may be empty/falsy)
+ * @param {string} primaryColour - Primary theme colour for fallback SVG
+ * @returns {string} Favicon href (custom path or inline SVG data URI)
+ */
+export function resolveFaviconHref(favicon, primaryColour) {
+  if (favicon) return favicon;
+  return `data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><circle cx="50" cy="50" r="50" fill="${encodeURIComponent(primaryColour)}"/></svg>`;
+}
+
+/**
+ * Resolve the apple-touch-icon link tag.
+ * @param {string} favicon - User-provided favicon path (may be empty/falsy)
+ * @returns {string} Full link tag HTML or empty string
+ */
+export function resolveAppleTouchIconTag(favicon) {
+  if (favicon) return `<link rel="apple-touch-icon" href="${favicon}" />`;
+  return '';
+}
+
+/**
  * Generate index.html from template with interpolated variables.
  * @param {object} options
  * @param {string} options.templateDir - Path to template directory
@@ -16,6 +37,8 @@ import { join } from 'node:path';
  * @param {string} options.robotsMeta - Meta robots content
  * @param {string} options.rssLink - RSS link tag HTML or empty string
  * @param {string} options.canonicalLink - Canonical link tag HTML or empty string
+ * @param {string} options.favicon - Resolved favicon href
+ * @param {string} options.appleTouchIcon - Apple touch icon tag HTML or empty string
  * @param {string} options.skipToContent - Skip to content label
  * @returns {string} Compiled HTML string
  */
@@ -34,6 +57,8 @@ export async function generateIndex(options) {
     '${theme_mode}': options.themeMode || 'system',
     '${robots_meta}': options.robotsMeta || 'index, follow',
     '${canonical_link}': options.canonicalLink || '',
+    '${favicon}': options.favicon || 'data:,',
+    '${apple_touch_icon}': options.appleTouchIcon || '',
     '${rss_link}': options.rssLink || '',
     '${a11y_skip_to_content}': options.skipToContent || 'Skip to content',
   };
