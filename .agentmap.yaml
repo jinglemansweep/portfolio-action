@@ -1,0 +1,88 @@
+meta:
+  project: portfolio-action
+  version: 1
+  updated: "2026-02-27"
+  stack:
+    - node22-esm
+    - lit3
+    - tailwind-css4
+    - vitest
+    - github-actions
+
+tasks:
+  install: "npm install"
+  build: "node src/cli.js --data-dir demo --pages-dir demo/pages --blog-dir demo/blog --media-dir demo/media --output-dir _site --base-path /"
+  test: "npm test"
+  lint: "npm run lint && npm run format:check"
+
+tree:
+  action.yml: "GitHub Action composite definition"
+  src/:
+    cli.js: "CLI entry point, parseArgs → build()"
+    lib/:
+      index.js: "build orchestrator, 16-step pipeline"
+      compile/:
+        yaml.js: "YAML loader, site meta derivation"
+        markdown.js: "Markdown pages compiler"
+        blog.js: "blog post compiler, scheduling/filtering"
+        i18n.js: "i18n resolver, merges built-in + overrides"
+        seo.js: "sitemap, robots, RSS feed, llms.txt generators"
+        crossref.js: "skill↔experience↔project cross-references"
+      generate/:
+        index.js: "HTML shell generator"
+        manifest.js: "manifest-driven SPA route list"
+        route-pages.js: "per-route HTML with canonical links"
+        pdf.js: "Puppeteer resume PDF generation"
+        docx.js: "DOCX resume generation"
+        resume-html.js: "resume HTML for PDF/DOCX input"
+      utils/:
+        validate.js: "YAML schema validation"
+        strip-visibility.js: "privacy stripping at build time"
+  template/:
+    index.html: "SPA HTML shell, CDN imports"
+    404.html: "SPA redirect for GitHub Pages"
+    resume-pdf.html: "PDF-specific resume template"
+    components/:
+      layout/:
+        app-shell.js: "SPA router, JSON data loader"
+        nav-bar.js:
+        site-footer.js:
+      page/: "route-level page components"
+      section/: "home page section components"
+      project/: "project card variants"
+      skill/: "skill card and explorer"
+      blog/:
+        card.js:
+      ui/:
+        i18n-mixin.js: "I18nMixin base, t() and formatDate()"
+        icons.js: "shared SVG icon templates"
+        theme-toggle.js:
+        timeline-item.js:
+  i18n/: "built-in language packs (10 languages)"
+  test/:
+    unit/: "1:1 mapping to src/lib/ modules"
+    integration/: "full build + visibility + blog filtering"
+    fixtures/: "minimal, full, blog, i18n-override, visibility-hidden, invalid"
+    helpers/:
+      test-utils.js: "createTempDir, fixturePath, readOutputJson"
+  demo/: "demo site YAML data, pages, blog, media"
+
+key_symbols:
+  - src/lib/index.js::build — main build orchestrator [entry-point]
+  - src/cli.js::parseArgs — CLI argument parsing [entry-point]
+  - src/lib/compile/yaml.js::deriveSiteMeta — title/description from resume
+  - src/lib/compile/blog.js::compileBlog — draft/future/expired filtering
+  - src/lib/compile/crossref.js::compileCrossref — case-insensitive skill matching
+  - src/lib/utils/strip-visibility.js::stripVisibility — privacy stripping (web)
+  - src/lib/utils/strip-visibility.js::stripVisibilityForPrint — privacy stripping (print)
+  - src/lib/generate/manifest.js::generateManifest — manifest-driven routing
+  - template/components/layout/app-shell.js::AppShell — SPA router, data loader
+  - template/components/ui/i18n-mixin.js::I18nMixin — .t() and .formatDate()
+
+conventions:
+  - named exports only: no default exports
+  - structuredClone before mutation: never mutate inputs
+  - Light DOM required: createRenderRoot returns this
+  - all components extend I18nMixin(LitElement)
+  - CDN imports for browser deps: no bundler
+  - visibility stripped at build time: components never check visibility
